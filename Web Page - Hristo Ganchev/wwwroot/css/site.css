@@ -1,0 +1,140 @@
+html {
+    font-size: 14px;
+    background-color: #291563;
+}
+
+#text-homepage-first {
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#text-homepage-second {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#text-homepage-AboutUs {
+    color: white;
+    margin-bottom: 100px;
+    margin-top:50px;
+    text-align: left;
+}
+
+#text-homepage-Motto {
+    color: white;
+    margin-top: 100px;
+    text-align: right;
+}
+
+#div-content-box {
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+#div-content-box-games {
+    display: grid;
+    grid-template-columns: 1fr 150px;
+    grid-gap: 20px;
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+#div-content-box-desc {
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-gap: 17.8px;
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+
+#div-game {
+    background-color: #1B1E5B;
+    margin: 25px 25px 25px 25px;
+    width: 160px;
+    height: 250px;
+}
+
+#div-image-game {
+    margin: 5px 5px 5px 10px;
+}
+
+#div-image-desc {
+    margin: 5px 5px 5px 10px;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.sidebar-filter {
+    grid-column: 2;
+    width: 350px;
+    height: auto;
+    background-color: #1B1E5B;
+}
+
+.sidebar-reviews {
+    grid-column: 3;
+    grid-row:span 4;
+    width: 350px;
+    height: auto;
+    background-color: #1B1E5B;
+}
+
+#text-sidebar {
+    color: white;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#text-white {
+    color: white;
+}
+
+#checkbox-field {
+    width: 125px;
+    margin-left: 30px;
+}
+
+#checkbox-genre-field {
+    width: 218px;
+    margin-left: 30px;
+}
+
+#text-description {
+    grid-column: 1;
+    grid-row: 4;
+    color: white;
+    width: 700px;
+    margin-top: 30px;
+}
+
+#text-details {
+    grid-column: 1;
+    grid-row: 3;
+    color: white;
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #291563;
+}

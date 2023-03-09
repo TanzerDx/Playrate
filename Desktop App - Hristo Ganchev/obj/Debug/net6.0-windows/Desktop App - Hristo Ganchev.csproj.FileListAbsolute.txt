@@ -1,0 +1,38 @@
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.exe
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.deps.json
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.runtimeconfig.json
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.AssemblyReference.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.HomePage.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.Properties.Resources.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.GenerateResource.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.AssemblyInfoInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.AssemblyInfo.cs
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.CoreCompileInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\refint\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.genruntimeconfig.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\ref\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.AddGame.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.exe
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.deps.json
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.runtimeconfig.json
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\Desktop App - Hristo Ganchev.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.AssemblyReference.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.AddGame.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.HomePage.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.Properties.Resources.resources
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.GenerateResource.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.AssemblyInfoInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.AssemblyInfo.cs
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.CoreCompileInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\refint\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.genruntimeconfig.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\ref\Desktop App - Hristo Ganchev.dll
