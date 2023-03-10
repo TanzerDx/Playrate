@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "q3vZl/ulBcO76Y/+2IvXxlIe1q3W/2rtkpw5YgHgNnE=",
+  "Hash": "GG8sW/ii2rH65Wz+hgEUmhx84VCQLE4N4asLFlR75yY=",
   "Source": "Home Page - Hristo Ganchev",
   "BasePath": "_content/Home Page - Hristo Ganchev",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Home Page - Hristo Ganchev.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\css\\FilterFormModel.cs",
+      "SourceId": "Home Page - Hristo Ganchev",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\",
+      "BasePath": "_content/Home Page - Hristo Ganchev",
+      "RelativePath": "css/FilterFormModel.cs",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\FilterFormModel.cs"
     },
     {
       "Identity": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\css\\site.css",

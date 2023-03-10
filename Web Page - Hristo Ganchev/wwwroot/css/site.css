@@ -37,7 +37,7 @@ html {
 
 #div-content-box-games {
     display: grid;
-    grid-template-columns: 1fr 150px;
+    grid-template-columns: 1fr 280px;
     grid-gap: 20px;
     border-radius: 85px;
     background-color: #1B1748;

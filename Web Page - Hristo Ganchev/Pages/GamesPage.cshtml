@@ -1,9 +1,10 @@
 ﻿@page
 @model Home_Page___Hristo_Ganchev.GamesPageModel
 @{
+    ViewData["Title"] = "Games Page";
 }
 
-<h2 id="text-white">GAMES</h2>
+<h2 id="text-white">@Model.PageTitle</h2>
 
 <div id="div-content-box-games">
 
@@ -22,11 +23,16 @@
     </div>
 
     </a>
+    
+    
+<div class="sidebar-filter">
 
-    <div class="sidebar-filter">
+    <form method="post">
+        <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>     
+        <input asp-for="Filter.Keyword" />
+        <input type="submit" value="Submit" />
+    </form>
 
-        <h3 id="text-sidebar">SEARCH</h3>     
-        <input type="text" id="search" name="Search">
         
         <h4 id="text-sidebar">Filter by:</h4>
         <div id="checkbox-field">
@@ -72,6 +78,4 @@
         </div>
 
     </div>
-
-
 </div>
