@@ -27,11 +27,11 @@
     
 <div class="sidebar-filter">
 
-    <form method="post">
-        <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>     
-        <input asp-for="Filter.Keyword" />
-        <input type="submit" value="Submit" />
-    </form>
+        <form method="post">
+            <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>
+            <input autocomplete="off" asp-for="Filter.Keyword" />
+            <input type="submit" value="Submit" />
+        </form>
 
         
         <h4 id="text-sidebar">Filter by:</h4>
