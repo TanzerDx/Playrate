@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop_App___Hristo_Ganchev
+namespace PLAYRATE.ClassLibrary
 {
     public enum Genres
     {

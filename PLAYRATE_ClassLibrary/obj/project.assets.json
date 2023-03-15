@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
+      "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
       "projectName": "PLAYRATE_ClassLibrary",
-      "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
+      "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
       "packagesPath": "C:\\Users\\msi\\.nuget\\packages\\",
-      "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\obj\\",
+      "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\msi\\AppData\\Roaming\\NuGet\\NuGet.Config",

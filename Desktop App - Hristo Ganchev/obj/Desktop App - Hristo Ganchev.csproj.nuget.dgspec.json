@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj": {}
+    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj": {}
   },
   "projects": {
-    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj": {
+    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj",
+        "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj",
         "projectName": "Desktop App - Hristo Ganchev",
-        "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj",
+        "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj",
         "packagesPath": "C:\\Users\\msi\\.nuget\\packages\\",
-        "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\obj\\",
+        "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\msi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
-                "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj"
+              "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
+                "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj"
               }
             }
           }
@@ -66,14 +66,14 @@
         }
       }
     },
-    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
+    "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
+        "projectUniqueName": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
         "projectName": "PLAYRATE_ClassLibrary",
-        "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
+        "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj",
         "packagesPath": "C:\\Users\\msi\\.nuget\\packages\\",
-        "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project Week 3\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\obj\\",
+        "outputPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\msi\\AppData\\Roaming\\NuGet\\NuGet.Config",

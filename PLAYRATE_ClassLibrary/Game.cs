@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Desktop_App___Hristo_Ganchev
+namespace PLAYRATE.ClassLibrary
 {
     public class Game
     {
