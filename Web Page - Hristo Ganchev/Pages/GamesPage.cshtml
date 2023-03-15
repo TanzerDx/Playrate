@@ -27,55 +27,37 @@
     
 <div class="sidebar-filter">
 
-        <form method="post">
+    <form method="post" asp-page="./GamesPage">
+
             <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>
             <input autocomplete="off" asp-for="Filter.Keyword" />
             <input type="submit" value="Submit" />
-        </form>
 
-        
+      
         <h4 id="text-sidebar">Filter by:</h4>
-        <div id="checkbox-field">
-            <input type="checkbox" id="checkboxHighestRating" name="checkboxHighestRating" value="1">
-            <label id="text-white" for="checkboxHighestRating">Highest rating</label>
+            <div id="rb-field">
+                <input type="radio" asp-for="Filter.MainFilter" value="Highest rating">
+                <label id="text-white" asp-for="Filter.MainFilter">Highest rating</label>
 
-            <input type="checkbox" id="checkboxLatestRelease" name="checkboxLatestRelease" value="1">
-            <label id="text-white" for="checkboxLatestRelease">Latest release</label>
-        
-            <input type="checkbox" id="checkboxMostReviews" name="checkboxMostReviews" value="1">
-            <label id="text-white" for="checkboxMostReviews">Most reviews</label>
-        </div>
+                <input type="radio" asp-for="Filter.MainFilter" value="Latest release">
+                <label id="text-white" asp-for="Filter.MainFilter">Latest release</label>
 
-        <h4 id="text-sidebar">Genres:</h4>
+                <input type="radio" asp-for="Filter.MainFilter" value="Most reviews">
+                <label id="text-white" asp-for="Filter.MainFilter">Most reviews</label>
+            </div>
 
-        <div id="checkbox-genre-field">
-            <input type="checkbox" id="checkboxFantasy" name="checkboxFantasy" value="1">
-            <label id="text-white" for="checkboxFantasy">Fantasy</label>
 
-            <input type="checkbox" id="checkboxSci-Fi" name="checkboxSci-Fi" value="1">
-            <label id="text-white" for="checkboxSci-Fi">Sci-Fi</label>
+           <h4 id="text-sidebar">Genres:</h4>
 
-            <input type="checkbox" id="checkboxHistory" name="checkboxHistory" value="1">
-            <label id="text-white" for="checkboxHistory">History</label>
+           <div id="checkbox-field">
+                @foreach (Desktop_App___Hristo_Ganchev.Genres genre in Enum.GetValues(typeof(Desktop_App___Hristo_Ganchev.Genres)))
+                {
+                    <input type="checkbox" asp-for="Filter.GenreFilter" value="@genre">
+                    <label id="text-white" for="checkbox@genre">@genre</label>
+                }
+            </div>
 
-            <input type="checkbox" id="checkboxHorror" name="checkboxHorror" value="1">
-            <label id="text-white" for="checkboxHorror">Horror</label>
-
-            <input type="checkbox" id="checkboxAction" name="checkboxAction" value="1">
-            <label id="text-white" for="checkboxAction">Action</label>
-
-            <input type="checkbox" id="checkboxStrategy" name="checkboxStrategy" value="1">
-            <label id="text-white" for="checkboxStrategy">Strategy</label>
-
-            <input type="checkbox" id="checkboxSports" name="checkboxSports" value="1">
-            <label id="text-white" for="checkboxSports">Sports</label>
-
-            <input type="checkbox" id="checkboxMMO" name="checkboxMMO" value="1">
-            <label id="text-white" for="checkboxMMO">MMO</label>
-
-            <input type="checkbox" id="checkboxRPG" name="checkboxRPG" value="1">
-            <label id="text-white" for="checkboxRPG">RPG</label>
-        </div>
+    </form>
 
     </div>
 </div>

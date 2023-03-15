@@ -36,3 +36,6 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\indiv
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.genruntimeconfig.cache
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\ref\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\PLAYRATE_ClassLibrary.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.CopyComplete

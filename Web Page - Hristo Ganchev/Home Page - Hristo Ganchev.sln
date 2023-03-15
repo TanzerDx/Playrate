@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Home Page - Hristo Ganchev", "Home Page - Hristo Ganchev.csproj", "{02680343-B089-4DC6-A572-3EF4629A9E40}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop App - Hristo Ganchev", "..\Desktop App - Hristo Ganchev\Desktop App - Hristo Ganchev.csproj", "{DEA5FC24-106C-4224-B553-2C532E849A81}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLAYRATE_ClassLibrary", "..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj", "{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{02680343-B089-4DC6-A572-3EF4629A9E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02680343-B089-4DC6-A572-3EF4629A9E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02680343-B089-4DC6-A572-3EF4629A9E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA5FC24-106C-4224-B553-2C532E849A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA5FC24-106C-4224-B553-2C532E849A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA5FC24-106C-4224-B553-2C532E849A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA5FC24-106C-4224-B553-2C532E849A81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

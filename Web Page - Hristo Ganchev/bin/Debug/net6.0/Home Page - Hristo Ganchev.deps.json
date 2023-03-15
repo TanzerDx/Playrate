@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Home Page - Hristo Ganchev/1.0.0": {
+        "dependencies": {
+          "PLAYRATE_ClassLibrary": "1.0.0"
+        },
         "runtime": {
           "Home Page - Hristo Ganchev.dll": {}
+        }
+      },
+      "PLAYRATE_ClassLibrary/1.0.0": {
+        "runtime": {
+          "PLAYRATE_ClassLibrary.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Home Page - Hristo Ganchev/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PLAYRATE_ClassLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

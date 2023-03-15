@@ -122,3 +122,6 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\indiv
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\Home Page - Hristo Ganchev.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\Home Page - Hristo Ganchev.genruntimeconfig.cache
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\ref\Home Page - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\PLAYRATE_ClassLibrary.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\Home Page - Hristo Ganchev.csproj.CopyComplete

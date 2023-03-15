@@ -98,9 +98,14 @@ html {
     color: white;
 }
 
-#checkbox-field {
+#rb-field {
     width: 125px;
     margin-left: 30px;
+}
+
+#checkbox-field {
+    width: 340px;
+    margin-left: 10px;
 }
 
 #checkbox-genre-field {
@@ -120,6 +125,20 @@ html {
     grid-column: 1;
     grid-row: 3;
     color: white;
+}
+
+.div-login {
+    margin-top: 15px;
+    margin-left: 530px;
+    height: 300px;
+    width: 200px;
+}
+
+#form-login {
+    color: white;
+    width: 200px;
+    margin-top: 30px;
+    margin-left: 300px;
 }
 
 

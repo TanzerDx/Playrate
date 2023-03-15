@@ -26,5 +26,15 @@ namespace Desktop_App___Hristo_Ganchev
             return username;
         }
 
-    }
+		public string GetEmail()
+		{
+			return email;
+		}
+
+		public string GetPassword()
+		{
+			return password;
+		}
+
+	}
 }

@@ -6,9 +6,14 @@ namespace Home_Page___Hristo_Ganchev
     public class GamesPageModel : PageModel
     {
 
-        public string PageTitle { get; set; }
+        public string PageTitle { get; private set; }
 
-        public string SubmittedKeyword { get; set; }
+        public string SubmittedKeyword { get; private set; }
+
+        public string SubmittedMainFilter { get; private set; }
+
+        public string SubmittedGenreFilter { get; private set; }
+
 
         [BindProperty]
         public Filter Filter { get; set; }
@@ -29,8 +34,10 @@ namespace Home_Page___Hristo_Ganchev
             if (ModelState.IsValid)
             {
                 SubmittedKeyword = $"{Filter.GetKeyword()}";
-            }
+				SubmittedMainFilter = $"{Filter.GetMainFilter()}";
+                SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
+			}
         }
     }
 }
