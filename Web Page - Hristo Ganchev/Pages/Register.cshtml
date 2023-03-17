@@ -1,0 +1,29 @@
+﻿@page
+@model Home_Page___Hristo_Ganchev.Pages.RegisterModel
+@{
+}
+
+<div id="div-content-box">
+	<h2 id="text-white">@Model.PageTitle</h2>
+
+	<div id="form-login">
+
+		<form method="post">
+			
+			<label asp-for="Register.Email">Email:</label>
+			<input type="text" id="email" asp-for="Register.Email">
+
+			<label asp-for="Register.Username">Username:</label>
+			<input type="text" id="username" asp-for="Register.Username">
+
+			<label asp-for="Register.Password">Password:</label>
+			<input type="text" id="password" asp-for="Register.Password">
+
+			<div>
+				<input type="submit" value="Register" style="width: 189px" autocomplete="off" />
+			</div>
+
+		</form>
+
+	</div>
+</div>
