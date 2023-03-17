@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLAYRATE
+namespace Desktop_App___Hristo_Ganchev
 {
 	public class AccountLibraryManagement
 	{
@@ -13,6 +13,11 @@ namespace PLAYRATE
 		public void AddAccount(Account a)
 		{
 			allAccounts.Add(a);
+		}
+
+		public void RemoveAccount(Account a)
+		{
+			allAccounts.Remove(a);
 		}
 
 
@@ -30,7 +35,7 @@ namespace PLAYRATE
 			return account;
 		}
 
-	
+
 		public List<Account> GetAllAccounts()
 		{
 			return allAccounts;

@@ -10,3 +10,15 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\indiv
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\refint\PLAYRATE_ClassLibrary.dll
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\ref\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.csproj.AssemblyReference.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.AssemblyInfoInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.AssemblyInfo.cs
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.csproj.CoreCompileInputs.cache
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\refint\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_ClassLibrary.deps.json
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_ClassLibrary.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\ref\PLAYRATE_ClassLibrary.dll

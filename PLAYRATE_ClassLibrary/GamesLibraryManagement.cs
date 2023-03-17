@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PLAYRATE
+namespace Desktop_App___Hristo_Ganchev
 {
 	public class GamesLibraryManagement
 	{

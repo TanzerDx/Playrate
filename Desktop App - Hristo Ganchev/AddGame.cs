@@ -11,53 +11,55 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Desktop_App___Hristo_Ganchev
 {
-    public partial class AddGame : Form
-    {
-        Administration administration = new Administration();
+	public partial class AddGame : Form
+	{
+		GamesLibraryManagement gamesLibraryManagement = new GamesLibraryManagement();
+		AccountLibraryManagement accountLibraryManagement = new AccountLibraryManagement();
 
-        Color bgcolor = Color.FromArgb(48, 52, 145);
+		Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        public AddGame()
-        {
-            InitializeComponent();
-        }
+		public AddGame()
+		{
+			InitializeComponent();
+		}
 
-        public AddGame(Administration a)
-        {
-            administration = a;
+		public AddGame(GamesLibraryManagement g, AccountLibraryManagement a)
+		{
+			gamesLibraryManagement = g;
+			accountLibraryManagement = a;
 
-            InitializeComponent();
+			InitializeComponent();
 
-            lblAddGame.BackColor = bgcolor;
-            lblName.BackColor = bgcolor;
-            lblDeveloper.BackColor = bgcolor;
-            lblReleaseDate.BackColor = bgcolor;
-            lblGenres.BackColor = bgcolor;
-            lblRating.BackColor = bgcolor;
-            lblDesc.BackColor = bgcolor;
+			lblAddGame.BackColor = bgcolor;
+			lblName.BackColor = bgcolor;
+			lblDeveloper.BackColor = bgcolor;
+			lblReleaseDate.BackColor = bgcolor;
+			lblGenres.BackColor = bgcolor;
+			lblRating.BackColor = bgcolor;
+			lblDesc.BackColor = bgcolor;
 
-            foreach (string genre in Enum.GetNames(typeof(Genres)))
-            {
-                cbbGenre.Items.Add(genre);
-            }
+			foreach (string genre in Enum.GetNames(typeof(Genres)))
+			{
+				cbbGenre.Items.Add(genre);
+			}
 
-        }
+		}
 
-        private void AddGame_Load(object sender, EventArgs e)
-        {
+		private void AddGame_Load(object sender, EventArgs e)
+		{
 
-        }
+		}
 
-        private void btnAddGame_Click(object sender, EventArgs e)
-        {
-            Game game = new Game(tbName.Text, tbDesc.Text, Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-            
-            administration.AddGame(game);
+		private void btnAddGame_Click(object sender, EventArgs e)
+		{
+			Game game = new Game(tbName.Text, tbDesc.Text, Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
 
-            HomePage homePage = new HomePage(administration);
-            
-            homePage.Show();
-            this.Hide();
-        }
-    }
+			gamesLibraryManagement.AddGame(game);
+
+			HomePage homePage = new HomePage(gamesLibraryManagement, accountLibraryManagement);
+
+			homePage.Show();
+			this.Hide();
+		}
+	}
 }

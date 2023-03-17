@@ -5,68 +5,68 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PLAYRATE.ClassLibrary
+namespace Desktop_App___Hristo_Ganchev
 {
-    public class Game
-    {
-        List<Review> reviews = new List<Review>();
+	public class Game
+	{
+		List<Review> reviews = new List<Review>();
 
-        string name;
-        string description;
-        Genres genre;
-        string releaseDate;
-        string developer;
-        string rating;
+		string name;
+		string description;
+		Genres genre;
+		string releaseDate;
+		string developer;
+		string rating;
 
-        public Game(string name, string description, Genres genre, string releaseDate, string developer, string rating)
-        {
-            this.name = name;
-            this.description = description;
-            this.genre = genre;
-            this.releaseDate = releaseDate;
-            this.developer = developer;
-            this.rating = rating;
-        }
+		public Game(string name, string description, Genres genre, string releaseDate, string developer, string rating)
+		{
+			this.name = name;
+			this.description = description;
+			this.genre = genre;
+			this.releaseDate = releaseDate;
+			this.developer = developer;
+			this.rating = rating;
+		}
 
-        public void AddReview(Review r)
-        {
-            this.reviews.Add(r);
-        }
+		public void AddReview(Review r)
+		{
+			this.reviews.Add(r);
+		}
 
-        public List<Review> GetAllReviews()
-        {
-            return this.reviews;
-        }
+		public List<Review> GetAllReviews()
+		{
+			return this.reviews;
+		}
 
-        public string GetName()
-        {
-            return name;
-        }
+		public string GetName()
+		{
+			return name;
+		}
 
-        public string GetDesc()
-        {
-            return description;
-        }
+		public string GetDesc()
+		{
+			return description;
+		}
 
-        public Genres GetGenre()
-        {
-            return genre;
-        }
+		public Genres GetGenre()
+		{
+			return genre;
+		}
 
-        public string GetReleaseDate()
-        {
-            return releaseDate;
-        }
+		public string GetReleaseDate()
+		{
+			return releaseDate;
+		}
 
-        public string GetDeveloper()
-        {
-            return developer;
-        }
+		public string GetDeveloper()
+		{
+			return developer;
+		}
 
-        public string GetRating()
-        {
-            return rating;
-        }
+		public string GetRating()
+		{
+			return rating;
+		}
 
-    }
+	}
 }
