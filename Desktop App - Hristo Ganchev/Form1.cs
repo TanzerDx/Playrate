@@ -2,8 +2,8 @@ namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class HomePage : Form
 	{
-		GamesLibraryManagement gamesLibraryManagement = new GamesLibraryManagement();
-		AccountLibraryManagement accountLibraryManagement = new AccountLibraryManagement();
+		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
+		BusinessLogic.AccountLibraryManagement accountLibraryManagement = new BusinessLogic.AccountLibraryManagement();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -18,7 +18,7 @@ namespace Desktop_App___Hristo_Ganchev
 			lblDesc.BackColor = bgcolor;
 		}
 
-		public HomePage(GamesLibraryManagement g, AccountLibraryManagement a)
+		public HomePage(BusinessLogic.GamesLibraryManagement g, BusinessLogic.AccountLibraryManagement a)
 		{
 			gamesLibraryManagement = g;
 			accountLibraryManagement = a;
@@ -51,7 +51,7 @@ namespace Desktop_App___Hristo_Ganchev
 		{
 			lbAllGames.Items.Clear();
 
-			foreach (Game g in gamesLibraryManagement.GetAllGames())
+			foreach (BusinessLogic.Game g in gamesLibraryManagement.GetAllGames())
 			{
 				lbAllGames.Items.Add(g.GetName());
 			}
@@ -59,7 +59,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void lbAllGames_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			Game g = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
+			BusinessLogic.Game g = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
 
 			lblDesc.Text = $"Description: {g.GetDesc()}";
 			lblGenres.Text = $"Genres: {g.GetGenre()}";
@@ -70,13 +70,13 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnDeleteGame_Click(object sender, EventArgs e)
 		{
-			Game game = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
+			BusinessLogic.Game game = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
 
 			gamesLibraryManagement.RemoveGame(game);
 
 			lbAllGames.Items.Clear();
 
-			foreach (Game g in gamesLibraryManagement.GetAllGames())
+			foreach (BusinessLogic.Game g in gamesLibraryManagement.GetAllGames())
 			{
 				lbAllGames.Items.Add(g.GetName());
 			}

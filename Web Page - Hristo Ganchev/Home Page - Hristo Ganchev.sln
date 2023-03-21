@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop App - Hristo Ganche
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLAYRATE_ClassLibrary", "..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj", "{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.BusinessLogic", "2.BusinessLogic", "{6D5EF7BD-C23F-4EE7-99DD-027AE3391EA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.PresentationLayer", "1.PresentationLayer", "{599B4FFF-F07A-4D1E-9BBB-4E02D0DF5994}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +34,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02680343-B089-4DC6-A572-3EF4629A9E40} = {599B4FFF-F07A-4D1E-9BBB-4E02D0DF5994}
+		{DEA5FC24-106C-4224-B553-2C532E849A81} = {599B4FFF-F07A-4D1E-9BBB-4E02D0DF5994}
+		{ADC7EBAB-A0E5-473B-B0D0-5964AC6FE5EB} = {6D5EF7BD-C23F-4EE7-99DD-027AE3391EA7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBA520E9-AD1F-4069-9240-73CCF11C7E11}

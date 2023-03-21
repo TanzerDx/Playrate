@@ -4,36 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop_App___Hristo_Ganchev
+namespace BusinessLogic
 {
 	public class Account
 	{
+		public Account() 
+		{ }
+
 		List<Game> playedGames = new List<Game>();
 
-		string username;
-		string email;
-		string password;
+		public string Username { get; set; }
+		public string Email { get; set; }
+        public string Password { get; set; }
 
-		public Account(string username, string email, string password)
+        public Account(string username, string email, string password)
 		{
-			this.username = username;
-			this.email = email;
-			this.password = password;
+			Username = username;
+			Email = email;
+			Password = password;
 		}
 
 		public string GetName()
 		{
-			return username;
+			return Username;
 		}
 
 		public string GetEmail()
 		{
-			return email;
+			return Email;
 		}
 
 		public string GetPassword()
 		{
-			return password;
+			return Password;
 		}
 
 	}

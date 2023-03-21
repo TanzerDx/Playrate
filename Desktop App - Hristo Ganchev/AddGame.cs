@@ -13,8 +13,8 @@ namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class AddGame : Form
 	{
-		GamesLibraryManagement gamesLibraryManagement = new GamesLibraryManagement();
-		AccountLibraryManagement accountLibraryManagement = new AccountLibraryManagement();
+		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
+		BusinessLogic.AccountLibraryManagement accountLibraryManagement = new BusinessLogic.AccountLibraryManagement();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -23,7 +23,7 @@ namespace Desktop_App___Hristo_Ganchev
 			InitializeComponent();
 		}
 
-		public AddGame(GamesLibraryManagement g, AccountLibraryManagement a)
+		public AddGame(BusinessLogic.GamesLibraryManagement g, BusinessLogic.AccountLibraryManagement a)
 		{
 			gamesLibraryManagement = g;
 			accountLibraryManagement = a;
@@ -38,7 +38,7 @@ namespace Desktop_App___Hristo_Ganchev
 			lblRating.BackColor = bgcolor;
 			lblDesc.BackColor = bgcolor;
 
-			foreach (string genre in Enum.GetNames(typeof(Genres)))
+			foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
 			{
 				cbbGenre.Items.Add(genre);
 			}
@@ -52,7 +52,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			Game game = new Game(tbName.Text, tbDesc.Text, Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+			BusinessLogic.Game game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
 
 			gamesLibraryManagement.AddGame(game);
 

@@ -1,4 +1,4 @@
-using Desktop_App___Hristo_Ganchev;
+using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics.Metrics;

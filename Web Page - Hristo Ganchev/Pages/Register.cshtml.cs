@@ -1,4 +1,4 @@
-using Desktop_App___Hristo_Ganchev;
+using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -17,7 +17,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 
 		[BindProperty]
-		public Register Register { get; set; }
+		public Account Account { get; set; }
 
 		public RegisterModel()
 		{
@@ -34,9 +34,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		{
 			if (ModelState.IsValid)
 			{
-				SubmittedEmail = $"{Register.GetEmail()}";
-				SubmittedUsername = $"{Register.GetUsername()}";
-				SubmittedPassword = $"{Register.GetPassword()}";
+				SubmittedEmail = $"{Account.GetEmail()}";
+				SubmittedUsername = $"{Account.GetName()}";
+				SubmittedPassword = $"{Account.GetPassword()}";
 
 				Account account = new Account(SubmittedUsername, SubmittedEmail, SubmittedPassword);
 				alm.AddAccount(account);

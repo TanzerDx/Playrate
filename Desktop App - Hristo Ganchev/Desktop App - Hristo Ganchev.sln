@@ -5,7 +5,11 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desktop App - Hristo Ganchev", "Desktop App - Hristo Ganchev.csproj", "{C455D6B2-94C5-4CF4-A496-D3AEF6065B25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLAYRATE_ClassLibrary", "..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj", "{49FCFD7C-4EDF-4807-84F9-751B5B09F25A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLAYRATE_ClassLibrary", "..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj", "{49FCFD7C-4EDF-4807-84F9-751B5B09F25A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.BusinessLogic", "2.BusinessLogic", "{E07E40CC-A02B-45F9-9089-1C6B7D5976CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.PresentationLayer", "1.PresentationLayer", "{5FABA6AC-916A-4C14-9A90-A4DDFC01ECDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +28,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C455D6B2-94C5-4CF4-A496-D3AEF6065B25} = {5FABA6AC-916A-4C14-9A90-A4DDFC01ECDF}
+		{49FCFD7C-4EDF-4807-84F9-751B5B09F25A} = {E07E40CC-A02B-45F9-9089-1C6B7D5976CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95DC9BE5-0524-4889-97D7-0F56A0ECBDE3}
