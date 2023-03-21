@@ -61,3 +61,4 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-a
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.csproj.CopyComplete
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop App - Hristo Ganchev.genruntimeconfig.cache
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\ref\Desktop App - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\obj\Debug\net6.0-windows\Desktop_App___Hristo_Ganchev.AddConsole.resources

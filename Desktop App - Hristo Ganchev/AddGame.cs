@@ -14,7 +14,9 @@ namespace Desktop_App___Hristo_Ganchev
 	public partial class AddGame : Form
 	{
 		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
-		BusinessLogic.AccountLibraryManagement accountLibraryManagement = new BusinessLogic.AccountLibraryManagement();
+		BusinessLogic.ConsoleManagement consoleManagement = new BusinessLogic.ConsoleManagement();
+
+		BusinessLogic.Game game;
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -23,10 +25,10 @@ namespace Desktop_App___Hristo_Ganchev
 			InitializeComponent();
 		}
 
-		public AddGame(BusinessLogic.GamesLibraryManagement g, BusinessLogic.AccountLibraryManagement a)
+		public AddGame(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
 		{
 			gamesLibraryManagement = g;
-			accountLibraryManagement = a;
+			consoleManagement = c;
 
 			InitializeComponent();
 
@@ -52,11 +54,52 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			BusinessLogic.Game game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+			switch (cbbGenre.Text)
+			{
+				case "Fantasy":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+				break;
+
+				case "SciFi":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "History":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "Horror":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "Action":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "Strategy":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "Sports":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "MMO":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "RPG":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+
+				case "FPS":
+					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+					break;
+			}
 
 			gamesLibraryManagement.AddGame(game);
 
-			HomePage homePage = new HomePage(gamesLibraryManagement, accountLibraryManagement);
+			HomePage homePage = new HomePage(gamesLibraryManagement, consoleManagement);
 
 			homePage.Show();
 			this.Hide();

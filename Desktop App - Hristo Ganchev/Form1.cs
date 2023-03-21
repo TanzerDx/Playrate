@@ -3,35 +3,38 @@ namespace Desktop_App___Hristo_Ganchev
 	public partial class HomePage : Form
 	{
 		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
-		BusinessLogic.AccountLibraryManagement accountLibraryManagement = new BusinessLogic.AccountLibraryManagement();
+		BusinessLogic.ConsoleManagement consoleManagement = new BusinessLogic.ConsoleManagement();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
 		public HomePage()
 		{
 			InitializeComponent();
+			PrintConsoles();
 
 			lblDeveloper.BackColor = bgcolor;
 			lblReleaseDate.BackColor = bgcolor;
 			lblGenres.BackColor = bgcolor;
 			lblRating.BackColor = bgcolor;
 			lblDesc.BackColor = bgcolor;
+			lblConsole.BackColor = bgcolor;
 		}
 
-		public HomePage(BusinessLogic.GamesLibraryManagement g, BusinessLogic.AccountLibraryManagement a)
+		public HomePage(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
 		{
 			gamesLibraryManagement = g;
-			accountLibraryManagement = a;
+			consoleManagement = c;
 
 			InitializeComponent();
-
-			this.BackColor = bgcolor;
+			PrintConsoles();
 
 			lblDeveloper.BackColor = bgcolor;
 			lblReleaseDate.BackColor = bgcolor;
 			lblGenres.BackColor = bgcolor;
 			lblRating.BackColor = bgcolor;
 			lblDesc.BackColor = bgcolor;
+			lblConsole.BackColor = bgcolor;
+
 		}
 
 		private void HomePage_Load(object sender, EventArgs e)
@@ -39,9 +42,17 @@ namespace Desktop_App___Hristo_Ganchev
 
 		}
 
+		public void PrintConsoles()
+		{
+			foreach (BusinessLogic.Console c in consoleManagement.GetAllConsoles())
+			{
+				cbbAllConsoles.Items.Add(c.GetModel());
+			}
+		}
+
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			AddGame addgame = new AddGame(gamesLibraryManagement, accountLibraryManagement);
+			AddGame addgame = new AddGame(gamesLibraryManagement, consoleManagement);
 
 			this.Hide();
 			addgame.Show();
@@ -80,6 +91,23 @@ namespace Desktop_App___Hristo_Ganchev
 			{
 				lbAllGames.Items.Add(g.GetName());
 			}
+		}
+
+		private void btnAddConsole_Click(object sender, EventArgs e)
+		{
+			AddConsole addConsole = new AddConsole(gamesLibraryManagement, consoleManagement);
+
+			addConsole.Show();
+			this.Hide();
+		}
+
+		private void btnDeleteConsole_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cbbAllConsoles_SelectedIndexChanged(object sender, EventArgs e)
+		{
 		}
 	}
 }
