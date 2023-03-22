@@ -1,3 +1,7 @@
+using System.Data;
+using System.Data.SqlClient;
+using System.Xml.Linq;
+
 namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class HomePage : Form
@@ -10,14 +14,7 @@ namespace Desktop_App___Hristo_Ganchev
 		public HomePage()
 		{
 			InitializeComponent();
-			PrintConsoles();
 
-			lblDeveloper.BackColor = bgcolor;
-			lblReleaseDate.BackColor = bgcolor;
-			lblGenres.BackColor = bgcolor;
-			lblRating.BackColor = bgcolor;
-			lblDesc.BackColor = bgcolor;
-			lblConsole.BackColor = bgcolor;
 		}
 
 		public HomePage(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
@@ -26,28 +23,12 @@ namespace Desktop_App___Hristo_Ganchev
 			consoleManagement = c;
 
 			InitializeComponent();
-			PrintConsoles();
-
-			lblDeveloper.BackColor = bgcolor;
-			lblReleaseDate.BackColor = bgcolor;
-			lblGenres.BackColor = bgcolor;
-			lblRating.BackColor = bgcolor;
-			lblDesc.BackColor = bgcolor;
-			lblConsole.BackColor = bgcolor;
 
 		}
 
 		private void HomePage_Load(object sender, EventArgs e)
 		{
 
-		}
-
-		public void PrintConsoles()
-		{
-			foreach (BusinessLogic.Console c in consoleManagement.GetAllConsoles())
-			{
-				cbbAllConsoles.Items.Add(c.GetModel());
-			}
 		}
 
 		private void btnAddGame_Click(object sender, EventArgs e)
@@ -60,37 +41,28 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnShowAll_Click(object sender, EventArgs e)
 		{
-			lbAllGames.Items.Clear();
+			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+			con.Open();
+			SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Games", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-			foreach (BusinessLogic.Game g in gamesLibraryManagement.GetAllGames())
-			{
-				lbAllGames.Items.Add(g.GetName());
-			}
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			dgAllGames.DataSource = dt;
+
+			cmd.ExecuteNonQuery();
+
+			con.Close();
 		}
 
 		private void lbAllGames_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			BusinessLogic.Game g = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
 
-			lblDesc.Text = $"Description: {g.GetDesc()}";
-			lblGenres.Text = $"Genres: {g.GetGenre()}";
-			lblRating.Text = $"Rating: {g.GetRating()}";
-			lblDeveloper.Text = $"Developer: {g.GetDeveloper()}";
-			lblReleaseDate.Text = $"Release Date: {g.GetReleaseDate()}";
 		}
 
 		private void btnDeleteGame_Click(object sender, EventArgs e)
 		{
-			BusinessLogic.Game game = gamesLibraryManagement.GetAllGames()[lbAllGames.SelectedIndex];
 
-			gamesLibraryManagement.RemoveGame(game);
-
-			lbAllGames.Items.Clear();
-
-			foreach (BusinessLogic.Game g in gamesLibraryManagement.GetAllGames())
-			{
-				lbAllGames.Items.Add(g.GetName());
-			}
 		}
 
 		private void btnAddConsole_Click(object sender, EventArgs e)
@@ -108,6 +80,22 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void cbbAllConsoles_SelectedIndexChanged(object sender, EventArgs e)
 		{
+		}
+
+		private void btnShowAllConsoles_Click(object sender, EventArgs e)
+		{
+			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+			con.Open();
+			SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Consoles", con);
+			SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+			dgAllConsoles.DataSource = dt;
+
+			cmd.ExecuteNonQuery();
+
+			con.Close();
 		}
 	}
 }

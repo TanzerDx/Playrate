@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -97,7 +98,21 @@ namespace Desktop_App___Hristo_Ganchev
 					break;
 			}
 
-			gamesLibraryManagement.AddGame(game);
+			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+			con.Open();
+			SqlCommand cmd = new SqlCommand("INSERT into dbo.Games VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description)", con);
+
+			cmd.Parameters.AddWithValue("@ID", 8);
+			cmd.Parameters.AddWithValue("@Name", tbName.Text);
+			cmd.Parameters.AddWithValue("@Genre", cbbGenre.Text);
+			cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(tbReleaseDate.Text));
+			cmd.Parameters.AddWithValue("@Developer", tbDeveloper.Text);
+			cmd.Parameters.AddWithValue("@Rating", tbRating.Text);
+			cmd.Parameters.AddWithValue("@Description", tbDesc.Text);
+
+			cmd.ExecuteNonQuery();
+
+			con.Close();
 
 			HomePage homePage = new HomePage(gamesLibraryManagement, consoleManagement);
 

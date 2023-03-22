@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.BusinessLogic", "2.Busine
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.PresentationLayer", "1.PresentationLayer", "{5FABA6AC-916A-4C14-9A90-A4DDFC01ECDF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.DatabaseConnections", "3.DatabaseConnections", "{4311819D-7193-450C-91B7-B72B38F72115}"
+	ProjectSection(SolutionItems) = preProject
+		..\DataSaving\dbo.Consoles.sql = ..\DataSaving\dbo.Consoles.sql
+		..\DataSaving\dbo.Games.sql = ..\DataSaving\dbo.Games.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

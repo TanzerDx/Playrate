@@ -29,20 +29,17 @@
 		private void InitializeComponent()
 		{
 			pictureBox1 = new PictureBox();
-			lblDeveloper = new Label();
-			lblReleaseDate = new Label();
-			lblRating = new Label();
-			lblGenres = new Label();
-			lblDesc = new Label();
 			btnAddGame = new Button();
-			lbAllGames = new ListBox();
 			btnShowAll = new Button();
 			btnDeleteGame = new Button();
-			lblConsole = new Label();
 			btnDeleteConsole = new Button();
 			btnAddConsole = new Button();
-			cbbAllConsoles = new ComboBox();
+			dgAllGames = new DataGridView();
+			dgAllConsoles = new DataGridView();
+			btnShowAllConsoles = new Button();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dgAllGames).BeginInit();
+			((System.ComponentModel.ISupportInitialize)dgAllConsoles).BeginInit();
 			SuspendLayout();
 			// 
 			// pictureBox1
@@ -55,63 +52,9 @@
 			pictureBox1.TabIndex = 0;
 			pictureBox1.TabStop = false;
 			// 
-			// lblDeveloper
-			// 
-			lblDeveloper.AutoSize = true;
-			lblDeveloper.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblDeveloper.ForeColor = Color.White;
-			lblDeveloper.Location = new Point(12, 78);
-			lblDeveloper.Name = "lblDeveloper";
-			lblDeveloper.Size = new Size(84, 21);
-			lblDeveloper.TabIndex = 1;
-			lblDeveloper.Text = "Developer:";
-			// 
-			// lblReleaseDate
-			// 
-			lblReleaseDate.AutoSize = true;
-			lblReleaseDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblReleaseDate.ForeColor = Color.White;
-			lblReleaseDate.Location = new Point(12, 148);
-			lblReleaseDate.Name = "lblReleaseDate";
-			lblReleaseDate.Size = new Size(102, 21);
-			lblReleaseDate.TabIndex = 2;
-			lblReleaseDate.Text = "Release Date:";
-			// 
-			// lblRating
-			// 
-			lblRating.AutoSize = true;
-			lblRating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblRating.ForeColor = Color.White;
-			lblRating.Location = new Point(12, 288);
-			lblRating.Name = "lblRating";
-			lblRating.Size = new Size(58, 21);
-			lblRating.TabIndex = 4;
-			lblRating.Text = "Rating:";
-			// 
-			// lblGenres
-			// 
-			lblGenres.AutoSize = true;
-			lblGenres.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblGenres.ForeColor = Color.White;
-			lblGenres.Location = new Point(12, 217);
-			lblGenres.Name = "lblGenres";
-			lblGenres.Size = new Size(62, 21);
-			lblGenres.TabIndex = 3;
-			lblGenres.Text = "Genres:";
-			// 
-			// lblDesc
-			// 
-			lblDesc.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblDesc.ForeColor = Color.White;
-			lblDesc.Location = new Point(12, 382);
-			lblDesc.Name = "lblDesc";
-			lblDesc.Size = new Size(776, 298);
-			lblDesc.TabIndex = 5;
-			lblDesc.Text = "Description:";
-			// 
 			// btnAddGame
 			// 
-			btnAddGame.Location = new Point(334, 24);
+			btnAddGame.Location = new Point(9, 80);
 			btnAddGame.Name = "btnAddGame";
 			btnAddGame.Size = new Size(215, 28);
 			btnAddGame.TabIndex = 6;
@@ -119,29 +62,19 @@
 			btnAddGame.UseVisualStyleBackColor = true;
 			btnAddGame.Click += btnAddGame_Click;
 			// 
-			// lbAllGames
-			// 
-			lbAllGames.FormattingEnabled = true;
-			lbAllGames.ItemHeight = 15;
-			lbAllGames.Location = new Point(334, 171);
-			lbAllGames.Name = "lbAllGames";
-			lbAllGames.Size = new Size(454, 169);
-			lbAllGames.TabIndex = 7;
-			lbAllGames.SelectedIndexChanged += lbAllGames_SelectedIndexChanged;
-			// 
 			// btnShowAll
 			// 
-			btnShowAll.Location = new Point(334, 95);
+			btnShowAll.Location = new Point(9, 114);
 			btnShowAll.Name = "btnShowAll";
 			btnShowAll.Size = new Size(454, 31);
 			btnShowAll.TabIndex = 8;
-			btnShowAll.Text = "Show all";
+			btnShowAll.Text = "Show all games";
 			btnShowAll.UseVisualStyleBackColor = true;
 			btnShowAll.Click += btnShowAll_Click;
 			// 
 			// btnDeleteGame
 			// 
-			btnDeleteGame.Location = new Point(573, 24);
+			btnDeleteGame.Location = new Point(248, 80);
 			btnDeleteGame.Name = "btnDeleteGame";
 			btnDeleteGame.Size = new Size(215, 28);
 			btnDeleteGame.TabIndex = 9;
@@ -149,20 +82,9 @@
 			btnDeleteGame.UseVisualStyleBackColor = true;
 			btnDeleteGame.Click += btnDeleteGame_Click;
 			// 
-			// lblConsole
-			// 
-			lblConsole.AutoSize = true;
-			lblConsole.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			lblConsole.ForeColor = Color.White;
-			lblConsole.Location = new Point(334, 137);
-			lblConsole.Name = "lblConsole";
-			lblConsole.Size = new Size(130, 21);
-			lblConsole.TabIndex = 10;
-			lblConsole.Text = "Show by console:";
-			// 
 			// btnDeleteConsole
 			// 
-			btnDeleteConsole.Location = new Point(573, 59);
+			btnDeleteConsole.Location = new Point(731, 80);
 			btnDeleteConsole.Name = "btnDeleteConsole";
 			btnDeleteConsole.Size = new Size(215, 28);
 			btnDeleteConsole.TabIndex = 12;
@@ -172,7 +94,7 @@
 			// 
 			// btnAddConsole
 			// 
-			btnAddConsole.Location = new Point(334, 59);
+			btnAddConsole.Location = new Point(492, 80);
 			btnAddConsole.Name = "btnAddConsole";
 			btnAddConsole.Size = new Size(215, 28);
 			btnAddConsole.TabIndex = 11;
@@ -180,58 +102,68 @@
 			btnAddConsole.UseVisualStyleBackColor = true;
 			btnAddConsole.Click += btnAddConsole_Click;
 			// 
-			// cbbAllConsoles
+			// dgAllGames
 			// 
-			cbbAllConsoles.FormattingEnabled = true;
-			cbbAllConsoles.Location = new Point(494, 137);
-			cbbAllConsoles.Name = "cbbAllConsoles";
-			cbbAllConsoles.Size = new Size(294, 23);
-			cbbAllConsoles.TabIndex = 13;
-			cbbAllConsoles.SelectedIndexChanged += cbbAllConsoles_SelectedIndexChanged;
+			dgAllGames.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dgAllGames.Location = new Point(9, 151);
+			dgAllGames.Name = "dgAllGames";
+			dgAllGames.RowTemplate.Height = 25;
+			dgAllGames.Size = new Size(454, 170);
+			dgAllGames.TabIndex = 14;
+			// 
+			// dgAllConsoles
+			// 
+			dgAllConsoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			dgAllConsoles.Location = new Point(493, 151);
+			dgAllConsoles.Name = "dgAllConsoles";
+			dgAllConsoles.RowTemplate.Height = 25;
+			dgAllConsoles.Size = new Size(454, 170);
+			dgAllConsoles.TabIndex = 15;
+			// 
+			// btnShowAllConsoles
+			// 
+			btnShowAllConsoles.Location = new Point(493, 114);
+			btnShowAllConsoles.Name = "btnShowAllConsoles";
+			btnShowAllConsoles.Size = new Size(454, 31);
+			btnShowAllConsoles.TabIndex = 16;
+			btnShowAllConsoles.Text = "Show all consoles";
+			btnShowAllConsoles.UseVisualStyleBackColor = true;
+			btnShowAllConsoles.Click += btnShowAllConsoles_Click;
 			// 
 			// HomePage
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackgroundImage = Properties.Resources.Screenshot_413;
-			ClientSize = new Size(800, 714);
-			Controls.Add(cbbAllConsoles);
+			ClientSize = new Size(959, 343);
+			Controls.Add(btnShowAllConsoles);
+			Controls.Add(dgAllConsoles);
+			Controls.Add(dgAllGames);
 			Controls.Add(btnDeleteConsole);
 			Controls.Add(btnAddConsole);
-			Controls.Add(lblConsole);
 			Controls.Add(btnDeleteGame);
 			Controls.Add(btnShowAll);
-			Controls.Add(lbAllGames);
 			Controls.Add(btnAddGame);
-			Controls.Add(lblDesc);
-			Controls.Add(lblRating);
-			Controls.Add(lblGenres);
-			Controls.Add(lblReleaseDate);
-			Controls.Add(lblDeveloper);
 			Controls.Add(pictureBox1);
 			Name = "HomePage";
 			Text = "Home Page";
 			Load += HomePage_Load;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+			((System.ComponentModel.ISupportInitialize)dgAllGames).EndInit();
+			((System.ComponentModel.ISupportInitialize)dgAllConsoles).EndInit();
 			ResumeLayout(false);
-			PerformLayout();
 		}
 
 		#endregion
 
 		private PictureBox pictureBox1;
-		private Label lblDeveloper;
-		private Label lblReleaseDate;
-		private Label lblRating;
-		private Label lblGenres;
-		private Label lblDesc;
 		private Button btnAddGame;
-		private ListBox lbAllGames;
 		private Button btnShowAll;
 		private Button btnDeleteGame;
-		private Label lblConsole;
 		private Button btnDeleteConsole;
 		private Button btnAddConsole;
-		private ComboBox cbbAllConsoles;
+		private DataGridView dgAllGames;
+		private DataGridView dgAllConsoles;
+		private Button btnShowAllConsoles;
 	}
 }

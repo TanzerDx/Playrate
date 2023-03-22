@@ -159,3 +159,9 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-a
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\Home Page - Hristo Ganchev.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\Home Page - Hristo Ganchev.genruntimeconfig.cache
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\obj\Debug\net6.0\ref\Home Page - Hristo Ganchev.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\System.Data.SqlClient.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

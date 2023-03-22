@@ -1,17 +1,17 @@
 using BusinessLogic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics.Metrics;
+using System.Data.SqlClient;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
-    public class LogInModel : PageModel
+	public class LogInModel : PageModel
     {
-		AccountLibraryManagement alm = new AccountLibraryManagement();
-
-		Account account;
 
 		public string PageTitle { get; private set; }
+
+		//public int LoggedInUser { get; private set; }
 
 		public string LogInResult { get; private set; }
 
@@ -34,36 +34,29 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public void OnPost()
 		{
-			if (ModelState.IsValid)
-			{
-				SubmittedUsername = $"{LogIn.GetUsername()}";
-				SubmittedPassword = $"{LogIn.GetPassword()}";
+			SubmittedUsername = LogIn.GetUsername();
+			SubmittedPassword = LogIn.GetPassword();
 
-				Account test = new Account("Hristo", "hristoganchev3@gmail.com", "123");
-				alm.AddAccount(test);
+			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
-				foreach (Account a in alm.GetAllAccounts())
+			string query = $"SELECT COUNT (*) FROM dbo.Accounts WHERE Username='{SubmittedUsername}' AND Password='{SubmittedPassword}'";
+
+			con.Open();
+			
+			SqlCommand command = new SqlCommand(query, con);
+
+			int v = (int)command.ExecuteScalar();
+
+				if (v != 1)
 				{
-
-					if (SubmittedUsername == a.GetName() && SubmittedPassword == a.GetPassword())
-					{
-						account = a;
-
-						Response.Redirect("/ProfilePage");
-
-						break;
-					}
-
-					else
-					{
-						LogInResult = $"Wrong username or password!";
-					}
+					LogInResult = "Invalid username or password.";
+					return;
 				}
-			}
-
-			ModelState.Clear();
+				else
+				{
+					Response.Redirect("/ProfilePage");
+				}
 		}
-
 	}
 }
 

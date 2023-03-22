@@ -1,12 +1,13 @@
 using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
     public class RegisterModel : PageModel
     {
-		AccountLibraryManagement alm = new AccountLibraryManagement();
 		public string PageTitle { get; private set; }
 
 		public string SubmittedEmail { get; private set; }
@@ -38,8 +39,18 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				SubmittedUsername = $"{Account.GetName()}";
 				SubmittedPassword = $"{Account.GetPassword()}";
 
-				Account account = new Account(SubmittedUsername, SubmittedEmail, SubmittedPassword);
-				alm.AddAccount(account);
+				SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+				con.Open();
+				SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password)", con);
+
+				cmd.Parameters.AddWithValue("@ID", 1);
+				cmd.Parameters.AddWithValue("@Email", SubmittedEmail);
+				cmd.Parameters.AddWithValue("@Username", SubmittedUsername);
+				cmd.Parameters.AddWithValue("@Password", SubmittedPassword);
+
+				cmd.ExecuteNonQuery();
+
+				con.Close();
 
 			}
 		}
