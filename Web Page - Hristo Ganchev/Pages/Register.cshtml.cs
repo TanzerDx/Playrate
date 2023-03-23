@@ -43,7 +43,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				con.Open();
 				SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password)", con);
 
-				cmd.Parameters.AddWithValue("@ID", 1);
+				cmd.Parameters.AddWithValue("@ID", 2);
 				cmd.Parameters.AddWithValue("@Email", SubmittedEmail);
 				cmd.Parameters.AddWithValue("@Username", SubmittedUsername);
 				cmd.Parameters.AddWithValue("@Password", SubmittedPassword);

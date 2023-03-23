@@ -16,7 +16,7 @@ namespace Home_Page___Hristo_Ganchev
 
 
         [BindProperty]
-        public Filter Filter { get; set; }
+        public BusinessLogic.Filter Filter { get; set; }
 
         public GamesPageModel()
         {

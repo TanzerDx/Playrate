@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Home_Page___Hristo_Ganchev.Pages
+namespace BusinessLogic
 {
 	public class Contact
 	{

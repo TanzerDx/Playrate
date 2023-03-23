@@ -1,4 +1,4 @@
-﻿namespace Home_Page___Hristo_Ganchev.Pages
+﻿namespace BusinessLogic
 {
 	public class LogIn
 	{

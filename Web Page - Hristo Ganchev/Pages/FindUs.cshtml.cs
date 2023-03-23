@@ -10,7 +10,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		public string? SubjectText { get; private set; }
 
 		[BindProperty]
-		public Contact Contact { get; set; }
+		public BusinessLogic.Contact Contact { get; set; }
 
 		public FindUsModel()
 		{

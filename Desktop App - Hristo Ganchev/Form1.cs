@@ -11,9 +11,14 @@ namespace Desktop_App___Hristo_Ganchev
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
+		SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+
 		public HomePage()
 		{
 			InitializeComponent();
+
+			dgAllConsoles.BackgroundColor = bgcolor;
+			dgAllGames.BackgroundColor = bgcolor;
 
 		}
 
@@ -23,6 +28,9 @@ namespace Desktop_App___Hristo_Ganchev
 			consoleManagement = c;
 
 			InitializeComponent();
+
+			dgAllConsoles.BackgroundColor = bgcolor;
+			dgAllGames.BackgroundColor = bgcolor;
 
 		}
 
@@ -41,7 +49,6 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnShowAll_Click(object sender, EventArgs e)
 		{
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 			con.Open();
 			SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Games", con);
 			SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -62,6 +69,13 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnDeleteGame_Click(object sender, EventArgs e)
 		{
+			int id = Convert.ToInt32(tbDeleteIDGame.Text);
+			con.Open();
+
+			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Games WHERE ID='{id}'", con);
+			cmd.ExecuteNonQuery();
+
+			con.Close();
 
 		}
 
@@ -73,10 +87,29 @@ namespace Desktop_App___Hristo_Ganchev
 			this.Hide();
 		}
 
-		private void btnDeleteConsole_Click(object sender, EventArgs e)
+		private void dgAllGames_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 
 		}
+
+		private void btnDeleteConsole_Click(object sender, EventArgs e)
+		{
+			int id = Convert.ToInt32(tbDeleteIDConsole.Text);
+
+			con.Open();
+
+			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Consoles WHERE ID='{id}'", con);
+			cmd.ExecuteNonQuery();
+
+			con.Close();
+
+		}
+
+		private void dgAllConsoles_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
 
 		private void cbbAllConsoles_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -84,7 +117,6 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnShowAllConsoles_Click(object sender, EventArgs e)
 		{
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 			con.Open();
 			SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Consoles", con);
 			SqlDataAdapter da = new SqlDataAdapter(cmd);

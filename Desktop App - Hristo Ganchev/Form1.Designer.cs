@@ -37,6 +37,10 @@
 			dgAllGames = new DataGridView();
 			dgAllConsoles = new DataGridView();
 			btnShowAllConsoles = new Button();
+			tbDeleteIDConsole = new TextBox();
+			label1 = new Label();
+			label2 = new Label();
+			tbDeleteIDGame = new TextBox();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dgAllGames).BeginInit();
 			((System.ComponentModel.ISupportInitialize)dgAllConsoles).BeginInit();
@@ -54,9 +58,9 @@
 			// 
 			// btnAddGame
 			// 
-			btnAddGame.Location = new Point(9, 80);
+			btnAddGame.Location = new Point(9, 71);
 			btnAddGame.Name = "btnAddGame";
-			btnAddGame.Size = new Size(215, 28);
+			btnAddGame.Size = new Size(454, 28);
 			btnAddGame.TabIndex = 6;
 			btnAddGame.Text = "Add Game";
 			btnAddGame.UseVisualStyleBackColor = true;
@@ -64,7 +68,7 @@
 			// 
 			// btnShowAll
 			// 
-			btnShowAll.Location = new Point(9, 114);
+			btnShowAll.Location = new Point(9, 139);
 			btnShowAll.Name = "btnShowAll";
 			btnShowAll.Size = new Size(454, 31);
 			btnShowAll.TabIndex = 8;
@@ -74,9 +78,9 @@
 			// 
 			// btnDeleteGame
 			// 
-			btnDeleteGame.Location = new Point(248, 80);
+			btnDeleteGame.Location = new Point(297, 105);
 			btnDeleteGame.Name = "btnDeleteGame";
-			btnDeleteGame.Size = new Size(215, 28);
+			btnDeleteGame.Size = new Size(166, 28);
 			btnDeleteGame.TabIndex = 9;
 			btnDeleteGame.Text = "Delete Game";
 			btnDeleteGame.UseVisualStyleBackColor = true;
@@ -84,9 +88,9 @@
 			// 
 			// btnDeleteConsole
 			// 
-			btnDeleteConsole.Location = new Point(731, 80);
+			btnDeleteConsole.Location = new Point(780, 105);
 			btnDeleteConsole.Name = "btnDeleteConsole";
-			btnDeleteConsole.Size = new Size(215, 28);
+			btnDeleteConsole.Size = new Size(167, 28);
 			btnDeleteConsole.TabIndex = 12;
 			btnDeleteConsole.Text = "Delete Console";
 			btnDeleteConsole.UseVisualStyleBackColor = true;
@@ -94,9 +98,9 @@
 			// 
 			// btnAddConsole
 			// 
-			btnAddConsole.Location = new Point(492, 80);
+			btnAddConsole.Location = new Point(493, 71);
 			btnAddConsole.Name = "btnAddConsole";
-			btnAddConsole.Size = new Size(215, 28);
+			btnAddConsole.Size = new Size(454, 28);
 			btnAddConsole.TabIndex = 11;
 			btnAddConsole.Text = "Add Console";
 			btnAddConsole.UseVisualStyleBackColor = true;
@@ -105,7 +109,7 @@
 			// dgAllGames
 			// 
 			dgAllGames.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dgAllGames.Location = new Point(9, 151);
+			dgAllGames.Location = new Point(9, 186);
 			dgAllGames.Name = "dgAllGames";
 			dgAllGames.RowTemplate.Height = 25;
 			dgAllGames.Size = new Size(454, 170);
@@ -114,7 +118,7 @@
 			// dgAllConsoles
 			// 
 			dgAllConsoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dgAllConsoles.Location = new Point(493, 151);
+			dgAllConsoles.Location = new Point(493, 186);
 			dgAllConsoles.Name = "dgAllConsoles";
 			dgAllConsoles.RowTemplate.Height = 25;
 			dgAllConsoles.Size = new Size(454, 170);
@@ -122,7 +126,7 @@
 			// 
 			// btnShowAllConsoles
 			// 
-			btnShowAllConsoles.Location = new Point(493, 114);
+			btnShowAllConsoles.Location = new Point(492, 139);
 			btnShowAllConsoles.Name = "btnShowAllConsoles";
 			btnShowAllConsoles.Size = new Size(454, 31);
 			btnShowAllConsoles.TabIndex = 16;
@@ -130,12 +134,48 @@
 			btnShowAllConsoles.UseVisualStyleBackColor = true;
 			btnShowAllConsoles.Click += btnShowAllConsoles_Click;
 			// 
+			// tbDeleteIDConsole
+			// 
+			tbDeleteIDConsole.Location = new Point(520, 107);
+			tbDeleteIDConsole.Name = "tbDeleteIDConsole";
+			tbDeleteIDConsole.Size = new Size(254, 23);
+			tbDeleteIDConsole.TabIndex = 17;
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Location = new Point(493, 112);
+			label1.Name = "label1";
+			label1.Size = new Size(21, 15);
+			label1.TabIndex = 18;
+			label1.Text = "ID:";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Location = new Point(10, 112);
+			label2.Name = "label2";
+			label2.Size = new Size(21, 15);
+			label2.TabIndex = 20;
+			label2.Text = "ID:";
+			// 
+			// tbDeleteIDGame
+			// 
+			tbDeleteIDGame.Location = new Point(37, 107);
+			tbDeleteIDGame.Name = "tbDeleteIDGame";
+			tbDeleteIDGame.Size = new Size(254, 23);
+			tbDeleteIDGame.TabIndex = 19;
+			// 
 			// HomePage
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackgroundImage = Properties.Resources.Screenshot_413;
-			ClientSize = new Size(959, 343);
+			ClientSize = new Size(959, 368);
+			Controls.Add(label2);
+			Controls.Add(tbDeleteIDGame);
+			Controls.Add(label1);
+			Controls.Add(tbDeleteIDConsole);
 			Controls.Add(btnShowAllConsoles);
 			Controls.Add(dgAllConsoles);
 			Controls.Add(dgAllGames);
@@ -152,6 +192,7 @@
 			((System.ComponentModel.ISupportInitialize)dgAllGames).EndInit();
 			((System.ComponentModel.ISupportInitialize)dgAllConsoles).EndInit();
 			ResumeLayout(false);
+			PerformLayout();
 		}
 
 		#endregion
@@ -165,5 +206,9 @@
 		private DataGridView dgAllGames;
 		private DataGridView dgAllConsoles;
 		private Button btnShowAllConsoles;
+		private TextBox tbDeleteIDConsole;
+		private Label label1;
+		private Label label2;
+		private TextBox tbDeleteIDGame;
 	}
 }

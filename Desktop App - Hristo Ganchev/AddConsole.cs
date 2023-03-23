@@ -13,6 +13,7 @@ using System.Xml.Linq;
 
 namespace Desktop_App___Hristo_Ganchev
 {
+
 	public partial class AddConsole : Form
 	{
 		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
@@ -21,6 +22,8 @@ namespace Desktop_App___Hristo_Ganchev
 		BusinessLogic.Console console;
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
+
+		SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
 		public AddConsole()
 		{
@@ -60,7 +63,6 @@ namespace Desktop_App___Hristo_Ganchev
 					break;
 			}
 
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 			con.Open();
 			SqlCommand cmd = new SqlCommand("INSERT into dbo.Consoles VALUES (@ID, @Type, @Model, @Manufacturer, @ReleaseDate, @ControllerType, @ChatPlatform)", con);
 

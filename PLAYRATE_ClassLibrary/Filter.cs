@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Metrics;
 using System.Xml.Linq;
 
-namespace Home_Page___Hristo_Ganchev
+namespace BusinessLogic
 {
     public class Filter
     {
