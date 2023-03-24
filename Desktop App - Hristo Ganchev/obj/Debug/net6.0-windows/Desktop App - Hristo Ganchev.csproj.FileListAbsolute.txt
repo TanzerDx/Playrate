@@ -68,3 +68,5 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-a
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\PLAYRATE_DatabaseConnection.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Desktop App - Hristo Ganchev\bin\Debug\net6.0-windows\PLAYRATE_DatabaseConnection.pdb

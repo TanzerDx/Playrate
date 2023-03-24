@@ -156,6 +156,19 @@
         "runtime": {
           "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
         }
+      },
+      "PLAYRATE_DatabaseConnection/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/PLAYRATE_DatabaseConnection.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PLAYRATE_DatabaseConnection.dll": {}
+        }
       }
     }
   },
@@ -477,11 +490,17 @@
       "type": "project",
       "path": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj",
       "msbuildProject": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj"
+    },
+    "PLAYRATE_DatabaseConnection/1.0.0": {
+      "type": "project",
+      "path": "../PLAYRATE_DatabaseConnection/PLAYRATE_DatabaseConnection.csproj",
+      "msbuildProject": "../PLAYRATE_DatabaseConnection/PLAYRATE_DatabaseConnection.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "PLAYRATE_ClassLibrary >= 1.0.0",
+      "PLAYRATE_DatabaseConnection >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -514,6 +533,9 @@
           "projectReferences": {
             "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
               "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj"
+            },
+            "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj": {
+              "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj"
             }
           }
         }

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj" />
+    <ProjectReference Include="..\PLAYRATE_DatabaseConnection\PLAYRATE_DatabaseConnection.csproj" />
   </ItemGroup>
 
 </Project>

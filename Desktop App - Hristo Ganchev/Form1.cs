@@ -1,3 +1,4 @@
+using PLAYRATE_DatabaseConnection;
 using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
@@ -6,8 +7,7 @@ namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class HomePage : Form
 	{
-		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
-		BusinessLogic.ConsoleManagement consoleManagement = new BusinessLogic.ConsoleManagement();
+		DataLibrary dataLibrary = new DataLibrary();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -22,18 +22,6 @@ namespace Desktop_App___Hristo_Ganchev
 
 		}
 
-		public HomePage(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
-		{
-			gamesLibraryManagement = g;
-			consoleManagement = c;
-
-			InitializeComponent();
-
-			dgAllConsoles.BackgroundColor = bgcolor;
-			dgAllGames.BackgroundColor = bgcolor;
-
-		}
-
 		private void HomePage_Load(object sender, EventArgs e)
 		{
 
@@ -41,7 +29,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			AddGame addgame = new AddGame(gamesLibraryManagement, consoleManagement);
+			AddGame addgame = new AddGame();
 
 			this.Hide();
 			addgame.Show();
@@ -69,19 +57,12 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnDeleteGame_Click(object sender, EventArgs e)
 		{
-			int id = Convert.ToInt32(tbDeleteIDGame.Text);
-			con.Open();
-
-			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Games WHERE ID='{id}'", con);
-			cmd.ExecuteNonQuery();
-
-			con.Close();
-
+			dataLibrary.RemoveGame(tbDeleteIDGame.Text);
 		}
 
 		private void btnAddConsole_Click(object sender, EventArgs e)
 		{
-			AddConsole addConsole = new AddConsole(gamesLibraryManagement, consoleManagement);
+			AddConsole addConsole = new AddConsole();
 
 			addConsole.Show();
 			this.Hide();
@@ -94,15 +75,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnDeleteConsole_Click(object sender, EventArgs e)
 		{
-			int id = Convert.ToInt32(tbDeleteIDConsole.Text);
-
-			con.Open();
-
-			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Consoles WHERE ID='{id}'", con);
-			cmd.ExecuteNonQuery();
-
-			con.Close();
-
+			dataLibrary.RemoveConsole(tbDeleteIDConsole.Text);
 		}
 
 		private void dgAllConsoles_CellClick(object sender, DataGridViewCellEventArgs e)

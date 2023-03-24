@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLAYRATE_DatabaseConnection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,23 +15,12 @@ namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class AddGame : Form
 	{
-		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
-		BusinessLogic.ConsoleManagement consoleManagement = new BusinessLogic.ConsoleManagement();
-
-		BusinessLogic.Game game;
+		DataLibrary dataLibrary = new DataLibrary();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
 		public AddGame()
 		{
-			InitializeComponent();
-		}
-
-		public AddGame(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
-		{
-			gamesLibraryManagement = g;
-			consoleManagement = c;
-
 			InitializeComponent();
 
 			lblAddGame.BackColor = bgcolor;
@@ -45,7 +35,6 @@ namespace Desktop_App___Hristo_Ganchev
 			{
 				cbbGenre.Items.Add(genre);
 			}
-
 		}
 
 		private void AddGame_Load(object sender, EventArgs e)
@@ -55,66 +44,9 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			switch (cbbGenre.Text)
-			{
-				case "Fantasy":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-				break;
+			dataLibrary.AddGame(tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text);
 
-				case "SciFi":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "History":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "Horror":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "Action":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "Strategy":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "Sports":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "MMO":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "RPG":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-
-				case "FPS":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-			}
-
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
-			con.Open();
-			SqlCommand cmd = new SqlCommand("INSERT into dbo.Games VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description)", con);
-
-			cmd.Parameters.AddWithValue("@ID", 8);
-			cmd.Parameters.AddWithValue("@Name", tbName.Text);
-			cmd.Parameters.AddWithValue("@Genre", cbbGenre.Text);
-			cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(tbReleaseDate.Text));
-			cmd.Parameters.AddWithValue("@Developer", tbDeveloper.Text);
-			cmd.Parameters.AddWithValue("@Rating", tbRating.Text);
-			cmd.Parameters.AddWithValue("@Description", tbDesc.Text);
-
-			cmd.ExecuteNonQuery();
-
-			con.Close();
-
-			HomePage homePage = new HomePage(gamesLibraryManagement, consoleManagement);
+			HomePage homePage = new HomePage();
 
 			homePage.Show();
 			this.Hide();

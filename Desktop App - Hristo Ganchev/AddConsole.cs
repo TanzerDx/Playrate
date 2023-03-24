@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using PLAYRATE_DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,25 +17,13 @@ namespace Desktop_App___Hristo_Ganchev
 
 	public partial class AddConsole : Form
 	{
-		BusinessLogic.GamesLibraryManagement gamesLibraryManagement = new BusinessLogic.GamesLibraryManagement();
-		BusinessLogic.ConsoleManagement consoleManagement = new BusinessLogic.ConsoleManagement();
 
-		BusinessLogic.Console console;
+		DataLibrary dataLibrary = new DataLibrary();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
 
-		SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
-
 		public AddConsole()
 		{
-			InitializeComponent();
-		}
-
-		public AddConsole(BusinessLogic.GamesLibraryManagement g, BusinessLogic.ConsoleManagement c)
-		{
-			gamesLibraryManagement = g;
-			consoleManagement = c;
-
 			InitializeComponent();
 
 			lblType.BackColor = bgcolor;
@@ -53,32 +42,10 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddConsole_Click(object sender, EventArgs e)
 		{
-			switch (cbbType.Text)
-			{
-				case "PlayStation":
-					console = new PlayStation(tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text);
-					break;
-				case "Xbox":
-					console = new Xbox(tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text, tbChatPlatform.Text);
-					break;
-			}
 
-			con.Open();
-			SqlCommand cmd = new SqlCommand("INSERT into dbo.Consoles VALUES (@ID, @Type, @Model, @Manufacturer, @ReleaseDate, @ControllerType, @ChatPlatform)", con);
+			dataLibrary.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text, tbChatPlatform.Text);
 
-			cmd.Parameters.AddWithValue("@ID", 6);
-			cmd.Parameters.AddWithValue("@Type", cbbType.Text);
-			cmd.Parameters.AddWithValue("@Model", tbModel.Text);
-			cmd.Parameters.AddWithValue("@Manufacturer", tbManufacturer.Text);
-			cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(tbReleaseDate.Text));
-			cmd.Parameters.AddWithValue("@ControllerType", tbControllerType.Text);
-			cmd.Parameters.AddWithValue("@ChatPlatform", tbChatPlatform.Text);
-
-			cmd.ExecuteNonQuery();
-
-			con.Close();
-
-			HomePage homePage = new HomePage(gamesLibraryManagement, consoleManagement);
+			HomePage homePage = new HomePage();
 
 			homePage.Show();
 			this.Hide();

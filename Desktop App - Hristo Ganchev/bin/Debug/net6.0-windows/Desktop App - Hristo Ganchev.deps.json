@@ -9,6 +9,7 @@
       "Desktop App - Hristo Ganchev/1.0.0": {
         "dependencies": {
           "PLAYRATE_ClassLibrary": "1.0.0",
+          "PLAYRATE_DatabaseConnection": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -94,6 +95,14 @@
         "runtime": {
           "PLAYRATE_ClassLibrary.dll": {}
         }
+      },
+      "PLAYRATE_DatabaseConnection/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "runtime": {
+          "PLAYRATE_DatabaseConnection.dll": {}
+        }
       }
     }
   },
@@ -167,6 +176,11 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "PLAYRATE_ClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PLAYRATE_DatabaseConnection/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
