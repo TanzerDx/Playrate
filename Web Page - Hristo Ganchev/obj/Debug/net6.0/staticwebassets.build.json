@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7VqlyaXN45CtvdITEbA8Td7SzSuELUi4av5avPTdm38=",
+  "Hash": "Rc4qNfl0arRrMp8nOBwkQeSQzy3z9ER+C8Se5+WXYEs=",
   "Source": "Home Page - Hristo Ganchev",
   "BasePath": "_content/Home Page - Hristo Ganchev",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Screenshot_404.png"
+    },
+    {
+      "Identity": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\Images\\Screenshot_459.png",
+      "SourceId": "Home Page - Hristo Ganchev",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\",
+      "BasePath": "_content/Home Page - Hristo Ganchev",
+      "RelativePath": "Images/Screenshot_459.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Screenshot_459.png"
     },
     {
       "Identity": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Web Page - Hristo Ganchev\\wwwroot\\js\\site.js",

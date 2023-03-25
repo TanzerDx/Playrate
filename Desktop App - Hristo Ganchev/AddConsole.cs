@@ -17,6 +17,10 @@ namespace Desktop_App___Hristo_Ganchev
 
 	public partial class AddConsole : Form
 	{
+		GamesLibraryManagement gLM = new GamesLibraryManagement();
+		ConsoleManagement cM = new ConsoleManagement();
+
+		BusinessLogic.Console console;
 
 		DataLibrary dataLibrary = new DataLibrary();
 
@@ -35,6 +39,22 @@ namespace Desktop_App___Hristo_Ganchev
 			lblAddConsole.BackColor = bgcolor;
 		}
 
+		public AddConsole(GamesLibraryManagement gamesLibraryManagement, ConsoleManagement consoleManagement)
+		{
+			InitializeComponent();
+
+			gamesLibraryManagement = gLM;
+			consoleManagement = cM;
+
+			lblType.BackColor = bgcolor;
+			lblReleaseDate.BackColor = bgcolor;
+			lblModel.BackColor = bgcolor;
+			lblManufacturer.BackColor = bgcolor;
+			lblControllerType.BackColor = bgcolor;
+			lblChatPlatform.BackColor = bgcolor;
+			lblAddConsole.BackColor = bgcolor;
+		}
+
 		private void AddConsole_Load(object sender, EventArgs e)
 		{
 
@@ -42,10 +62,21 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddConsole_Click(object sender, EventArgs e)
 		{
+			switch (cbbType.Text)
+			{
+				case "PlayStation":
+					console = new PlayStation(tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text);
+					break;
+				case "Xbox":
+					console = new Xbox(tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text, tbChatPlatform.Text);
+					break;
+			}
+
+			cM.AddConsole(console);
 
 			dataLibrary.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text, tbChatPlatform.Text);
 
-			HomePage homePage = new HomePage();
+			HomePage homePage = new HomePage(gLM, cM);
 
 			homePage.Show();
 			this.Hide();

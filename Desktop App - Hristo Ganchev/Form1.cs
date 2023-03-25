@@ -1,3 +1,4 @@
+using BusinessLogic;
 using PLAYRATE_DatabaseConnection;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,6 +8,9 @@ namespace Desktop_App___Hristo_Ganchev
 {
 	public partial class HomePage : Form
 	{
+		GamesLibraryManagement gLM = new GamesLibraryManagement();
+		ConsoleManagement cM = new ConsoleManagement();
+
 		DataLibrary dataLibrary = new DataLibrary();
 
 		Color bgcolor = Color.FromArgb(48, 52, 145);
@@ -22,6 +26,18 @@ namespace Desktop_App___Hristo_Ganchev
 
 		}
 
+		public HomePage(GamesLibraryManagement gamesLibraryManagement, ConsoleManagement consoleManagement)
+		{
+			InitializeComponent();
+
+			gamesLibraryManagement = gLM;
+			consoleManagement = cM;
+
+			dgAllConsoles.BackgroundColor = bgcolor;
+			dgAllGames.BackgroundColor = bgcolor;
+
+		}
+
 		private void HomePage_Load(object sender, EventArgs e)
 		{
 
@@ -29,7 +45,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddGame_Click(object sender, EventArgs e)
 		{
-			AddGame addgame = new AddGame();
+			AddGame addgame = new AddGame(gLM, cM);
 
 			this.Hide();
 			addgame.Show();
@@ -62,7 +78,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 		private void btnAddConsole_Click(object sender, EventArgs e)
 		{
-			AddConsole addConsole = new AddConsole();
+			AddConsole addConsole = new AddConsole(gLM, cM);
 
 			addConsole.Show();
 			this.Hide();
