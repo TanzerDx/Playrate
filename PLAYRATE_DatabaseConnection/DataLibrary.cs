@@ -36,13 +36,16 @@ namespace PLAYRATE_DatabaseConnection
 
 				con.Open();
 
-				SqlCommand getMaxID = new SqlCommand("SELECT MAX(ID) FROM dbo.Consoles", con);
-				int currentMaxID = (int)getMaxID.ExecuteNonQuery();
+				SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Consoles", con);
+
+				int currentMaxID = (int)getMaxID.ExecuteScalar();
+
 				int newID = currentMaxID + 1;
 
 				SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description, @URL_Game, @URL_Page)", con);
 
-				cmd.Parameters.AddWithValue("@ID", 2);
+
+				cmd.Parameters.AddWithValue("@ID", newID);
 				cmd.Parameters.AddWithValue("@Name", name);
 				cmd.Parameters.AddWithValue("@Genre", genre);
 				cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(releaseDate));
@@ -88,16 +91,18 @@ namespace PLAYRATE_DatabaseConnection
 		{ 
 			con.Open();
 
-            SqlCommand getMaxID = new SqlCommand("SELECT MAX(ID) FROM dbo.Consoles", con);
-            int currentMaxID = (int)getMaxID.ExecuteNonQuery();
-            int newID = currentMaxID + 1;
+            SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Consoles", con);
+			
+			int currentMaxID = (int)getMaxID.ExecuteScalar();
+            
+			int newID = currentMaxID + 1;
 
             SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type+model} (ID int PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date date, Genres varchar(50), Rating decimal, Description varchar(5000), URL_Game varchar(5000), URL_Page varchar(5000));", con);
             
 			SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@ID, @Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 
 
-            cmd2.Parameters.AddWithValue("@ID", 2);
+            cmd2.Parameters.AddWithValue("@ID", newID);
             cmd2.Parameters.AddWithValue("@Model", type+model);
             cmd2.Parameters.AddWithValue("@Manufacturer", manufacturer);
             cmd2.Parameters.AddWithValue("@Release_Date", DateTime.Parse(releaseDate));

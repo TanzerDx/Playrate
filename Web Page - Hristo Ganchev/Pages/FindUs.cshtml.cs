@@ -29,7 +29,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				SuccessfulSubmission = $"Hello {Contact.GetName()}, thank you for contacting us! We will respond within 2 working days to {Contact.GetEmail()}";
 			}
 
-			ModelState.Clear();
+            ModelState.Clear();
 		}
 
 	}

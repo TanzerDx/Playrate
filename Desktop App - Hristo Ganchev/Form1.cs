@@ -138,6 +138,10 @@ namespace Desktop_App___Hristo_Ganchev
             { 
                 dataLibrary.RemoveConsole(cbbConsole.Text);
                 MessageBox.Show("Console deleted successfully!");
+
+                cbbConsole.Items.Clear();
+                cbbConsole.Text = "";
+                GetConsoles();
             }
             catch
             {

@@ -118,6 +118,10 @@ html {
     color: white;
 }
 
+#text-red {
+    color: red;
+}
+
 #rb-field {
     width: 125px;
     margin-left: 30px;

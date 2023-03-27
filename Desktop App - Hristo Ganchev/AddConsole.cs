@@ -64,8 +64,8 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddConsole_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
 
                 switch (cbbType.Text)
                 {
@@ -81,16 +81,18 @@ namespace Desktop_App___Hristo_Ganchev
 
                 dataLibrary.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
 
-                HomePage homePage = new HomePage(gLM, cM);
+				MessageBox.Show("Console added successfully!");
+
+				HomePage homePage = new HomePage(gLM, cM);
 
                 homePage.Show();
                 this.Hide();
 
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            }
 
         }
 

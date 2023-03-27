@@ -13,7 +13,7 @@ namespace BusinessLogic
 
 		public string Country { get; set; }
 
-		[Required]
+		[Required (ErrorMessage = "Subject is required!")]
 		public string Subject { get; set; }
 
 		public Contact()
