@@ -13,10 +13,28 @@ namespace PLAYRATE_DatabaseConnection
 	{
 		SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
-		public void AddGame(string name, string genre, string releaseDate, string developer, string rating, string desc)
+		//public void ShowAllConsoles(string comboBox)
+		//{
+  //          con.Open();
+
+  //          DataTable tables = con.GetSchema("Tables");
+  //          List<string> tableNames = new List<string>();
+            
+		//	foreach (DataRow row in tables.Rows)
+  //          {
+  //              string tableName = (string)row[2];
+  //              tableNames.Add(tableName);
+  //          }
+
+  //          cbbConsole.DataSource = tableNames;
+
+  //          con.Close();
+  //      }
+
+		public void AddGame(string console, string name, string genre, string releaseDate, string developer, string rating, string desc)
 		{
 			con.Open();
-			SqlCommand cmd = new SqlCommand("INSERT into dbo.Games VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description)", con);
+			SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description)", con);
 
 			cmd.Parameters.AddWithValue("@ID", 8);
 			cmd.Parameters.AddWithValue("@Name", name);
@@ -31,19 +49,19 @@ namespace PLAYRATE_DatabaseConnection
 			con.Close();
 		}
 
-		public void RemoveGame(string tbID)
+		public void RemoveGame(string console, string tbID)
 		{
 			int id = Convert.ToInt32(tbID);
 
 			con.Open();
 
-			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Games WHERE ID='{id}'", con);
+			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.{console} WHERE ID='{id}'", con);
 			cmd.ExecuteNonQuery();
 
 			con.Close();
 		}
 
-		//public void ShowAllGames()
+		//public void ShowGames()
 		//{
 		//	con.Open();
 		//	SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Consoles", con);
@@ -58,51 +76,27 @@ namespace PLAYRATE_DatabaseConnection
 		//	con.Close();
 		//}
 
-		public void AddConsole(string type, string model, string manufacturer, string releaseDate, string controllerType, string chatPlatform)
+		public void AddConsole(string type, string model)
 		{ 
 			con.Open();
 
-			SqlCommand cmd = new SqlCommand("INSERT into dbo.Consoles VALUES (@ID, @Type, @Model, @Manufacturer, @ReleaseDate, @ControllerType, @ChatPlatform)", con);
-
-			cmd.Parameters.AddWithValue("@ID", 6);
-			cmd.Parameters.AddWithValue("@Type", type);
-			cmd.Parameters.AddWithValue("@Model", model);
-			cmd.Parameters.AddWithValue("@Manufacturer", manufacturer);
-			cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(releaseDate));
-			cmd.Parameters.AddWithValue("@ControllerType", controllerType);
-			cmd.Parameters.AddWithValue("@ChatPlatform", chatPlatform);
+			SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type+model} (ID int, Name varchar(50), Developer varchar(50), Release_Date date, Genres varchar(50), Rating decimal, Description varchar(5000));", con);
 
 			cmd.ExecuteNonQuery();
 
 			con.Close();
 		}
 
-		public void RemoveConsole(string tbID)
+		public void RemoveConsole(string console)
 		{
-			int id = Convert.ToInt32(tbID);
 
 			con.Open();
 
-			SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.Consoles WHERE ID='{id}'", con);
+			SqlCommand cmd = new SqlCommand($"DROP TABLE dbo.{console}", con);
 			cmd.ExecuteNonQuery();
 
 			con.Close();
 		}
-
-		//public void ShowAllConsoles()
-		//{
-		//	con.Open();
-		//	SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Consoles", con);
-		//	SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-		//	DataTable dt = new DataTable();
-		//	da.Fill(dt);
-		//	dgAllConsoles.DataSource = dt;
-
-		//	cmd.ExecuteNonQuery();
-
-		//	con.Close();
-		//}
 
 		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword)
 		{

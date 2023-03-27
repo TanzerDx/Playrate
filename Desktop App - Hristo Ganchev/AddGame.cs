@@ -14,110 +14,137 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Desktop_App___Hristo_Ganchev
 {
-	public partial class AddGame : Form
-	{
-		GamesLibraryManagement gLM = new GamesLibraryManagement();
-		ConsoleManagement cM = new ConsoleManagement();
+    public partial class AddGame : Form
+    {
+        GamesLibraryManagement gLM = new GamesLibraryManagement();
+        ConsoleManagement cM = new ConsoleManagement();
 
-		Game game;
+        Game game;
 
-		DataLibrary dataLibrary = new DataLibrary();
+        DataLibrary dataLibrary = new DataLibrary();
 
-		Color bgcolor = Color.FromArgb(48, 52, 145);
+        Color bgcolor = Color.FromArgb(48, 52, 145);
 
-		public AddGame()
-		{
-			InitializeComponent();
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
-			lblAddGame.BackColor = bgcolor;
-			lblName.BackColor = bgcolor;
-			lblDeveloper.BackColor = bgcolor;
-			lblReleaseDate.BackColor = bgcolor;
-			lblGenres.BackColor = bgcolor;
-			lblRating.BackColor = bgcolor;
-			lblDesc.BackColor = bgcolor;
+        public AddGame()
+        {
+            InitializeComponent();
+            GetConsoles();
 
-		}
 
-		public AddGame(GamesLibraryManagement gamesLibraryManagement, ConsoleManagement consoleManagement)
-		{
-			InitializeComponent();
+            lblConsole.BackColor = bgcolor;
+            lblAddGame.BackColor = bgcolor;
+            lblName.BackColor = bgcolor;
+            lblDeveloper.BackColor = bgcolor;
+            lblReleaseDate.BackColor = bgcolor;
+            lblGenres.BackColor = bgcolor;
+            lblRating.BackColor = bgcolor;
+            lblDesc.BackColor = bgcolor;
 
-			gamesLibraryManagement = gLM;
-			consoleManagement = cM;
+        }
 
-			lblAddGame.BackColor = bgcolor;
-			lblName.BackColor = bgcolor;
-			lblDeveloper.BackColor = bgcolor;
-			lblReleaseDate.BackColor = bgcolor;
-			lblGenres.BackColor = bgcolor;
-			lblRating.BackColor = bgcolor;
-			lblDesc.BackColor = bgcolor;
+        public AddGame(GamesLibraryManagement gamesLibraryManagement, ConsoleManagement consoleManagement)
+        {
+            InitializeComponent();
+            GetConsoles();
 
-			foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
-			{
-				cbbGenre.Items.Add(genre);
-			}
-		}
+            gamesLibraryManagement = gLM;
+            consoleManagement = cM;
 
-		private void AddGame_Load(object sender, EventArgs e)
-		{
+            lblConsole.BackColor = bgcolor;
+            lblAddGame.BackColor = bgcolor;
+            lblName.BackColor = bgcolor;
+            lblDeveloper.BackColor = bgcolor;
+            lblReleaseDate.BackColor = bgcolor;
+            lblGenres.BackColor = bgcolor;
+            lblRating.BackColor = bgcolor;
+            lblDesc.BackColor = bgcolor;
 
-		}
+            foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
+            {
+                cbbGenre.Items.Add(genre);
+            }
+        }
 
-		private void btnAddGame_Click(object sender, EventArgs e)
-		{
-			switch (cbbGenre.Text)
-			{
-				case "Fantasy":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+        public void GetConsoles()
+        {
+            con.Open();
 
-				case "SciFi":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+            DataTable tables = con.GetSchema("Tables");
+            List<string> consoles = new List<string>();
 
-				case "History":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+            foreach (DataRow row in tables.Rows)
+            {
+                string tableName = (string)row[2];
+                consoles.Add(tableName);
+            }
 
-				case "Horror":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+            consoles.Remove("Accounts");
 
-				case "Action":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+            cbbConsole.DataSource = consoles;
 
-				case "Strategy":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+            con.Close();
+        }
 
-				case "Sports":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+        private void AddGame_Load(object sender, EventArgs e)
+        {
 
-				case "MMO":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+        }
 
-				case "RPG":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
+        private void btnAddGame_Click(object sender, EventArgs e)
+        {
+            switch (cbbGenre.Text)
+            {
+                case "Fantasy":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
 
-				case "FPS":
-					game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-					break;
-			}
+                case "SciFi":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
 
-			gLM.AddGame(game);
+                case "History":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
 
-			dataLibrary.AddGame(tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text);
+                case "Horror":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
 
-			HomePage homePage = new HomePage(gLM, cM);
+                case "Action":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
 
-			homePage.Show();
-			this.Hide();
-		}
-	}
+                case "Strategy":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
+
+                case "Sports":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
+
+                case "MMO":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
+
+                case "RPG":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
+
+                case "FPS":
+                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                    break;
+            }
+
+            gLM.AddGame(game);
+
+            dataLibrary.AddGame(cbbConsole.Text, tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text);
+
+            HomePage homePage = new HomePage(gLM, cM);
+
+            homePage.Show();
+            this.Hide();
+        }
+    }
 }

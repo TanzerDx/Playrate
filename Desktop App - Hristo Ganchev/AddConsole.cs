@@ -74,7 +74,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 			cM.AddConsole(console);
 
-			dataLibrary.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbControllerType.Text, tbChatPlatform.Text);
+			dataLibrary.AddConsole(cbbType.Text, tbModel.Text);
 
 			HomePage homePage = new HomePage(gLM, cM);
 
