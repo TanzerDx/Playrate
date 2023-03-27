@@ -41,6 +41,8 @@ namespace Desktop_App___Hristo_Ganchev
             lblGenres.BackColor = bgcolor;
             lblRating.BackColor = bgcolor;
             lblDesc.BackColor = bgcolor;
+            lblURLGame.BackColor = bgcolor;
+            lblURLPage.BackColor = bgcolor;
 
         }
 
@@ -60,6 +62,8 @@ namespace Desktop_App___Hristo_Ganchev
             lblGenres.BackColor = bgcolor;
             lblRating.BackColor = bgcolor;
             lblDesc.BackColor = bgcolor;
+            lblURLGame.BackColor = bgcolor;
+            lblURLPage.BackColor = bgcolor;
 
             foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
             {
@@ -71,18 +75,20 @@ namespace Desktop_App___Hristo_Ganchev
         {
             con.Open();
 
-            DataTable tables = con.GetSchema("Tables");
-            List<string> consoles = new List<string>();
+            string query = "SELECT Model FROM dbo.Consoles";
 
-            foreach (DataRow row in tables.Rows)
+            using (SqlCommand command = new SqlCommand(query, con))
             {
-                string tableName = (string)row[2];
-                consoles.Add(tableName);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        cbbConsole.Items.Add(reader.GetString(0));
+                    }
+                }
             }
-
-            consoles.Remove("Accounts");
-
-            cbbConsole.DataSource = consoles;
 
             con.Close();
         }
@@ -94,57 +100,66 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            switch (cbbGenre.Text)
+            try
             {
-                case "Fantasy":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                switch (cbbGenre.Text)
+                {
+                    case "Fantasy":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Fantasy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "SciFi":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "SciFi":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.SciFi, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "History":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "History":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.History, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "Horror":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "Horror":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Horror, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "Action":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "Action":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Action, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "Strategy":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "Strategy":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Strategy, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "Sports":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "Sports":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.Sports, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "MMO":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "MMO":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.MMO, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "RPG":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "RPG":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.RPG, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
 
-                case "FPS":
-                    game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
-                    break;
+                    case "FPS":
+                        game = new BusinessLogic.Game(tbName.Text, tbDesc.Text, BusinessLogic.Genres.FPS, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text);
+                        break;
+                }
+
+                gLM.AddGame(game);
+
+                dataLibrary.AddGame(cbbConsole.Text, tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
+
+                MessageBox.Show("Game added successfully!");
+
+                HomePage homePage = new HomePage(gLM, cM);
+
+                homePage.Show();
+                this.Hide();
             }
-
-            gLM.AddGame(game);
-
-            dataLibrary.AddGame(cbbConsole.Text, tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text);
-
-            HomePage homePage = new HomePage(gLM, cM);
-
-            homePage.Show();
-            this.Hide();
+            catch
+            {
+                MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            }
         }
     }
 }

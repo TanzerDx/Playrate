@@ -44,6 +44,10 @@
             lblName = new Label();
             cbbConsole = new ComboBox();
             lblConsole = new Label();
+            tbURLGame = new TextBox();
+            lblURLGame = new Label();
+            tbURLPage = new TextBox();
+            lblURLPage = new Label();
             SuspendLayout();
             // 
             // lblDesc
@@ -51,7 +55,7 @@
             lblDesc.AutoSize = true;
             lblDesc.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblDesc.ForeColor = Color.White;
-            lblDesc.Location = new Point(18, 188);
+            lblDesc.Location = new Point(19, 256);
             lblDesc.Name = "lblDesc";
             lblDesc.Size = new Size(92, 21);
             lblDesc.TabIndex = 10;
@@ -62,7 +66,7 @@
             lblRating.AutoSize = true;
             lblRating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblRating.ForeColor = Color.White;
-            lblRating.Location = new Point(482, 140);
+            lblRating.Location = new Point(478, 141);
             lblRating.Name = "lblRating";
             lblRating.Size = new Size(58, 21);
             lblRating.TabIndex = 9;
@@ -73,7 +77,7 @@
             lblGenres.AutoSize = true;
             lblGenres.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblGenres.ForeColor = Color.White;
-            lblGenres.Location = new Point(482, 91);
+            lblGenres.Location = new Point(478, 94);
             lblGenres.Name = "lblGenres";
             lblGenres.Size = new Size(62, 21);
             lblGenres.TabIndex = 8;
@@ -84,7 +88,7 @@
             lblReleaseDate.AutoSize = true;
             lblReleaseDate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblReleaseDate.ForeColor = Color.White;
-            lblReleaseDate.Location = new Point(18, 140);
+            lblReleaseDate.Location = new Point(19, 219);
             lblReleaseDate.Name = "lblReleaseDate";
             lblReleaseDate.Size = new Size(102, 21);
             lblReleaseDate.TabIndex = 7;
@@ -95,7 +99,7 @@
             lblDeveloper.AutoSize = true;
             lblDeveloper.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblDeveloper.ForeColor = Color.White;
-            lblDeveloper.Location = new Point(18, 99);
+            lblDeveloper.Location = new Point(19, 178);
             lblDeveloper.Name = "lblDeveloper";
             lblDeveloper.Size = new Size(84, 21);
             lblDeveloper.TabIndex = 6;
@@ -106,7 +110,7 @@
             lblAddGame.AutoSize = true;
             lblAddGame.Font = new Font("Segoe UI Black", 26.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblAddGame.ForeColor = Color.White;
-            lblAddGame.Location = new Point(566, 17);
+            lblAddGame.Location = new Point(20, 25);
             lblAddGame.Name = "lblAddGame";
             lblAddGame.Size = new Size(215, 47);
             lblAddGame.TabIndex = 11;
@@ -114,21 +118,21 @@
             // 
             // tbDeveloper
             // 
-            tbDeveloper.Location = new Point(117, 99);
+            tbDeveloper.Location = new Point(118, 178);
             tbDeveloper.Name = "tbDeveloper";
             tbDeveloper.Size = new Size(222, 23);
             tbDeveloper.TabIndex = 12;
             // 
             // tbReleaseDate
             // 
-            tbReleaseDate.Location = new Point(136, 140);
+            tbReleaseDate.Location = new Point(137, 219);
             tbReleaseDate.Name = "tbReleaseDate";
             tbReleaseDate.Size = new Size(222, 23);
             tbReleaseDate.TabIndex = 13;
             // 
             // tbDesc
             // 
-            tbDesc.Location = new Point(18, 222);
+            tbDesc.Location = new Point(19, 289);
             tbDesc.Multiline = true;
             tbDesc.Name = "tbDesc";
             tbDesc.Size = new Size(763, 282);
@@ -144,14 +148,14 @@
             // cbbGenre
             // 
             cbbGenre.FormattingEnabled = true;
-            cbbGenre.Location = new Point(559, 89);
+            cbbGenre.Location = new Point(559, 92);
             cbbGenre.Name = "cbbGenre";
             cbbGenre.Size = new Size(222, 23);
             cbbGenre.TabIndex = 17;
             // 
             // btnAddGame
             // 
-            btnAddGame.Location = new Point(18, 528);
+            btnAddGame.Location = new Point(18, 582);
             btnAddGame.Name = "btnAddGame";
             btnAddGame.Size = new Size(290, 40);
             btnAddGame.TabIndex = 18;
@@ -161,7 +165,7 @@
             // 
             // tbName
             // 
-            tbName.Location = new Point(96, 17);
+            tbName.Location = new Point(97, 96);
             tbName.Name = "tbName";
             tbName.Size = new Size(222, 23);
             tbName.TabIndex = 20;
@@ -171,7 +175,7 @@
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblName.ForeColor = Color.White;
-            lblName.Location = new Point(19, 17);
+            lblName.Location = new Point(20, 96);
             lblName.Name = "lblName";
             lblName.Size = new Size(55, 21);
             lblName.TabIndex = 19;
@@ -180,8 +184,7 @@
             // cbbConsole
             // 
             cbbConsole.FormattingEnabled = true;
-            cbbConsole.Items.AddRange(new object[] { "Playstation4" });
-            cbbConsole.Location = new Point(96, 58);
+            cbbConsole.Location = new Point(97, 137);
             cbbConsole.Name = "cbbConsole";
             cbbConsole.Size = new Size(222, 23);
             cbbConsole.TabIndex = 22;
@@ -191,18 +194,58 @@
             lblConsole.AutoSize = true;
             lblConsole.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblConsole.ForeColor = Color.White;
-            lblConsole.Location = new Point(19, 58);
+            lblConsole.Location = new Point(20, 137);
             lblConsole.Name = "lblConsole";
             lblConsole.Size = new Size(69, 21);
             lblConsole.TabIndex = 21;
             lblConsole.Text = "Console:";
+            // 
+            // tbURLGame
+            // 
+            tbURLGame.Location = new Point(582, 180);
+            tbURLGame.Name = "tbURLGame";
+            tbURLGame.Size = new Size(222, 23);
+            tbURLGame.TabIndex = 24;
+            // 
+            // lblURLGame
+            // 
+            lblURLGame.AutoSize = true;
+            lblURLGame.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblURLGame.ForeColor = Color.White;
+            lblURLGame.Location = new Point(478, 182);
+            lblURLGame.Name = "lblURLGame";
+            lblURLGame.Size = new Size(87, 21);
+            lblURLGame.TabIndex = 23;
+            lblURLGame.Text = "URL Game:";
+            // 
+            // tbURLPage
+            // 
+            tbURLPage.Location = new Point(572, 221);
+            tbURLPage.Name = "tbURLPage";
+            tbURLPage.Size = new Size(222, 23);
+            tbURLPage.TabIndex = 26;
+            // 
+            // lblURLPage
+            // 
+            lblURLPage.AutoSize = true;
+            lblURLPage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblURLPage.ForeColor = Color.White;
+            lblURLPage.Location = new Point(478, 222);
+            lblURLPage.Name = "lblURLPage";
+            lblURLPage.Size = new Size(79, 21);
+            lblURLPage.TabIndex = 25;
+            lblURLPage.Text = "URL Page:";
             // 
             // AddGame
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Screenshot_413;
-            ClientSize = new Size(800, 580);
+            ClientSize = new Size(831, 634);
+            Controls.Add(tbURLPage);
+            Controls.Add(lblURLPage);
+            Controls.Add(tbURLGame);
+            Controls.Add(lblURLGame);
             Controls.Add(cbbConsole);
             Controls.Add(lblConsole);
             Controls.Add(tbName);
@@ -244,5 +287,9 @@
         private Label lblName;
         private ComboBox cbbConsole;
         private Label lblConsole;
+        private TextBox tbURLGame;
+        private Label lblURLGame;
+        private TextBox tbURLPage;
+        private Label lblURLPage;
     }
 }

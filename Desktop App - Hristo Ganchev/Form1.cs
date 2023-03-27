@@ -46,18 +46,20 @@ namespace Desktop_App___Hristo_Ganchev
         {
             con.Open();
 
-            DataTable tables = con.GetSchema("Tables");
-            List<string> consoles = new List<string>();
+            string query = "SELECT Model FROM dbo.Consoles";
 
-            foreach (DataRow row in tables.Rows)
+            using (SqlCommand command = new SqlCommand(query, con))
             {
-                string tableName = (string)row[2];
-                consoles.Add(tableName);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        cbbConsole.Items.Add(reader.GetString(0));
+                    }
+                }
             }
-
-            consoles.Remove("Accounts");
-
-            cbbConsole.DataSource = consoles;
 
             con.Close();
         }
@@ -77,19 +79,26 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-            //btnShowGames
+            try
+            {
+                //btnShowGames
 
-            con.Open();
-            SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.{cbbConsole.Text}", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"SELECT * FROM dbo.{cbbConsole.Text}", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgGames.DataSource = dt;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgGames.DataSource = dt;
 
-            cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
 
-            con.Close();
+                con.Close();
+            }
+            catch
+            {
+                MessageBox.Show("The console does not exist!");
+            }
         }
 
         private void lbAllGames_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,7 +108,15 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnDeleteGame_Click(object sender, EventArgs e)
         {
-            dataLibrary.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
+            try
+            {
+                dataLibrary.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Please make sure you have entered a correct ID!");
+            }
+
         }
 
         private void btnAddConsole_Click(object sender, EventArgs e)
@@ -117,7 +134,15 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnDeleteConsole_Click(object sender, EventArgs e)
         {
-            dataLibrary.RemoveConsole(cbbConsole.Text);
+            try
+            { 
+                dataLibrary.RemoveConsole(cbbConsole.Text);
+                MessageBox.Show("Console deleted successfully!");
+            }
+            catch
+            {
+                MessageBox.Show("The console does not exist!");
+            }
         }
 
         private void dgAllConsoles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -132,17 +157,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnShowAllConsoles_Click(object sender, EventArgs e)
         {
-            //con.Open();
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.Consoles", con);
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            //DataTable dt = new DataTable();
-            //da.Fill(dt);
-            //dgAllConsoles.DataSource = dt;
-
-            //cmd.ExecuteNonQuery();
-
-            //con.Close();
         }
 
         private void label2_Click(object sender, EventArgs e)
