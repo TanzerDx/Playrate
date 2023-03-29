@@ -8,38 +8,38 @@ namespace BusinessLogic
 {
 	public class AccountLibraryManagement
 	{
-		List<Account> allAccounts = new List<Account>();
+		//List<Account> allAccounts = new List<Account>();
 
-		public void AddAccount(Account a)
-		{
-			allAccounts.Add(a);
-		}
+		//public void AddAccount(Account a)
+		//{
+		//	allAccounts.Add(a);
+		//}
 
-		public void RemoveAccount(Account a)
-		{
-			allAccounts.Remove(a);
-		}
-
-
-		public Account GetAccount(string name)
-		{
-			Account account = null;
-			foreach (Account a in allAccounts)
-			{
-				if (name == a.GetName())
-				{
-					account = a;
-					break;
-				}
-			}
-			return account;
-		}
+		//public void RemoveAccount(Account a)
+		//{
+		//	allAccounts.Remove(a);
+		//}
 
 
-		public List<Account> GetAllAccounts()
-		{
-			return allAccounts;
-		}
+		//public Account GetAccount(string name)
+		//{
+		//	Account account = null;
+		//	foreach (Account a in allAccounts)
+		//	{
+		//		if (name == a.GetName())
+		//		{
+		//			account = a;
+		//			break;
+		//		}
+		//	}
+		//	return account;
+		//}
+
+
+		//public List<Account> GetAllAccounts()
+		//{
+		//	return allAccounts;
+		//}
 
 	}
 }

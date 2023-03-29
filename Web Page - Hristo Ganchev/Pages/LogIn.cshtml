@@ -6,23 +6,22 @@
 <div id="div-content-box">
 	<h2 id="text-white">@Model.PageTitle</h2>
 	
-	<div id="form-login">
-	<form method="post">
-		<label asp-for="LogIn.Username">Username:</label>
-		<input type="text" id="username" asp-for="LogIn.Username">
+	<form method="post" id="form-login">
+		<label asp-for="LogIn.Email">Email:</label>
+		<input autocomplete="off"  type="text" id="email" asp-for="LogIn.Email">
 
 		<label asp-for="LogIn.Password">Password:</label>
-		<input type="text" id="password" asp-for="LogIn.Password">
+		<input autocomplete ="off" type="password" id="password" asp-for="LogIn.Password">
 
 		<h5 id="text-white">@Model.LogInResult</h5>
 		<div>
 			<input type="submit" value="Log In" style="width: 189px" autocomplete="off" />
 		</div>
+		
+		<a href="/Register">Create an account</a>
 
 	</form>
 
-		<a href="/Register">Create an account</a>
-	</div>
 
 </div>
 

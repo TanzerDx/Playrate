@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PLAYRATE_DatabaseConnection\PLAYRATE_DatabaseConnection.csproj" />
+  </ItemGroup>
+
 </Project>

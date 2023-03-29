@@ -1,7 +1,9 @@
 ﻿@page
+@using BusinessLogic
+@using PLAYRATE_ClassLibrary.Games;
 @model Home_Page___Hristo_Ganchev.GamesPageModel
 @{
-    ViewData["Title"] = "Games Page : PlayStation";
+    ViewData["Title"] = "Games Page ";
 }
 
 <h2 id="text-white">@Model.PageTitle</h2>
@@ -9,22 +11,28 @@
 <div id="div-content-box-games">
     
     <div id="div-allgames">
-        
-        <a href="/JustCause4">
-            
-            <div id="div-game" href="/JustCause4">
-        
-                <div id="div-image-game">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/0/0f/Just_Cause_4_cover.jpg" width="140" height="170" />
-                </div>
 
-                <h4 id="text-white">JUST CAUSE 4</h4>
-  
-            </div>
-            
+        <a>
+
+            @foreach (Game game in Model.Games)
+            {
+                <div id="div-game">
+                    <a asp-page="/Game" asp-route-id="@game.Name">
+                        <div id="div-image-game">
+                            <img src="@game.URL_Game" width="140" height="170" />
+                        </div>
+
+                        <h4 id="text-white">@game.Name</h4>
+
+                    </a>
+                </div>
+            }
+
         </a>
 
     </div>
+
+
     
 <div class="sidebar-filter">
 
@@ -53,7 +61,7 @@
            <div id="checkbox-field">
                 @foreach (BusinessLogic.Genres genre in Enum.GetValues(typeof(BusinessLogic.Genres)))
                 {
-                    <input type="checkbox" asp-for="Filter.GenreFilter" value="@genre">
+                    <input name="ChkBox" type="checkbox" asp-for="Filter.GenreFilter" value="@genre">
                     <label id="text-white" for="checkbox@genre">@genre</label>
                 }
             </div>

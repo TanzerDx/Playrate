@@ -22,3 +22,6 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-a
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_ClassLibrary.dll
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_ClassLibrary.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\ref\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_DatabaseConnection.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\bin\Debug\net6.0\PLAYRATE_DatabaseConnection.pdb
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_ClassLibrary\obj\Debug\net6.0\PLAYRATE_ClassLibrary.csproj.CopyComplete

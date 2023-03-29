@@ -5,20 +5,20 @@
 		public LogIn()
 		{ }
 
-		public string Username { get; set; }
+		public string Email { get; set; }
 
 		public string Password { get; set; }
 
-		public LogIn(string username, string password)
+		public LogIn(string email, string password)
 		{
-			Username = username;
+			Email = email;
 			Password = password;
 		}
 
 
-		public string GetUsername()
+		public string GetEmail()
 		{
-			return Username;
+			return Email;
 		}
 
 		public string GetPassword()

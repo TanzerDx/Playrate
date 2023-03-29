@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PLAYRATE_ClassLibrary.Games;
 
 namespace BusinessLogic
 {
-	public abstract class Console
+    public abstract class Console
 	{
-		List<Game> availableGames = new List<Game>();
-
 		protected string model;
 		protected string manufacturer;
 		protected string releaseDate;

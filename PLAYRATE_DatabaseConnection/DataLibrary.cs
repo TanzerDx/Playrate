@@ -48,7 +48,7 @@ namespace PLAYRATE_DatabaseConnection
 				cmd.Parameters.AddWithValue("@ID", newID);
 				cmd.Parameters.AddWithValue("@Name", name);
 				cmd.Parameters.AddWithValue("@Genre", genre);
-				cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(releaseDate));
+				cmd.Parameters.AddWithValue("@ReleaseDate", releaseDate);
 				cmd.Parameters.AddWithValue("@Developer", developer);
 				cmd.Parameters.AddWithValue("@Rating", rating);
 				cmd.Parameters.AddWithValue("@Description", desc);
@@ -97,7 +97,7 @@ namespace PLAYRATE_DatabaseConnection
             
 			int newID = currentMaxID + 1;
 
-            SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type+model} (ID int PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date date, Genres varchar(50), Rating decimal, Description varchar(5000), URL_Game varchar(5000), URL_Page varchar(5000));", con);
+            SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type+model} (ID int PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(10), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX));", con);
             
 			SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@ID, @Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 
@@ -105,7 +105,7 @@ namespace PLAYRATE_DatabaseConnection
             cmd2.Parameters.AddWithValue("@ID", newID);
             cmd2.Parameters.AddWithValue("@Model", type+model);
             cmd2.Parameters.AddWithValue("@Manufacturer", manufacturer);
-            cmd2.Parameters.AddWithValue("@Release_Date", DateTime.Parse(releaseDate));
+            cmd2.Parameters.AddWithValue("@Release_Date", releaseDate);
             cmd2.Parameters.AddWithValue("@URL_Console", urlConsole);
             cmd2.Parameters.AddWithValue("@Controller_Type", controllerType);
             cmd2.Parameters.AddWithValue("@Chat_Platform", chatPlatform);
@@ -132,11 +132,17 @@ namespace PLAYRATE_DatabaseConnection
 
 		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword)
 		{
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 			con.Open();
+
+			SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Consoles", con);
+
+			int currentMaxID = (int)getMaxID.ExecuteScalar();
+
+			int newID = currentMaxID + 1;
+
 			SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password)", con);
 
-			cmd.Parameters.AddWithValue("@ID", 3);
+			cmd.Parameters.AddWithValue("@ID", newID);
 			cmd.Parameters.AddWithValue("@Email", submittedEmail);
 			cmd.Parameters.AddWithValue("@Username", submittedUsername);
 			cmd.Parameters.AddWithValue("@Password", submittedPassword);

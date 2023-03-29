@@ -1,5 +1,7 @@
 using BusinessLogic;
+using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_DatabaseConnection;
+using PLAYRATE_DatabaseConnection.Games;
 using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
@@ -8,14 +10,14 @@ namespace Desktop_App___Hristo_Ganchev
 {
     public partial class HomePage : Form
     {
-        GamesLibraryManagement gLM = new GamesLibraryManagement();
-        ConsoleManagement cM = new ConsoleManagement();
-
-        DataLibrary dataLibrary = new DataLibrary();
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+
+        ConsoleLibrary consoleLibrary = new ConsoleLibrary();
+        
+        GamesLibrary gamesLibrary = new GamesLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
         public HomePage()
         {
@@ -28,19 +30,6 @@ namespace Desktop_App___Hristo_Ganchev
 
         }
 
-        public HomePage(GamesLibraryManagement gamesLibraryManagement, ConsoleManagement consoleManagement)
-        {
-            InitializeComponent();
-            GetConsoles();
-
-            gamesLibraryManagement = gLM;
-            consoleManagement = cM;
-
-            lblConsole.BackColor = bgcolor;
-            lblID.BackColor = bgcolor;
-            dgGames.BackgroundColor = bgcolor;
-
-        }
 
         public void GetConsoles()
         {
@@ -71,7 +60,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            AddGame addgame = new AddGame(gLM, cM);
+            AddGame addgame = new AddGame();
 
             this.Hide();
             addgame.Show();
@@ -110,7 +99,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                dataLibrary.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
+                gamesLibrary.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
             }
             catch
             {
@@ -121,7 +110,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddConsole_Click(object sender, EventArgs e)
         {
-            AddConsole addConsole = new AddConsole(gLM, cM);
+            AddConsole addConsole = new AddConsole();
 
             addConsole.Show();
             this.Hide();
@@ -136,7 +125,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             { 
-                dataLibrary.RemoveConsole(cbbConsole.Text);
+                consoleLibrary.RemoveConsole(cbbConsole.Text);
                 MessageBox.Show("Console deleted successfully!");
 
                 cbbConsole.Items.Clear();

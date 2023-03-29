@@ -159,6 +159,8 @@ html {
 }
 
 #form-login {
+    display: block;
+    margin-bottom: 10px;
     color: white;
     width: 200px;
     margin-top: 30px;

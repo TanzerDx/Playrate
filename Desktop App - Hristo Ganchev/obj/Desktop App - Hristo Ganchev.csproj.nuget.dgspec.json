@@ -98,7 +98,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj": {
+                "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

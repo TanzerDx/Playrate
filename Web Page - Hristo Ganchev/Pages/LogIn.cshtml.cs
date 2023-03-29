@@ -15,7 +15,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public string LogInResult { get; private set; }
 
-		public string SubmittedUsername { get; private set; }
+		public string SubmittedEmail { get; private set; }
 		
 		public string SubmittedPassword { get; private set; }
 
@@ -34,12 +34,12 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public void OnPost()
 		{
-			SubmittedUsername = LogIn.GetUsername();
+			SubmittedEmail = LogIn.GetEmail();
 			SubmittedPassword = LogIn.GetPassword();
 
 			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
-			string query = $"SELECT COUNT (*) FROM dbo.Accounts WHERE Username='{SubmittedUsername}' AND Password='{SubmittedPassword}'";
+			string query = $"SELECT COUNT (*) FROM dbo.Accounts WHERE Email='{SubmittedEmail}' AND Password='{SubmittedPassword}'";
 
 			con.Open();
 			
@@ -49,7 +49,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 				if (v != 1)
 				{
-					LogInResult = "Invalid username or password.";
+					LogInResult = "Invalid email or password.";
 					return;
 				}
 				else

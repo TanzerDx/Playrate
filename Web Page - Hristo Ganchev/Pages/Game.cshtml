@@ -1,0 +1,31 @@
+﻿@page
+@model Home_Page___Hristo_Ganchev.Pages.GameModel
+@{
+}
+
+<div id="div-content-box-desc">
+
+    <h1 id="text-white">@Model.Game.Name</h1>
+	
+    <div id="div-image-desc">
+        <img src="@Model.Game.URL_Page" width="720" height="430" />
+    </div>
+
+    <div id="text-details">
+        <h4>Developer: @Model.Game.Developer</h4>
+        <h4>Release date: @Model.Game.Release_Date</h4>
+        <h4>Genre: @Model.Game.Genre</h4>
+        <h4>Rating: 3.2 / 5</h4>
+    </div>
+
+    <h4 id="text-description">@Model.Game.Description</h4>
+
+    <div class="sidebar-reviews">
+        <h3 id="text-sidebar">REVIEWS</h3>
+        <h5 id="text-sidebar">There are no reviews for this game yet!</h5>
+    </div>
+
+
+
+
+</div>
