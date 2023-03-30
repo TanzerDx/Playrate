@@ -37,7 +37,7 @@ html {
 
 #div-content-box-games {
     display: grid;
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 2fr 280px;
     grid-gap: 20px;
     border-radius: 85px;
     background-color: #1B1748;
@@ -46,13 +46,9 @@ html {
 }
 
 #div-content-box-consoles {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
     border-radius: 85px;
     background-color: #1B1748;
-    padding: 70px;
-    width: 1190px;
+    width: 1280px;
 }
 
 #div-allgames {
@@ -60,7 +56,6 @@ html {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     border-radius: 85px;
-    background-color: #1B1748;
     width: 190px;
 }
 
@@ -69,7 +64,6 @@ html {
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 20px;
     border-radius: 85px;
-    background-color: #1B1748;
     padding: 70px;
     width: 1290px;
 }

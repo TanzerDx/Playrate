@@ -6,27 +6,23 @@
 
 <h2 id="text-white">CONSOLES:</h2>
 
+<div id="div-content-box-consoles">
 
- <div id="div-content-box-consoles">
-    <a>
+    <div id="div-allconsoles">
+            @foreach (Console console in Model.Consoles)
+            {
+                <div id="div-game">
+                    <a asp-page="GamesPage" asp-route-model="@console.Model">
+                        <div id="div-image-game">
+                            <img src="@console.URL_Console" width="140" height="170" />
+                        </div>
 
-        @foreach (Console console in Model.Consoles)
-        {
-            <div id="div-game">
-                <a asp-page="GamesPage" asp-route-model="@console.Model">
-                    <div id="div-image-game">
-                        <img src="@console.URL_Console" width="140" height="170" />
-                    </div>
+                        <h4 id="text-white">@console.Model</h4>
 
-                    <h4 id="text-white">@console.Model</h4>
-
-                </a>
-            </div>
-        }
-
-    </a>
-
-
+                    </a>
+                </div>
+            }
+    </div>
  </div>
 
 
