@@ -10,6 +10,6 @@ namespace PLAYRATE_ClassLibrary.Games
     public interface IGameService
     {
         List<Game> GetAll(string console);
-        Game GetGame(string console, string name);
+        Game GetGame(string name, string console);
     }
 }

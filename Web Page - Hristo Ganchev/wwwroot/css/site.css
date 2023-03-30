@@ -173,6 +173,10 @@ html {
     margin-top: 30px;
 }
 
+.contact-form label {
+    display: block;
+}
+
 
 @media (min-width: 768px) {
   html {

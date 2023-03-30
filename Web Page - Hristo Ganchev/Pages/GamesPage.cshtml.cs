@@ -41,7 +41,7 @@ namespace Home_Page___Hristo_Ganchev
 
         public List<Game> Games
         {
-            get { return _gameService.GetAll("Playstation4"); }
+            get { return _gameService.GetAll("XboxONE"); }
         }
 
         public void OnPost()

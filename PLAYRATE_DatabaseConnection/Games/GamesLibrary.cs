@@ -54,15 +54,15 @@ namespace PLAYRATE_DatabaseConnection.Games
         //    return gameDTO;
         //}
 
-        public GameDTO? GetGame(string console, string name)
+        public GameDTO? GetGame(string name, string console)
         {
             GameDTO? gameDTO = null;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where  Name= '{name}' ",
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Name = @Name",
                     connection);
-                sqlCommand.Parameters.AddWithValue("@name", name);
+                sqlCommand.Parameters.AddWithValue("@Name", name);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
@@ -71,9 +71,7 @@ namespace PLAYRATE_DatabaseConnection.Games
                 connection.Close();
             }
             return gameDTO;
-
         }
-
 
         private GameDTO CreateGameDTO(SqlDataReader reader)
         {

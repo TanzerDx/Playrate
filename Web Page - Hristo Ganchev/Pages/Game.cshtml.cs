@@ -21,7 +21,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         public void OnGet(string name)
         {
             Name = name;
-            Game = _gameService.GetGame("Playstation4", "Infamous");
+            Game = _gameService.GetGame(name , "XboxONE");
         }
 
     }

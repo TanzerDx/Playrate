@@ -9,7 +9,7 @@ namespace PLAYRATE_DatabaseConnection.Games
     public interface IGameRepository
     {
         List<GameDTO> GetAll(string console);
-        GameDTO? GetGame(string console, string name);
+        GameDTO? GetGame(string name, string console);
     }
 
 }
