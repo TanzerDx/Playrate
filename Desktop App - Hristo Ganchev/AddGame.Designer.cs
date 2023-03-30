@@ -77,7 +77,7 @@
             lblGenres.AutoSize = true;
             lblGenres.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblGenres.ForeColor = Color.White;
-            lblGenres.Location = new Point(478, 94);
+            lblGenres.Location = new Point(478, 101);
             lblGenres.Name = "lblGenres";
             lblGenres.Size = new Size(62, 21);
             lblGenres.TabIndex = 8;
@@ -99,7 +99,7 @@
             lblDeveloper.AutoSize = true;
             lblDeveloper.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblDeveloper.ForeColor = Color.White;
-            lblDeveloper.Location = new Point(19, 178);
+            lblDeveloper.Location = new Point(20, 179);
             lblDeveloper.Name = "lblDeveloper";
             lblDeveloper.Size = new Size(84, 21);
             lblDeveloper.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             // tbDeveloper
             // 
-            tbDeveloper.Location = new Point(118, 178);
+            tbDeveloper.Location = new Point(119, 179);
             tbDeveloper.Name = "tbDeveloper";
             tbDeveloper.Size = new Size(222, 23);
             tbDeveloper.TabIndex = 12;
@@ -148,7 +148,7 @@
             // cbbGenre
             // 
             cbbGenre.FormattingEnabled = true;
-            cbbGenre.Location = new Point(559, 92);
+            cbbGenre.Location = new Point(559, 99);
             cbbGenre.Name = "cbbGenre";
             cbbGenre.Size = new Size(222, 23);
             cbbGenre.TabIndex = 17;

@@ -1,23 +1,29 @@
 ﻿@page
 @model Home_Page___Hristo_Ganchev.Pages.ConsolesPageModel
+@using Console = PLAYRATE_ClassLibrary.Consoles.Console;
 @{
 }
 
 <h2 id="text-white">CONSOLES:</h2>
 
- <div id="div-allconsoles">
 
-    <a href="/GamesPage">
+ <div id="div-content-box-consoles">
+    <a>
 
-        <div id="div-game">
+        @foreach (Console console in Model.Consoles)
+        {
+            <div id="div-game">
+                <a asp-page="GamesPage" asp-route-model="@console.Model">
+                    <div id="div-image-game">
+                        <img src="@console.URL_Console" width="140" height="170" />
+                    </div>
 
-            <div id="div-image-game">
-                <img src="~/images/Screenshot_459.png" width="140" height="140" />
+                    <h4 id="text-white">@console.Model</h4>
+
+                </a>
             </div>
+        }
 
-            <h4 id="text-white">PlayStation 4</h4>
-
-        </div>
     </a>
 
 

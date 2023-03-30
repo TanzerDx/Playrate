@@ -1,6 +1,5 @@
-﻿using BusinessLogic;
-using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection;
+﻿using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_DatabaseConnection.Consoles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +17,9 @@ namespace Desktop_App___Hristo_Ganchev
 
     public partial class AddConsole : Form
     {
-        BusinessLogic.Console console;
+        PLAYRATE_ClassLibrary.Consoles.Console console;
 
-        ConsoleLibrary consoleLibrary = new ConsoleLibrary();
+        ConsoleLibrary consoleLibrary = new ConsoleLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 

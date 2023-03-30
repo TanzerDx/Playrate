@@ -45,6 +45,16 @@ html {
     width: 1190px;
 }
 
+#div-content-box-consoles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
 #div-allgames {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

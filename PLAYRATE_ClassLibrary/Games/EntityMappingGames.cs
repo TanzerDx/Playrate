@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PLAYRATE_ClassLibrary.Games
 {
-    public static class EntityMapping
+    public static class EntityMappingGames
 	{
 		public static Game ToGame(this GameDTO gameDTO)
 		{
@@ -21,7 +21,7 @@ namespace PLAYRATE_ClassLibrary.Games
 				Rating = gameDTO.Rating,
 				Description = gameDTO.Description,
 				URL_Game = gameDTO.URL_Game,
-				URL_Page = gameDTO.URL_Page,
+				URL_Page = gameDTO.URL_Page
 			};
 		}
 
@@ -37,7 +37,7 @@ namespace PLAYRATE_ClassLibrary.Games
 				Rating = game.Rating,
 				Description = game.Description,
 				URL_Game = game.URL_Game,
-				URL_Page = game.URL_Page,
+				URL_Page = game.URL_Page
 			};
 		}
 	}

@@ -17,12 +17,13 @@
             @foreach (Game game in Model.Games)
             {
                 <div id="div-game">
-                    <a asp-page="Game" asp-route-name="@game.Name">
+                    <a asp-page="Game" asp-route-name="@game.Name" >
                         <div id="div-image-game">
                             <img src="@game.URL_Game" width="140" height="170" />
                         </div>
 
                         <h4 id="text-white">@game.Name</h4>
+                        <h6 id="text-white">@game.Rating</h6>
 
                     </a>
                 </div>

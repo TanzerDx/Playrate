@@ -79,14 +79,14 @@ namespace Desktop_App___Hristo_Ganchev
         {
             //try
             //{
-                gamesLibrary.AddGame(cbbConsole.Text, tbName.Text, cbbGenre.Text, tbReleaseDate.Text, tbDeveloper.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
+            gamesLibrary.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
 
-                MessageBox.Show("Game added successfully!");
+            MessageBox.Show("Game added successfully!");
 
-                HomePage homePage = new HomePage();
+            HomePage homePage = new HomePage();
 
-                homePage.Show();
-                this.Hide();
+            homePage.Show();
+            this.Hide();
             //}
             //catch
             //{

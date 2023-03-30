@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using PLAYRATE_ClassLibrary.Games;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace Home_Page___Hristo_Ganchev
 {
@@ -22,7 +24,10 @@ namespace Home_Page___Hristo_Ganchev
 
         public string SubmittedGenreFilter { get; private set; }
 
-        public string Console { get; private set; }
+        public string Model { get; private set; }
+
+        public List<Game> Games { get; private set; }
+
 
         [BindProperty]
         public BusinessLogic.Filter Filter { get; set; }
@@ -34,14 +39,12 @@ namespace Home_Page___Hristo_Ganchev
             _gameService = new GameService();
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(string model)
         {
-            return Page();
-        }
+            Model = model;
+            Games = _gameService.GetAll(model);
 
-        public List<Game> Games
-        {
-            get { return _gameService.GetAll("XboxONE"); }
+            return Page();
         }
 
         public void OnPost()

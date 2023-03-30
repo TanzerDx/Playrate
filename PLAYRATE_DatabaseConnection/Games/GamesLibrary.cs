@@ -20,17 +20,17 @@ namespace PLAYRATE_DatabaseConnection.Games
         public List<GameDTO> GetAll(string console)
         {
             List<GameDTO> games = new List<GameDTO>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console}", connection);
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console}", con);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
                     GameDTO gameDTO = CreateGameDTO(reader);
                     games.Add(gameDTO);
                 }
-                connection.Close();
+                con.Close();
             }
             return games;
         }
@@ -57,18 +57,18 @@ namespace PLAYRATE_DatabaseConnection.Games
         public GameDTO? GetGame(string name, string console)
         {
             GameDTO? gameDTO = null;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
+                con.Open();
                 SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Name = @Name",
-                    connection);
+                    con);
                 sqlCommand.Parameters.AddWithValue("@Name", name);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
                 {
                     gameDTO = CreateGameDTO(reader);
                 }
-                connection.Close();
+                con.Close();
             }
             return gameDTO;
         }
@@ -85,32 +85,32 @@ namespace PLAYRATE_DatabaseConnection.Games
                 Rating = reader.GetString(5),
                 Description = reader.GetString(6),
                 URL_Game = reader.GetString(7),
-                URL_Page = reader.GetString(8),
+                URL_Page = reader.GetString(8)
 
             };
         }
 
-        public void AddGame(string console, string name, string genre, string releaseDate, string developer, string rating, string desc, string urlGame, string urlPage)
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage)
         {
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
+                con.Open();
 
-                SqlCommand getMaxID = new SqlCommand($"SELECT COALESCE(MAX(ID), 0) FROM dbo.{console}", connection);
+                SqlCommand getMaxID = new SqlCommand($"SELECT COALESCE(MAX(ID), 0) FROM dbo.{console}", con);
 
                 int currentMaxID = (int)getMaxID.ExecuteScalar();
 
                 int newID = currentMaxID + 1;
 
-                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@ID, @Name, @Genre, @ReleaseDate, @Developer, @Rating, @Description, @URL_Game, @URL_Page)", connection);
+                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@ID, @Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page)", con);
 
 
                 cmd.Parameters.AddWithValue("@ID", newID);
                 cmd.Parameters.AddWithValue("@Name", name);
-                cmd.Parameters.AddWithValue("@Genre", genre);
-                cmd.Parameters.AddWithValue("@ReleaseDate", releaseDate);
                 cmd.Parameters.AddWithValue("@Developer", developer);
+                cmd.Parameters.AddWithValue("@ReleaseDate", releaseDate);
+                cmd.Parameters.AddWithValue("@Genre", genre);
                 cmd.Parameters.AddWithValue("@Rating", rating);
                 cmd.Parameters.AddWithValue("@Description", desc);
                 cmd.Parameters.AddWithValue("@URL_Game", urlGame);
@@ -118,22 +118,22 @@ namespace PLAYRATE_DatabaseConnection.Games
 
                 cmd.ExecuteNonQuery();
 
-                connection.Close();
+                con.Close();
             }
         }
 
         public void RemoveGame(string console, string tbID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 int id = Convert.ToInt32(tbID);
 
-                connection.Open();
+                con.Open();
 
-                SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.{console} WHERE ID='{id}'", connection);
+                SqlCommand cmd = new SqlCommand($"DELETE FROM dbo.{console} WHERE ID='{id}'", con);
                 cmd.ExecuteNonQuery();
 
-                connection.Close();
+                con.Close();
             }
         }
     }

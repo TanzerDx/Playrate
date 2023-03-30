@@ -1,6 +1,6 @@
 using BusinessLogic;
 using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection;
+using PLAYRATE_DatabaseConnection.Consoles;
 using PLAYRATE_DatabaseConnection.Games;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,12 +10,11 @@ namespace Desktop_App___Hristo_Ganchev
 {
     public partial class HomePage : Form
     {
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
-
-        ConsoleLibrary consoleLibrary = new ConsoleLibrary();
+        ConsoleLibrary consoleLibrary = new ConsoleLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
         
         GamesLibrary gamesLibrary = new GamesLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 

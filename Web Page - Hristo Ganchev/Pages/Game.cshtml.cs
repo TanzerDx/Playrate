@@ -17,11 +17,15 @@ namespace Home_Page___Hristo_Ganchev.Pages
         }
 
         public string Name{ get; private set; }
+
+        public string Model { get; private set; }
+
         public Game Game { get; private set; }
-        public void OnGet(string name)
+        public void OnGet(string name, string model)
         {
             Name = name;
-            Game = _gameService.GetGame(name , "XboxONE");
+            Model = model;
+            Game = _gameService.GetGame(name , "Playstation4");
         }
 
     }
