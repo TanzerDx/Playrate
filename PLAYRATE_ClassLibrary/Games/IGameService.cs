@@ -11,5 +11,7 @@ namespace PLAYRATE_ClassLibrary.Games
     {
         List<Game> GetAll(string console);
         Game GetGame(string name, string console);
+        void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage);
+        void RemoveGame(string console, string tbID);
     }
 }

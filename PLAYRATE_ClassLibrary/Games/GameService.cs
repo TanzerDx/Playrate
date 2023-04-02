@@ -29,5 +29,15 @@ namespace PLAYRATE_ClassLibrary.Games
             var gameDTO = _gamesLibrary.GetGame(name, console);
             return gameDTO.Value.ToGame();
         }
+
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage)
+        {
+            _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage);
+        }
+
+        public void RemoveGame(string console, string tbID)
+        {
+            _gamesLibrary.RemoveGame(console, tbID);
+        }
     }
 }

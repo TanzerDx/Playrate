@@ -11,5 +11,7 @@ namespace PLAYRATE_DatabaseConnection.Consoles
     {
         List<ConsoleDTO> GetAll();
         ConsoleDTO? GetConsole(string name);
+        void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform);
+        void RemoveConsole(string console);
     }
 }

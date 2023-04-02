@@ -1,4 +1,5 @@
 using BusinessLogic;
+using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_DatabaseConnection.Consoles;
 using PLAYRATE_DatabaseConnection.Games;
@@ -14,9 +15,9 @@ namespace Desktop_App___Hristo_Ganchev
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        ConsoleLibrary consoleLibrary = new ConsoleLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        ConsoleService consoleService = new ConsoleService();
         
-        GamesLibrary gamesLibrary = new GamesLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        GameService gamesService = new GameService();
 
         public HomePage()
         {
@@ -98,7 +99,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                gamesLibrary.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
+                gamesService.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
             }
             catch
             {
@@ -124,7 +125,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             { 
-                consoleLibrary.RemoveConsole(cbbConsole.Text);
+                consoleService.RemoveConsole(cbbConsole.Text);
                 MessageBox.Show("Console deleted successfully!");
 
                 cbbConsole.Items.Clear();

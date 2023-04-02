@@ -20,7 +20,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         Game game;
 
-        GamesLibrary gamesLibrary = new GamesLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        GameService gameService = new GameService();
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -77,21 +77,21 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            gamesLibrary.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
+            try
+            {
+                gameService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
 
-            MessageBox.Show("Game added successfully!");
+                MessageBox.Show("Game added successfully!");
 
-            HomePage homePage = new HomePage();
+                HomePage homePage = new HomePage();
 
-            homePage.Show();
-            this.Hide();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            //}
+                homePage.Show();
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            }
         }
     }
 }

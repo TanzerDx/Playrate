@@ -1,4 +1,5 @@
-﻿using PLAYRATE_ClassLibrary.Games;
+﻿using PLAYRATE_ClassLibrary.Consoles;
+using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_DatabaseConnection.Consoles;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Desktop_App___Hristo_Ganchev
     {
         PLAYRATE_ClassLibrary.Consoles.Console console;
 
-        ConsoleLibrary consoleLibrary = new ConsoleLibrary("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        ConsoleService consoleService = new ConsoleService();
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -48,7 +49,7 @@ namespace Desktop_App___Hristo_Ganchev
             try
             {
 
-                consoleLibrary.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
+                consoleService.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
 
 				MessageBox.Show("Console added successfully!");
 

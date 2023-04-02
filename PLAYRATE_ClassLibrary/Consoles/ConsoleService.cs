@@ -31,5 +31,16 @@ namespace PLAYRATE_ClassLibrary.Consoles
             var consoleDTO = _consolesLibrary.GetConsole(name);
             return consoleDTO.Value.ToConsole();
         }
+
+        public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+        {
+            _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
+        }
+
+        public void RemoveConsole(string console)
+        {
+            _consolesLibrary.RemoveConsole(console);
+        }
+
     }
 }
