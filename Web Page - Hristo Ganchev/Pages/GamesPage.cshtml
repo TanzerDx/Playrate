@@ -30,7 +30,6 @@
     </div>
 
 
-    
 <div class="sidebar-filter">
 
     <form method="post" asp-page="./GamesPage">
@@ -58,8 +57,8 @@
            <div id="checkbox-field">
                 @foreach (BusinessLogic.Genres genre in Enum.GetValues(typeof(BusinessLogic.Genres)))
                 {
-                    <input name="ChkBox" type="checkbox" asp-for="Filter.GenreFilter" value="@genre">
-                    <label id="text-white" for="checkbox@genre">@genre</label>
+                    <input type="radio" asp-for="Filter.GenreFilter" value="@genre">
+                    <label id="text-white" asp-for="Filter.GenreFilter">@genre</label>
                 }
             </div>
 

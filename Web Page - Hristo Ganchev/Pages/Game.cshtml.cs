@@ -21,6 +21,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         public string Model { get; private set; }
 
         public Game Game { get; private set; }
+
         public void OnGet(string name, string model)
         {
             Name = name;

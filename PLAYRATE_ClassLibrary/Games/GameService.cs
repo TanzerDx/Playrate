@@ -30,6 +30,24 @@ namespace PLAYRATE_ClassLibrary.Games
             return gameDTO.Value.ToGame();
         }
 
+        public List<Game> GetByGenre(string genre, string console)
+        {
+            var games = _gamesLibrary.GetByGenre(genre, console).Select(dto => dto.ToGame()).ToList();
+            return games;
+        }
+
+        public List<Game> GetByMainFilter(string filter, string console)
+        {
+            var games = _gamesLibrary.GetByMainFilter(filter, console).Select(dto => dto.ToGame()).ToList();
+            return games;
+        }
+
+        public List<Game> GetByKeyword(string keyword,string console)
+        {
+            var games = _gamesLibrary.GetByKeyword(keyword, console).Select(dto => dto.ToGame()).ToList();
+            return games;
+        }
+
         public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage)
         {
             _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage);

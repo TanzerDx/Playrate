@@ -18,8 +18,6 @@ namespace Desktop_App___Hristo_Ganchev
 
     public partial class AddConsole : Form
     {
-        PLAYRATE_ClassLibrary.Consoles.Console console;
-
         ConsoleService consoleService = new ConsoleService();
 
         Color bgcolor = Color.FromArgb(48, 52, 145);

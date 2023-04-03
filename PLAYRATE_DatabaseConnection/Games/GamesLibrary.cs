@@ -35,25 +35,6 @@ namespace PLAYRATE_DatabaseConnection.Games
             return games;
         }
 
-        //public GameDTO? GetByGenre(string genre, string console)
-        //{
-        //    GameDTO? gameDTO = null;
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
-        //        SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = @genre",
-        //            connection);
-        //        sqlCommand.Parameters.AddWithValue("@genre", genre);
-        //        SqlDataReader reader = sqlCommand.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            gameDTO = CreateGameDTO(reader);
-        //        }
-        //        connection.Close();
-        //    }
-        //    return gameDTO;
-        //}
-
         public GameDTO? GetGame(string name, string console)
         {
             GameDTO? gameDTO = null;
@@ -71,6 +52,88 @@ namespace PLAYRATE_DatabaseConnection.Games
                 con.Close();
             }
             return gameDTO;
+        }
+
+        public List<GameDTO> GetByGenre(string genre, string console)
+        {
+            List<GameDTO> games = new List<GameDTO>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    GameDTO gameDTO = CreateGameDTO(reader);
+                    games.Add(gameDTO);
+                }
+                con.Close();
+            }
+            return games;
+        }
+
+        public List<GameDTO> GetByMainFilter(string filter, string console)
+        {
+            List<GameDTO> games = new List<GameDTO>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = null;
+
+                SqlCommand GetSqlCommand()
+                {
+                    switch (filter)
+                    {
+                        case "Highest rating":
+                            {
+                                sqlCommand = new SqlCommand($"select * from dbo.{console} order by Rating DESC", con);
+                                break;
+                            }
+
+                        case "Latest release":
+                            {
+                                sqlCommand = new SqlCommand($"select * from dbo.{console} order by Release_Date DESC", con);
+                                break;
+                            }
+
+                        case "Most reviews":
+                            {
+                                //sqlCommand = new SqlCommand($"select * from dbo.{console} order by Rating DESC", con);
+                                break;
+                            }
+                    }
+                    return sqlCommand;
+                }
+
+                GetSqlCommand();
+
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    GameDTO gameDTO = CreateGameDTO(reader);
+                    games.Add(gameDTO);
+                }
+                con.Close();
+            }
+            return games;
+        }
+
+        public List<GameDTO> GetByKeyword(string keyword, string console)
+        {
+            List<GameDTO> games = new List<GameDTO>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    GameDTO gameDTO = CreateGameDTO(reader);
+                    games.Add(gameDTO);
+                }
+                con.Close();
+            }
+            return games;
         }
 
         private GameDTO CreateGameDTO(SqlDataReader reader)

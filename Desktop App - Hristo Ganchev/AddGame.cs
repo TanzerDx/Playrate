@@ -17,9 +17,6 @@ namespace Desktop_App___Hristo_Ganchev
 {
     public partial class AddGame : Form
     {
-
-        Game game;
-
         GameService gameService = new GameService();
 
         Color bgcolor = Color.FromArgb(48, 52, 145);

@@ -37,7 +37,9 @@ namespace Home_Page___Hristo_Ganchev
             PageTitle = "GAMES:";
             _logger = logger;
             _gameService = new GameService();
+            Games = new List<Game>();
         }
+
 
         public IActionResult OnGet(string model)
         {
@@ -49,13 +51,13 @@ namespace Home_Page___Hristo_Ganchev
 
         public void OnPost()
         {
-            if (ModelState.IsValid)
-            {
-                SubmittedKeyword = $"{Filter.GetKeyword()}";
-				SubmittedMainFilter = $"{Filter.GetMainFilter()}";
-                SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
+            SubmittedKeyword = $"{Filter.GetKeyword()}";
+            SubmittedMainFilter = $"{Filter.GetMainFilter()}";
+            SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-			}
+            //Games = _gameService.GetByKeyword(SubmittedKeyword, "Playstation4");
+            Games = _gameService.GetByMainFilter(SubmittedMainFilter, "XboxONE");
+            //Games = _gameService.GetByGenre(SubmittedGenreFilter, "Playstation4");
         }
     }
 }
