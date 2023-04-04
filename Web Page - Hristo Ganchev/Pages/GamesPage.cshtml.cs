@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using PLAYRATE_ClassLibrary.Games;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
 namespace Home_Page___Hristo_Ganchev
@@ -24,7 +25,7 @@ namespace Home_Page___Hristo_Ganchev
 
         public string SubmittedGenreFilter { get; private set; }
 
-        public string Model { get; private set; }
+        public static string Model { get; set; }
 
         public List<Game> Games { get; private set; }
 
@@ -40,7 +41,6 @@ namespace Home_Page___Hristo_Ganchev
             Games = new List<Game>();
         }
 
-
         public IActionResult OnGet(string model)
         {
             Model = model;
@@ -55,9 +55,10 @@ namespace Home_Page___Hristo_Ganchev
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            //Games = _gameService.GetByKeyword(SubmittedKeyword, "Playstation4");
-            Games = _gameService.GetByMainFilter(SubmittedMainFilter, "XboxONE");
-            //Games = _gameService.GetByGenre(SubmittedGenreFilter, "Playstation4");
+            Games = _gameService.GetByKeyword(SubmittedKeyword, Model);
+            //Games = _gameService.GetByMainFilter(SubmittedMainFilter, Model);
+            //Games = _gameService.GetByGenre(SubmittedGenreFilter, Model);
+
         }
     }
 }

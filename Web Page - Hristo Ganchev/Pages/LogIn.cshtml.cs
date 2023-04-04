@@ -56,6 +56,8 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				{
 					Response.Redirect("/ProfilePage");
 				}
+
+			
 		}
 	}
 }
