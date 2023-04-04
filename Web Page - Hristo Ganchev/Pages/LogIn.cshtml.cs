@@ -11,11 +11,11 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public string PageTitle { get; private set; }
 
-		//public int LoggedInUser { get; private set; }
-
 		public string LogInResult { get; private set; }
 
-		public string SubmittedEmail { get; private set; }
+        public string Username { get; private set; }
+
+        public string SubmittedEmail { get; private set; }
 		
 		public string SubmittedPassword { get; private set; }
 
@@ -40,21 +40,26 @@ namespace Home_Page___Hristo_Ganchev.Pages
 			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
 
 			string query = $"SELECT COUNT (*) FROM dbo.Accounts WHERE Email='{SubmittedEmail}' AND Password='{SubmittedPassword}'";
+			string getName = $"SELECT Username FROM dbo.Accounts WHERE Email='{SubmittedEmail}' AND Password='{SubmittedPassword}'";
 
-			con.Open();
+            con.Open();
 			
 			SqlCommand command = new SqlCommand(query, con);
 
-			int v = (int)command.ExecuteScalar();
+            int v = (int)command.ExecuteScalar();
 
-				if (v != 1)
+            if (v != 1)
 				{
 					LogInResult = "Invalid email or password.";
 					return;
 				}
 				else
 				{
-					Response.Redirect("/ProfilePage");
+                SqlCommand command2 = new SqlCommand(getName, con);
+                Username = command2.ExecuteScalar().ToString();
+
+                HttpContext.Session.SetString("Username", Username);
+                Response.Redirect("/ProfilePage");
 				}
 
 			
