@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,24 +20,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    @*@if (HttpContextAccessor.HttpContext.Session != null)
-                    {*@
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/LogIn">LOG IN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/ConsolesPage">CONSOLES</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Statistics">STATISTICS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/FindUs">FIND US</a>
-                            </li>
-                        </ul>
-                  @*  }
-                    else
+                    @if (Context.Session.GetString("Username") != null)
                     {
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
@@ -51,10 +36,27 @@
                                 <a class="nav-link text-dark" asp-area="" asp-page="/FindUs">FIND US</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/LogIn">LOG OUT</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/LogOut">LOG OUT</a>
                             </li>
                         </ul>
-                    }*@
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/ConsolesPage">CONSOLES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Statistics">STATISTICS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/FindUs">FIND US</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/LogIn">LOG IN</a>
+                            </li>
+                        </ul>
+                    }
                 </div>
             </div>
         </nav>
