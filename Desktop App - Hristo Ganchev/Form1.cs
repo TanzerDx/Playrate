@@ -11,7 +11,7 @@ namespace Desktop_App___Hristo_Ganchev
 {
     public partial class HomePage : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 

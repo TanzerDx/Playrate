@@ -11,7 +11,7 @@ namespace PLAYRATE_DatabaseConnection
 {
 	public class DataLibrary
 	{
-		SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+		SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
 		//public void ShowAllConsoles(string comboBox)
 		//{

@@ -9,8 +9,7 @@ namespace PLAYRATE_ClassLibrary.Games
 {
     public class GameService : IGameService
     {
-        private const string _connectionString = "Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial " +
-            "Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False";
+        private const string _connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr";
         private readonly IGameRepository _gamesLibrary;
 
         public GameService()

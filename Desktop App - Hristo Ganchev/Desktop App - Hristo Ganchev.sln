@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.PresentationLayer", "1.Pr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.DatabaseConnections", "3.DatabaseConnections", "{4311819D-7193-450C-91B7-B72B38F72115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLAYRATE_DatabaseConnection", "..\PLAYRATE_DatabaseConnection\PLAYRATE_DatabaseConnection.csproj", "{EAB06271-757D-434E-909F-BFCB9D98B796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLAYRATE_DatabaseConnection", "..\PLAYRATE_DatabaseConnection\PLAYRATE_DatabaseConnection.csproj", "{EAB06271-757D-434E-909F-BFCB9D98B796}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
