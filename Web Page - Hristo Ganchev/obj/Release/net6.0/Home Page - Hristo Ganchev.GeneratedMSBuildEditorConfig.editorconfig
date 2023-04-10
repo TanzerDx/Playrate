@@ -9,41 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Home_Page___Hristo_Ganchev
 build_property.RootNamespace = Home_Page___Hristo_Ganchev
-build_property.ProjectDir = D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Web Page - Hristo Ganchev\
+build_property.ProjectDir = D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Uni\Semester 2\Assignments\Individual Project\Individual Project Week 3\Web Page - Hristo Ganchev
+build_property.MSBuildProjectDirectory = D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/Error.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/ConsolesPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc29sZXNQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/GamesPage.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/FindUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmluZFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Game.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/GamesPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2FtZXNQYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/Index.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/JustCause4.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSnVzdENhdXNlNC5jc2h0bWw=
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nSW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/LogOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nT3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/ProfilePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/_ViewImports.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhdGlzdGljcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/_ViewStart.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project Week 3/Web Page - Hristo Ganchev/Pages/Shared/_Layout.cshtml]
+[D:/Uni/Semester 2/Assignments/Individual Project/Individual Project/individual-assignment-hristo-ganchev/Web Page - Hristo Ganchev/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-koicd21zrn
