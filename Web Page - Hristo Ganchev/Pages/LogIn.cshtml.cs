@@ -37,7 +37,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 			SubmittedEmail = LogIn.GetEmail();
 			SubmittedPassword = LogIn.GetPassword();
 
-			SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+			SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
 			string query = $"SELECT COUNT (*) FROM dbo.Accounts WHERE Email='{SubmittedEmail}' AND Password='{SubmittedPassword}'";
 			string getName = $"SELECT Username FROM dbo.Accounts WHERE Email='{SubmittedEmail}' AND Password='{SubmittedPassword}'";

@@ -32,5 +32,17 @@ namespace PLAYRATE_DatabaseConnection
 				cmd.ExecuteNonQuery();
 			}
 		}
+
+		public void RemoveAccount(int id)
+		{
+			using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+			{
+				connection.Open();
+
+				SqlCommand cmd = new SqlCommand($"DELETE from dbo.Accounts WHERE ID = '{id}'", connection);
+
+				cmd.ExecuteNonQuery();
+			}
+		}
 	}
 }

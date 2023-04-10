@@ -15,7 +15,6 @@
 			Password = password;
 		}
 
-
 		public string GetEmail()
 		{
 			return Email;

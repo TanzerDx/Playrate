@@ -100,7 +100,9 @@ namespace Desktop_App___Hristo_Ganchev
             try
             {
                 gamesService.RemoveGame(cbbConsole.Text, tbDeleteIDGame.Text);
-            }
+
+				MessageBox.Show("Game deleted successfully!");
+			}
             catch
             {
                 MessageBox.Show("Please make sure you have entered a correct ID!");
