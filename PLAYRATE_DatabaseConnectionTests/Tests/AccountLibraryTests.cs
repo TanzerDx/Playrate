@@ -45,8 +45,8 @@ namespace PLAYRATE_DatabaseConnection.Tests
 			using (SqlConnection con = new SqlConnection(connectionString))
 			{
 				con.Open();
-				SqlCommand createAccount = new SqlCommand($"SELECT * FROM dbo.Accounts", con);
-				SqlDataReader reader = createAccount.ExecuteReader();
+				SqlCommand deleteAccount = new SqlCommand($"SELECT * FROM dbo.Accounts", con);
+				SqlDataReader reader = deleteAccount.ExecuteReader();
 				Assert.IsTrue(reader.HasRows);
 				reader.Read();
 				con.Close();

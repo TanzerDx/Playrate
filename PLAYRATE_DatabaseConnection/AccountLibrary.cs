@@ -10,7 +10,7 @@ namespace PLAYRATE_DatabaseConnection
 	public class AccountLibrary
 	{
 
-		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword)
+		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt)
 		{
 			using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
 			{
@@ -22,12 +22,13 @@ namespace PLAYRATE_DatabaseConnection
 
 				int newID = currentMaxID + 1;
 
-				SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password)", connection);
+				SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password, @Salt)", connection);
 
 				cmd.Parameters.AddWithValue("@ID", newID);
 				cmd.Parameters.AddWithValue("@Email", submittedEmail);
 				cmd.Parameters.AddWithValue("@Username", submittedUsername);
 				cmd.Parameters.AddWithValue("@Password", submittedPassword);
+				cmd.Parameters.AddWithValue("@Salt", salt);
 
 				cmd.ExecuteNonQuery();
 			}

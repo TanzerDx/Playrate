@@ -38,14 +38,6 @@ namespace PLAYRATE_DatabaseConnection.Games.Tests
 				SqlDataReader reader = createGame.ExecuteReader();
 				Assert.IsTrue(reader.HasRows);
 				reader.Read();
-				//Assert.AreEqual(name, reader.GetString(1));
-				//Assert.AreEqual(developer, reader.GetString(2));
-				//Assert.AreEqual(releaseDate, reader.GetString(3));
-				//Assert.AreEqual(genre, reader.GetString(4));
-				//Assert.AreEqual(rating, reader.GetString(5));
-				//Assert.AreEqual(desc, reader.GetString(6));
-				//Assert.AreEqual(urlGame, reader.GetString(7));
-				//Assert.AreEqual(urlPage, reader.GetString(8));
 				con.Close();
 			}
 
@@ -62,8 +54,8 @@ namespace PLAYRATE_DatabaseConnection.Games.Tests
 			using (SqlConnection con = new SqlConnection(connectionString))
 			{
 				con.Open();
-				SqlCommand getAll = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-				SqlDataReader reader = getAll.ExecuteReader();
+				SqlCommand removeGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+				SqlDataReader reader = removeGame.ExecuteReader();
 				Assert.IsTrue(reader.HasRows);
 				reader.Read();
 				con.Close();

@@ -23,5 +23,15 @@ namespace PLAYRATE_ClassLibrary.Consoles
 
         public string Chat_Platform { get; init; }
 
+        public Console()
+        {
+
+        }
+
+        public void ChangeCoontrollerType(string controllerType)
+        { 
+            
+        }
+
     }
 }

@@ -130,7 +130,7 @@ namespace PLAYRATE_DatabaseConnection
 			con.Close();
 		}
 
-		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword)
+		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt)
 		{
 			con.Open();
 
@@ -140,12 +140,13 @@ namespace PLAYRATE_DatabaseConnection
 
 			int newID = currentMaxID + 1;
 
-			SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password)", con);
+			SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password, @Salt)", con);
 
 			cmd.Parameters.AddWithValue("@ID", newID);
 			cmd.Parameters.AddWithValue("@Email", submittedEmail);
 			cmd.Parameters.AddWithValue("@Username", submittedUsername);
 			cmd.Parameters.AddWithValue("@Password", submittedPassword);
+			cmd.Parameters.AddWithValue("@Salt", salt);
 
 			cmd.ExecuteNonQuery();
 
