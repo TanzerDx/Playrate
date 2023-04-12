@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +45,54 @@ namespace PLAYRATE_DatabaseConnection
 
 				cmd.ExecuteNonQuery();
 			}
+		}
+
+		public string GetUsernameFromEmail(string email)
+		{
+			using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+			{
+				con.Open();
+
+				string query = $"SELECT Username FROM dbo.Accounts WHERE Email='{email}'";
+				SqlCommand command = new SqlCommand(query, con);
+
+				return command.ExecuteScalar().ToString();
+			}
+		}
+
+		public SqlDataReader GetAccountLogIn(string email)
+		{
+			SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr");
+
+			con.Open();
+
+			string query = $"SELECT Password, Salt FROM dbo.Accounts WHERE Email='{email}'";
+			SqlCommand command = new SqlCommand(query, con);
+			SqlDataReader reader = command.ExecuteReader();
+
+			return reader;
+		}
+
+
+		public string GenerateSalt()
+		{
+			byte[] salt = new byte[32];
+			using (var rng = RandomNumberGenerator.Create())
+			{
+				rng.GetBytes(salt);
+			}
+			return Convert.ToBase64String(salt);
+		}
+
+		public string HashPassword(string password)
+		{
+			byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password);
+			byte[] hashBytes;
+			using (var algorithm = new Rfc2898DeriveBytes(password, saltedPasswordBytes, 10000, HashAlgorithmName.SHA512))
+			{
+				hashBytes = algorithm.GetBytes(32);
+			}
+			return Convert.ToBase64String(hashBytes);
 		}
 	}
 }

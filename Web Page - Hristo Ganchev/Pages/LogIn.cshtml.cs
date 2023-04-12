@@ -5,11 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Text;
+using PLAYRATE_DatabaseConnection;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
 	public class LogInModel : PageModel
     {
+
+		AccountLibrary accountLibrary = new AccountLibrary();
 
 		public string PageTitle { get; private set; }
 
@@ -41,25 +44,19 @@ namespace Home_Page___Hristo_Ganchev.Pages
 			SubmittedEmail = LogIn.GetEmail();
 			SubmittedPassword = LogIn.GetPassword();
 
-			using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
-			{
-				con.Open();
-
-				string query = $"SELECT Password, Salt FROM dbo.Accounts WHERE Email='{SubmittedEmail}'";
-				SqlCommand command = new SqlCommand(query, con);
-				SqlDataReader reader = command.ExecuteReader();
-
+			SqlDataReader reader = accountLibrary.GetAccountLogIn(SubmittedEmail);
+				
 				if (reader.Read())
 				{
 					string storedHashedPassword = reader.GetString(0);
 					string salt = reader.GetString(1);
 
 					string saltedPassword = $"{SubmittedPassword}{salt}{pepper}";
-					string hashedPassword = HashPassword(saltedPassword);
+					string hashedPassword = accountLibrary.HashPassword(saltedPassword);
 
 					if (hashedPassword == storedHashedPassword)
 					{
-						Username = GetUsernameFromEmail(SubmittedEmail);
+						Username = accountLibrary.GetUsernameFromEmail(SubmittedEmail);
 						HttpContext.Session.SetString("Username", Username);
 						Response.Redirect("/ProfilePage");
 					}
@@ -72,32 +69,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				{
 					LogInResult = "Invalid email or password.";
 				}
-			}
+		
 		}
 
-		private string GetUsernameFromEmail(string email)
-		{
-			using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
-			{
-				con.Open();
-
-				string query = $"SELECT Username FROM dbo.Accounts WHERE Email='{email}'";
-				SqlCommand command = new SqlCommand(query, con);
-
-				return command.ExecuteScalar().ToString();
-			}
-		}
-
-		private string HashPassword(string password)
-		{
-			byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password);
-			byte[] hashBytes;
-			using (var algorithm = new Rfc2898DeriveBytes(password, saltedPasswordBytes, 10000, HashAlgorithmName.SHA512))
-			{
-				hashBytes = algorithm.GetBytes(32);
-			}
-			return Convert.ToBase64String(hashBytes);
-		}
 	}
 }
 

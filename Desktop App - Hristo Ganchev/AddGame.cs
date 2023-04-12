@@ -21,7 +21,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-8AACUE7\\SQLEXPRESS;Initial Catalog=dbPLAYRATE;Integrated Security=True;Pooling=False");
+        SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
         public AddGame()
         {
@@ -45,29 +45,29 @@ namespace Desktop_App___Hristo_Ganchev
             }
         }
 
-        public void GetConsoles()
-        {
-            con.Open();
+		public void GetConsoles()
+		{
+			con.Open();
 
-            string query = "SELECT Model FROM dbo.Consoles";
+			string query = "SELECT Model FROM dbo.Consoles";
 
-            using (SqlCommand command = new SqlCommand(query, con))
-            {
+			using (SqlCommand command = new SqlCommand(query, con))
+			{
 
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
+				using (SqlDataReader reader = command.ExecuteReader())
+				{
 
-                    while (reader.Read())
-                    {
-                        cbbConsole.Items.Add(reader.GetString(0));
-                    }
-                }
-            }
+					while (reader.Read())
+					{
+						cbbConsole.Items.Add(reader.GetString(0));
+					}
+				}
+			}
 
-            con.Close();
-        }
+			con.Close();
+		}
 
-        private void AddGame_Load(object sender, EventArgs e)
+		private void AddGame_Load(object sender, EventArgs e)
         {
 
         }

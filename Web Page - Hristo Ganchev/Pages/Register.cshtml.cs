@@ -48,34 +48,14 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				SubmittedUsername = $"{Account.GetName()}";
 				SubmittedPassword = $"{Account.GetPassword()}";
 
-				Salt = GenerateSalt();
+				Salt = accountLibrary.GenerateSalt();
 
 				string saltedPassword = $"{SubmittedPassword}{Salt}{pepper}";
-				HashedPassword = HashPassword(saltedPassword);
+				HashedPassword = accountLibrary.HashPassword(saltedPassword);
 
 				accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword, Salt);
 			}
 		}
 
-		private string GenerateSalt()
-		{
-			byte[] salt = new byte[32];
-			using (var rng = RandomNumberGenerator.Create())
-			{
-				rng.GetBytes(salt);
-			}
-			return Convert.ToBase64String(salt);
-		}
-
-		private string HashPassword(string password)
-		{
-			byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password);
-			byte[] hashBytes;
-			using (var algorithm = new Rfc2898DeriveBytes(password, saltedPasswordBytes, 10000, HashAlgorithmName.SHA512))
-			{
-				hashBytes = algorithm.GetBytes(32);
-			}
-			return Convert.ToBase64String(hashBytes);
-		}
 	}
 }
