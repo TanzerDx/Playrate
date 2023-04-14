@@ -1,6 +1,4 @@
 ﻿using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.Consoles;
-using PLAYRATE_DatabaseConnection.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +12,9 @@ namespace PLAYRATE_ClassLibrary.Consoles
         private const string _connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr";
         private readonly IConsoleRepository _consolesLibrary;
 
-        public ConsoleService()
+        public ConsoleService(IConsoleRepository _consolesLibrary)
         {
-            _consolesLibrary = new ConsoleLibrary(_connectionString);
+            this._consolesLibrary = _consolesLibrary;
         }
 
         public List<Console> GetAll()

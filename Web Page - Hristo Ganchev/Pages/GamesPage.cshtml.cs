@@ -2,7 +2,9 @@ using Home_Page___Hristo_Ganchev.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_DatabaseConnection;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
@@ -13,7 +15,9 @@ namespace Home_Page___Hristo_Ganchev
     {
         private readonly ILogger<GamesPageModel> _logger;
 
-        private IGameService _gameService;
+        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+
+        GameService gameService;
 
         public string UserName { get; private set; }
 
@@ -37,14 +41,14 @@ namespace Home_Page___Hristo_Ganchev
         {
             PageTitle = "GAMES:";
             _logger = logger;
-            _gameService = new GameService();
+            gameService = new GameService(gamesRepository);
             Games = new List<Game>();
         }
 
         public IActionResult OnGet(string model)
         {
             Model = model;
-            Games = _gameService.GetAll(model);
+            Games = gameService.GetAll(model);
 
             return Page();
         }
@@ -55,7 +59,7 @@ namespace Home_Page___Hristo_Ganchev
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            Games = _gameService.GetByKeyword(SubmittedKeyword, Model);
+            Games = gameService.GetByKeyword(SubmittedKeyword, Model);
             //Games = _gameService.GetByMainFilter(SubmittedMainFilter, Model);
             //Games = _gameService.GetByGenre(SubmittedGenreFilter, Model);
 

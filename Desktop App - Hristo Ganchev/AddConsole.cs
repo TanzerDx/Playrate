@@ -1,6 +1,7 @@
-﻿using PLAYRATE_ClassLibrary.Consoles;
+﻿using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.Consoles;
+using PLAYRATE_DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,8 @@ namespace Desktop_App___Hristo_Ganchev
 
     public partial class AddConsole : Form
     {
-        ConsoleService consoleService = new ConsoleService();
+        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        ConsoleService consoleService;
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -34,6 +36,8 @@ namespace Desktop_App___Hristo_Ganchev
             lblChatPlatform.BackColor = bgcolor;
             lblAddConsole.BackColor = bgcolor;
             lblURLConsole.BackColor = bgcolor;
+
+            consoleService = new ConsoleService(consoleRepository);
         }
 
 

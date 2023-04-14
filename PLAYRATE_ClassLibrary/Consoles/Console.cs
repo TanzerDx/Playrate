@@ -27,11 +27,5 @@ namespace PLAYRATE_ClassLibrary.Consoles
         {
 
         }
-
-        public void ChangeCoontrollerType(string controllerType)
-        { 
-            
-        }
-
     }
 }

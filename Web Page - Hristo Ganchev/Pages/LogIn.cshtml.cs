@@ -5,14 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 using System.Text;
+using PLAYRATE_ClassLibrary.Accounts;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_DatabaseConnection;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
-	public class LogInModel : PageModel
+    public class LogInModel : PageModel
     {
+        IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
-		AccountLibrary accountLibrary = new AccountLibrary();
+        AccountService accountLibrary;
 
 		public string PageTitle { get; private set; }
 
@@ -32,7 +35,8 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		public LogInModel()
 		{
 			PageTitle = "LOG IN:";
-		}
+            accountLibrary = new AccountService(accountRepository);
+        }
 
 		public void OnGet()
 		{
@@ -44,32 +48,32 @@ namespace Home_Page___Hristo_Ganchev.Pages
 			SubmittedEmail = LogIn.GetEmail();
 			SubmittedPassword = LogIn.GetPassword();
 
-			SqlDataReader reader = accountLibrary.GetAccountLogIn(SubmittedEmail);
-				
-				if (reader.Read())
+			SqlDataReader reader = accountLibrary.GetAccountLogIn(SubmittedEmail) ;
+
+			if (reader.Read())
+			{
+				string storedHashedPassword = reader.GetString(0);
+				string salt = reader.GetString(1);
+
+				string saltedPassword = $"{SubmittedPassword}{salt}{pepper}";
+				string hashedPassword = accountLibrary.HashPassword(saltedPassword);
+
+				if (hashedPassword == storedHashedPassword)
 				{
-					string storedHashedPassword = reader.GetString(0);
-					string salt = reader.GetString(1);
-
-					string saltedPassword = $"{SubmittedPassword}{salt}{pepper}";
-					string hashedPassword = accountLibrary.HashPassword(saltedPassword);
-
-					if (hashedPassword == storedHashedPassword)
-					{
-						Username = accountLibrary.GetUsernameFromEmail(SubmittedEmail);
-						HttpContext.Session.SetString("Username", Username);
-						Response.Redirect("/ProfilePage");
-					}
-					else
-					{
-						LogInResult = "Invalid email or password.";
-					}
+					Username = accountLibrary.GetUsernameFromEmail(SubmittedEmail);
+					HttpContext.Session.SetString("Username", Username);
+					Response.Redirect("/ProfilePage");
 				}
 				else
 				{
 					LogInResult = "Invalid email or password.";
 				}
-		
+			}
+			else
+			{
+				LogInResult = "Invalid email or password.";
+			}
+
 		}
 
 	}

@@ -1,98 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using PLAYRATE_ClassLibrary;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace PLAYRATE_DatabaseConnection
 {
-	public class AccountLibrary
-	{
+    public class AccountLibrary : IAccountRepository
+    {
+        private readonly string connectionString;
 
-		public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt)
-		{
-			using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
-			{
-				connection.Open();
+        public AccountLibrary(string con)
+        {
+            connectionString = con;
+        }
 
-				SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Accounts", connection);
+        public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            {
+                connection.Open();
 
-				int currentMaxID = (int)getMaxID.ExecuteScalar();
+                SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Accounts", connection);
 
-				int newID = currentMaxID + 1;
+                int currentMaxID = (int)getMaxID.ExecuteScalar();
 
-				SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password, @Salt)", connection);
+                int newID = currentMaxID + 1;
 
-				cmd.Parameters.AddWithValue("@ID", newID);
-				cmd.Parameters.AddWithValue("@Email", submittedEmail);
-				cmd.Parameters.AddWithValue("@Username", submittedUsername);
-				cmd.Parameters.AddWithValue("@Password", submittedPassword);
-				cmd.Parameters.AddWithValue("@Salt", salt);
+                SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@ID, @Email, @Username, @Password, @Salt)", connection);
 
-				cmd.ExecuteNonQuery();
-			}
-		}
+                cmd.Parameters.AddWithValue("@ID", newID);
+                cmd.Parameters.AddWithValue("@Email", submittedEmail);
+                cmd.Parameters.AddWithValue("@Username", submittedUsername);
+                cmd.Parameters.AddWithValue("@Password", submittedPassword);
+                cmd.Parameters.AddWithValue("@Salt", salt);
 
-		public void RemoveAccount(int id)
-		{
-			using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
-			{
-				connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
-				SqlCommand cmd = new SqlCommand($"DELETE from dbo.Accounts WHERE ID = '{id}'", connection);
+        public void RemoveAccount(int id)
+        {
+            using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            {
+                connection.Open();
 
-				cmd.ExecuteNonQuery();
-			}
-		}
+                SqlCommand cmd = new SqlCommand($"DELETE from dbo.Accounts WHERE ID = '{id}'", connection);
 
-		public string GetUsernameFromEmail(string email)
-		{
-			using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
-			{
-				con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
-				string query = $"SELECT Username FROM dbo.Accounts WHERE Email='{email}'";
-				SqlCommand command = new SqlCommand(query, con);
+        public string GetUsernameFromEmail(string email)
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            {
+                con.Open();
 
-				return command.ExecuteScalar().ToString();
-			}
-		}
+                string query = $"SELECT Username FROM dbo.Accounts WHERE Email='{email}'";
+                SqlCommand command = new SqlCommand(query, con);
 
-		public SqlDataReader GetAccountLogIn(string email)
-		{
-			SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr");
+                return command.ExecuteScalar().ToString();
+            }
+        }
 
-			con.Open();
+        public SqlDataReader GetAccountLogIn(string email)
+        {
+            SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr");
 
-			string query = $"SELECT Password, Salt FROM dbo.Accounts WHERE Email='{email}'";
-			SqlCommand command = new SqlCommand(query, con);
-			SqlDataReader reader = command.ExecuteReader();
+            con.Open();
 
-			return reader;
-		}
+            string query = $"SELECT Password, Salt FROM dbo.Accounts WHERE Email='{email}'";
+            SqlCommand command = new SqlCommand(query, con);
+            SqlDataReader reader = command.ExecuteReader();
 
+            return reader;
+        }
 
-		public string GenerateSalt()
-		{
-			byte[] salt = new byte[32];
-			using (var rng = RandomNumberGenerator.Create())
-			{
-				rng.GetBytes(salt);
-			}
-			return Convert.ToBase64String(salt);
-		}
-
-		public string HashPassword(string password)
-		{
-			byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password);
-			byte[] hashBytes;
-			using (var algorithm = new Rfc2898DeriveBytes(password, saltedPasswordBytes, 10000, HashAlgorithmName.SHA512))
-			{
-				hashBytes = algorithm.GetBytes(32);
-			}
-			return Convert.ToBase64String(hashBytes);
-		}
-	}
+    }
 }

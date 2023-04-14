@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.Games;
+using PLAYRATE_DatabaseConnection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +18,12 @@ namespace Desktop_App___Hristo_Ganchev
 {
     public partial class AddGame : Form
     {
-        GameService gameService = new GameService();
-
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
         SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+
+        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        GameService gameService;
 
         public AddGame()
         {
@@ -38,6 +40,8 @@ namespace Desktop_App___Hristo_Ganchev
             lblDesc.BackColor = bgcolor;
             lblURLGame.BackColor = bgcolor;
             lblURLPage.BackColor = bgcolor;
+
+            gameService = new GameService(gamesRepository);
 
             foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
             {

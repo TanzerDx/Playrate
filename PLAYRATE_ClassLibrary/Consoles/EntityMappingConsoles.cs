@@ -1,6 +1,4 @@
 ﻿using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.Consoles;
-using PLAYRATE_DatabaseConnection.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;

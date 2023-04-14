@@ -151,7 +151,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "PLAYRATE_DatabaseConnection": "1.0.0"
+          "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
           "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
@@ -164,6 +164,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "PLAYRATE_ClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {

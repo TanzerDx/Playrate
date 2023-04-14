@@ -93,7 +93,7 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "PLAYRATE_ClassLibrary/1.0.0": {
         "dependencies": {
-          "PLAYRATE_DatabaseConnection": "1.0.0"
+          "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
           "PLAYRATE_ClassLibrary.dll": {}
@@ -101,6 +101,7 @@
       },
       "PLAYRATE_DatabaseConnection/1.0.0": {
         "dependencies": {
+          "PLAYRATE_ClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {

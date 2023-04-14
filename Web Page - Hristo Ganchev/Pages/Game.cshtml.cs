@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_DatabaseConnection;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
@@ -8,12 +10,14 @@ namespace Home_Page___Hristo_Ganchev.Pages
     {
         private readonly ILogger<GameModel> _logger;
 
-        private IGameService _gameService;
+        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        
+        GameService gameService;
 
         public GameModel(ILogger<GameModel> logger)
         {
             _logger = logger;
-            _gameService = new GameService();
+            gameService = new GameService(gamesRepository);
         }
 
         public string Name{ get; private set; }
@@ -26,7 +30,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         {
             Name = name;
             Model = model;
-            Game = _gameService.GetGame(name , "Playstation4");
+            Game = gameService.GetGame(name , "Playstation4");
         }
 
     }

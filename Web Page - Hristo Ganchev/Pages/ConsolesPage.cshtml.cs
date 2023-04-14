@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_DatabaseConnection;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Xml.Linq;
@@ -13,7 +15,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
     {
         private readonly ILogger<ConsolesPageModel> _logger;
 
-        private IConsoleService _consoleService;
+        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        
+        ConsoleService consoleService;
 
         public string UserName { get; private set; }
 
@@ -23,7 +27,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         {
             PageTitle = "CONSOLES:";
             _logger = logger;
-            _consoleService = new ConsoleService();
+            consoleService = new ConsoleService(consoleRepository);
         }
 
         public IActionResult OnGet()
@@ -33,7 +37,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public List<Console> Consoles
         {
-            get { return _consoleService.GetAll(); }
+            get { return consoleService.GetAll(); }
         }
 
         public void OnPost()

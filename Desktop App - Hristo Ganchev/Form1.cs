@@ -1,8 +1,8 @@
 using BusinessLogic;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.Consoles;
-using PLAYRATE_DatabaseConnection.Games;
+using PLAYRATE_DatabaseConnection;
 using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
@@ -15,9 +15,11 @@ namespace Desktop_App___Hristo_Ganchev
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        ConsoleService consoleService = new ConsoleService();
-        
-        GameService gamesService = new GameService();
+        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+
+        ConsoleService consoleService;    
+        GameService gamesService;
 
         public HomePage()
         {
@@ -27,6 +29,9 @@ namespace Desktop_App___Hristo_Ganchev
             lblConsole.BackColor = bgcolor;
             lblID.BackColor = bgcolor;
             dgGames.BackgroundColor = bgcolor;
+
+            consoleService = new ConsoleService(consoleRepository);
+            gamesService = new GameService(gamesRepository);
 
         }
 

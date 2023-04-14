@@ -1,19 +1,22 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
-using BusinessLogic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Accounts;
 using PLAYRATE_DatabaseConnection;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
-	public class RegisterModel : PageModel
+    public class RegisterModel : PageModel
 	{
-		AccountLibrary accountLibrary = new AccountLibrary();
+        IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
-		public string PageTitle { get; private set; }
+        AccountService accountLibrary;
+
+        public string PageTitle { get; private set; }
 
 		public string SubmittedEmail { get; private set; }
 
@@ -33,7 +36,8 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		public RegisterModel()
 		{
 			PageTitle = "REGISTER:";
-		}
+            accountLibrary = new AccountService(accountRepository);
+        }
 
 		public void OnGet()
 		{

@@ -146,6 +146,19 @@
             "rid": "win"
           }
         }
+      },
+      "PLAYRATE_ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -462,10 +475,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "PLAYRATE_ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj",
+      "msbuildProject": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "PLAYRATE_ClassLibrary >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -495,7 +514,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj": {
+              "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_ClassLibrary\\PLAYRATE_ClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

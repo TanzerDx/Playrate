@@ -146,19 +146,6 @@
             "rid": "win"
           }
         }
-      },
-      "PLAYRATE_DatabaseConnection/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Data.SqlClient": "4.8.5"
-        },
-        "compile": {
-          "bin/placeholder/PLAYRATE_DatabaseConnection.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/PLAYRATE_DatabaseConnection.dll": {}
-        }
       }
     }
   },
@@ -475,16 +462,11 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "PLAYRATE_DatabaseConnection/1.0.0": {
-      "type": "project",
-      "path": "../PLAYRATE_DatabaseConnection/PLAYRATE_DatabaseConnection.csproj",
-      "msbuildProject": "../PLAYRATE_DatabaseConnection/PLAYRATE_DatabaseConnection.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "PLAYRATE_DatabaseConnection >= 1.0.0"
+      "System.Data.SqlClient >= 4.8.5"
     ]
   },
   "packageFolders": {
@@ -513,11 +495,7 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {
-            "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj": {
-              "projectPath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\PLAYRATE_DatabaseConnection\\PLAYRATE_DatabaseConnection.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -529,6 +507,12 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
+        "dependencies": {
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.5, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

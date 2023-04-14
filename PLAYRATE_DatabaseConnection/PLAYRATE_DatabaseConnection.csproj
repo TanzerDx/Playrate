@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="br0m4syv.z0u~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PLAYRATE_ClassLibrary\PLAYRATE_ClassLibrary.csproj" />
   </ItemGroup>
 
 </Project>
