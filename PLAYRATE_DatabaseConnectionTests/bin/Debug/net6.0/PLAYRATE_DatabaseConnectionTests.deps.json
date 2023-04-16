@@ -1202,8 +1202,17 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "PLAYRATE_ClassLibrary/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "runtime": {
+          "PLAYRATE_ClassLibrary.dll": {}
+        }
+      },
       "PLAYRATE_DatabaseConnection/1.0.0": {
         "dependencies": {
+          "PLAYRATE_ClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
@@ -1946,6 +1955,11 @@
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "PLAYRATE_ClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "PLAYRATE_DatabaseConnection/1.0.0": {
       "type": "project",

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using PLAYRATE_ClassLibrary;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PLAYRATE_ClassLibrary;
 using System.Data.SqlClient;
 
 namespace PLAYRATE_DatabaseConnection

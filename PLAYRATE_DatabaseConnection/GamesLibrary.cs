@@ -18,7 +18,6 @@ namespace PLAYRATE_DatabaseConnection
             connectionString = con;
         }
 
-
         public List<GameDTO> GetAll(string console)
         {
             List<GameDTO> games = new List<GameDTO>();

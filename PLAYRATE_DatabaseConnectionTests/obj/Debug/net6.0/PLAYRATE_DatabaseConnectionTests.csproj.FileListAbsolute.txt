@@ -106,3 +106,5 @@ D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-a
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_DatabaseConnectionTests\obj\Debug\net6.0\PLAYRATE_DatabaseConnectionTests.pdb
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_DatabaseConnectionTests\obj\Debug\net6.0\PLAYRATE_DatabaseConnectionTests.genruntimeconfig.cache
 D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_DatabaseConnectionTests\obj\Debug\net6.0\ref\PLAYRATE_DatabaseConnectionTests.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_DatabaseConnectionTests\bin\Debug\net6.0\PLAYRATE_ClassLibrary.dll
+D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\PLAYRATE_DatabaseConnectionTests\bin\Debug\net6.0\PLAYRATE_ClassLibrary.pdb

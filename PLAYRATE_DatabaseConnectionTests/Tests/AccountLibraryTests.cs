@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,16 +14,25 @@ namespace PLAYRATE_DatabaseConnection.Tests
 	public class AccountLibraryTests
 	{
 		private readonly string connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr";
-		AccountLibrary accountLibrary = new AccountLibrary();
+		AccountLibrary accountLibrary = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr");
 
-		[TestMethod()]
+        private const string pepper = "iloveplayrate";
+		public string salt;
+		public string hashedPassword;
+
+        [TestMethod()]
 		public void AddAccountTest()
 		{
+
 			string submittedEmail = "hristoganchev@gmail.com";
 			string submittedUsername = "HristoG";
 			string submittedPassword = "1234567890";
 
-			accountLibrary.AddAccount(submittedEmail, submittedUsername, submittedPassword);
+            string Salt = GenerateSalt();
+            string saltedPassword = $"{submittedPassword}{Salt}{pepper}";
+            hashedPassword = HashPassword(saltedPassword);
+
+            accountLibrary.AddAccount(submittedEmail, submittedUsername, hashedPassword, Salt);
 
 			using (SqlConnection con = new SqlConnection(connectionString))
 			{
@@ -52,5 +62,26 @@ namespace PLAYRATE_DatabaseConnection.Tests
 				con.Close();
 			}
 		}
-	}
+
+		public string GenerateSalt()
+        {
+            byte[] salt = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(salt);
+            }
+            return Convert.ToBase64String(salt);
+        }
+
+        public string HashPassword(string password)
+        {
+            byte[] saltedPasswordBytes = Encoding.UTF8.GetBytes(password);
+            byte[] hashBytes;
+            using (var algorithm = new Rfc2898DeriveBytes(password, saltedPasswordBytes, 10000, HashAlgorithmName.SHA512))
+            {
+                hashBytes = algorithm.GetBytes(32);
+            }
+            return Convert.ToBase64String(hashBytes);
+        }
+    }
 }

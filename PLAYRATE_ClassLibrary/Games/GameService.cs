@@ -16,6 +16,11 @@ namespace PLAYRATE_ClassLibrary.Games
             this._gamesLibrary = _gamesLibrary;
         }
 
+        //private static IGameRepository GetDAL()
+        //{
+        //    return new GamesLibrary();
+        //}
+
         public List<Game> GetAll(string console)
         {
             var games = _gamesLibrary.GetAll(console).Select(dto => dto.ToGame()).ToList();
