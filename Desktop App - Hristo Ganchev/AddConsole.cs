@@ -19,8 +19,10 @@ namespace Desktop_App___Hristo_Ganchev
 
     public partial class AddConsole : Form
     {
-        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        //IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        
         ConsoleService consoleService;
+        GameService gamesService;
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
@@ -37,7 +39,24 @@ namespace Desktop_App___Hristo_Ganchev
             lblAddConsole.BackColor = bgcolor;
             lblURLConsole.BackColor = bgcolor;
 
-            consoleService = new ConsoleService(consoleRepository);
+            //consoleService = new ConsoleService(consoleRepository);
+        }
+
+        public AddConsole(ConsoleService cS, GameService gS)
+        {
+            InitializeComponent();
+
+            lblType.BackColor = bgcolor;
+            lblReleaseDate.BackColor = bgcolor;
+            lblModel.BackColor = bgcolor;
+            lblManufacturer.BackColor = bgcolor;
+            lblControllerType.BackColor = bgcolor;
+            lblChatPlatform.BackColor = bgcolor;
+            lblAddConsole.BackColor = bgcolor;
+            lblURLConsole.BackColor = bgcolor;
+
+            consoleService = cS;
+            gamesService = gS;
         }
 
 
@@ -55,7 +74,7 @@ namespace Desktop_App___Hristo_Ganchev
 
 				MessageBox.Show("Console added successfully!");
 
-				HomePage homePage = new HomePage();
+				HomePage homePage = new HomePage(consoleService, gamesService);
 
                 homePage.Show();
                 this.Hide();

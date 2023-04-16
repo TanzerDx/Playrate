@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_DatabaseConnection;
 using System;
@@ -22,8 +23,10 @@ namespace Desktop_App___Hristo_Ganchev
 
         SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
 
-        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        GameService gameService;
+        //IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        
+        ConsoleService consoleService;
+        GameService gamesService;
 
         public AddGame()
         {
@@ -41,7 +44,30 @@ namespace Desktop_App___Hristo_Ganchev
             lblURLGame.BackColor = bgcolor;
             lblURLPage.BackColor = bgcolor;
 
-            gameService = new GameService(gamesRepository);
+            foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
+            {
+                cbbGenre.Items.Add(genre);
+            }
+        }
+
+        public AddGame(ConsoleService cS, GameService gS)
+        {
+            InitializeComponent();
+            GetConsoles();
+
+            lblConsole.BackColor = bgcolor;
+            lblAddGame.BackColor = bgcolor;
+            lblName.BackColor = bgcolor;
+            lblDeveloper.BackColor = bgcolor;
+            lblReleaseDate.BackColor = bgcolor;
+            lblGenres.BackColor = bgcolor;
+            lblRating.BackColor = bgcolor;
+            lblDesc.BackColor = bgcolor;
+            lblURLGame.BackColor = bgcolor;
+            lblURLPage.BackColor = bgcolor;
+
+            consoleService = cS;
+            gamesService = gS;
 
             foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
             {
@@ -49,7 +75,7 @@ namespace Desktop_App___Hristo_Ganchev
             }
         }
 
-		public void GetConsoles()
+        public void GetConsoles()
 		{
 			con.Open();
 
@@ -80,11 +106,11 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                gameService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
+                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
 
                 MessageBox.Show("Game added successfully!");
 
-                HomePage homePage = new HomePage();
+                HomePage homePage = new HomePage(consoleService, gamesService);
 
                 homePage.Show();
                 this.Hide();

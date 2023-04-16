@@ -2038,10 +2038,24 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
+      "PLAYRATE_ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PLAYRATE_ClassLibrary.dll": {}
+        }
+      },
       "PLAYRATE_DatabaseConnection/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "PLAYRATE_ClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -7208,6 +7222,11 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "PLAYRATE_ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj",
+      "msbuildProject": "../PLAYRATE_ClassLibrary/PLAYRATE_ClassLibrary.csproj"
     },
     "PLAYRATE_DatabaseConnection/1.0.0": {
       "type": "project",

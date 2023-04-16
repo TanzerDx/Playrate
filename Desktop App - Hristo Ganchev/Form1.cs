@@ -35,6 +35,20 @@ namespace Desktop_App___Hristo_Ganchev
 
         }
 
+        public HomePage(ConsoleService cS, GameService gS)
+        {
+            InitializeComponent();
+            GetConsoles();
+
+            lblConsole.BackColor = bgcolor;
+            lblID.BackColor = bgcolor;
+            dgGames.BackgroundColor = bgcolor;
+
+            consoleService = cS;
+            gamesService = gS;
+
+        }
+
 
         public void GetConsoles()
         {
@@ -65,7 +79,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            AddGame addgame = new AddGame();
+            AddGame addgame = new AddGame(consoleService, gamesService);
 
             this.Hide();
             addgame.Show();
@@ -117,7 +131,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddConsole_Click(object sender, EventArgs e)
         {
-            AddConsole addConsole = new AddConsole();
+            AddConsole addConsole = new AddConsole(consoleService, gamesService);
 
             addConsole.Show();
             this.Hide();
