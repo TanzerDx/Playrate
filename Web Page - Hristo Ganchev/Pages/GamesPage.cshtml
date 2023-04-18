@@ -32,37 +32,37 @@
 
 <div class="sidebar-filter">
 
-    <form method="post" asp-page="./GamesPage">
+        <form method="post" asp-page="./GamesPage">
 
             <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>
             <input autocomplete="off" asp-for="Filter.Keyword" />
-            <input type="submit" value="Submit" />
+            <button type="submit" method="post">Submit</button>
 
-      
+
         <h4 id="text-sidebar">Filter by:</h4>
-            <div id="rb-field">
-                <input type="radio" asp-for="Filter.MainFilter" value="Highest rating">
-                <label id="text-white" asp-for="Filter.MainFilter">Highest rating</label>
+        <div id="rb-field">
 
-                <input type="radio" asp-for="Filter.MainFilter" value="Latest release">
-                <label id="text-white" asp-for="Filter.MainFilter">Latest release</label>
+            <input type="radio" asp-for="Filter.MainFilter" value="Highest rating" />
+            <label id="text-white" asp-for="Filter.MainFilter" >Highest rating</label>
 
-                <input type="radio" asp-for="Filter.MainFilter" value="Most reviews">
-                <label id="text-white" asp-for="Filter.MainFilter">Most reviews</label>
-            </div>
+            <input type="radio" asp-for="Filter.MainFilter" value="Latest release" />
+            <label id="text-white" asp-for="Filter.MainFilter">Latest release</label>
 
+            <input type="radio" asp-for="Filter.MainFilter" value="Most reviews" />
+            <label id="text-white" asp-for="Filter.MainFilter">Most reviews</label>
 
-           <h4 id="text-sidebar">Genres:</h4>
+        </div>
 
-           <div id="checkbox-field">
+            <h4 id="text-sidebar">Genres:</h4>
+            <div id="checkbox-field">
                 @foreach (BusinessLogic.Genres genre in Enum.GetValues(typeof(BusinessLogic.Genres)))
                 {
-                    <input type="radio" asp-for="Filter.GenreFilter" value="@genre">
-                    <label id="text-white" asp-for="Filter.GenreFilter">@genre</label>
+                    <input type="radio" asp-for="Filter.GenreFilter" value="@genre"/>
+                    <label id="text-white">@genre</label>
                 }
             </div>
+        </form>
 
-    </form>
 
 </div>
 </div>

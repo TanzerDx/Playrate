@@ -161,16 +161,8 @@ namespace PLAYRATE_DatabaseConnection
             {
                 con.Open();
 
-                SqlCommand getMaxID = new SqlCommand($"SELECT COALESCE(MAX(ID), 0) FROM dbo.{console}", con);
+                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page)", con);
 
-                int currentMaxID = (int)getMaxID.ExecuteScalar();
-
-                int newID = currentMaxID + 1;
-
-                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@ID, @Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page)", con);
-
-
-                cmd.Parameters.AddWithValue("@ID", newID);
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Developer", developer);
                 cmd.Parameters.AddWithValue("@ReleaseDate", releaseDate);

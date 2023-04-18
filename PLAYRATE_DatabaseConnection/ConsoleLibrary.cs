@@ -76,18 +76,11 @@ namespace PLAYRATE_DatabaseConnection
             {
                 con.Open();
 
-                SqlCommand getMaxID = new SqlCommand("SELECT COALESCE(MAX(ID), 0) FROM dbo.Consoles", con);
 
-                int currentMaxID = (int)getMaxID.ExecuteScalar();
+                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(20), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX));", con);
 
-                int newID = currentMaxID + 1;
+                SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 
-                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(20), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX));", con);
-
-                SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@ID, @Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
-
-
-                cmd2.Parameters.AddWithValue("@ID", newID);
                 cmd2.Parameters.AddWithValue("@Model", type + model);
                 cmd2.Parameters.AddWithValue("@Manufacturer", manufacturer);
                 cmd2.Parameters.AddWithValue("@Release_Date", releaseDate);

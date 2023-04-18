@@ -104,8 +104,8 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
 
                 MessageBox.Show("Game added successfully!");
@@ -114,11 +114,11 @@ namespace Desktop_App___Hristo_Ganchev
 
                 homePage.Show();
                 this.Hide();
-            }
-            catch
-            {
-                MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            //}
         }
     }
 }

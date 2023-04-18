@@ -15,13 +15,11 @@ namespace Desktop_App___Hristo_Ganchev
 
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
-        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-
+        
         ConsoleService consoleService;    
         GameService gamesService;
 
-        public HomePage()
+        public HomePage(IConsoleRepository consoleRepository, IGameRepository gamesRepository)
         {
             InitializeComponent();
             GetConsoles();

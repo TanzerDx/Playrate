@@ -67,8 +67,8 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddConsole_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
                 consoleService.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
 
@@ -79,11 +79,11 @@ namespace Desktop_App___Hristo_Ganchev
                 homePage.Show();
                 this.Hide();
 
-            }
-            catch
-            {
-                MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            //}
 
         }
 

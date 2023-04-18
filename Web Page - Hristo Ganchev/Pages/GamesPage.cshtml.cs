@@ -23,11 +23,11 @@ namespace Home_Page___Hristo_Ganchev
 
         public string PageTitle { get; private set; }
 
-        public string SubmittedKeyword { get; private set; }
+        public string? SubmittedKeyword { get; private set; }
 
-        public string SubmittedMainFilter { get; private set; }
+        public string? SubmittedMainFilter { get; private set; }
 
-        public string SubmittedGenreFilter { get; private set; }
+        public string? SubmittedGenreFilter { get; private set; }
 
         public static string Model { get; set; }
 
@@ -59,10 +59,18 @@ namespace Home_Page___Hristo_Ganchev
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            Games = gameService.GetByKeyword(SubmittedKeyword, Model);
-            //Games = _gameService.GetByMainFilter(SubmittedMainFilter, Model);
-            //Games = _gameService.GetByGenre(SubmittedGenreFilter, Model);
-
+            if (SubmittedKeyword != "" && SubmittedMainFilter == "" && SubmittedGenreFilter == "")
+            {
+                Games = gameService.GetByKeyword(SubmittedKeyword, Model);
+            }
+            else if (SubmittedKeyword == "" && SubmittedMainFilter != "" && SubmittedGenreFilter == "")
+            {
+                Games = gameService.GetByMainFilter(SubmittedMainFilter, Model);
+            }
+            else if (SubmittedKeyword == "" && SubmittedMainFilter == "" && SubmittedGenreFilter != "")
+            {
+                Games = gameService.GetByGenre(SubmittedGenreFilter, Model);
+            }
         }
     }
 }
