@@ -9,7 +9,14 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public void OnGet()
         {
-           Username = HttpContext.Session.GetString("Username")!;
+            if(HttpContext.Session.GetString("Username") != null)
+                    {
+                        Username = HttpContext.Session.GetString("Username")!;
+                    }
+            else
+            {
+                Response.Redirect("/Error");
+            }
         }
     }
 }
