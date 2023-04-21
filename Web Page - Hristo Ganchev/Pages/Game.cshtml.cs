@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_ClassLibrary.Reviews;
 using PLAYRATE_DatabaseConnection;
 
 namespace Home_Page___Hristo_Ganchev.Pages
@@ -24,13 +25,26 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public string Model { get; private set; }
 
+        public string SubmittedRating { get; set; }
+
+        public string SubmittedReviewDesc { get; set; }
+
         public Game Game { get; private set; }
+
+        [BindProperty]
+        public Review Review { get; set; }
 
         public void OnGet(string name, string model)
         {
             Name = name;
             Model = model;
             Game = gameService.GetGame(name , "Playstation4");
+        }
+
+        public void OnPost()
+        {
+            SubmittedRating = Review.Rating;
+            SubmittedReviewDesc = Review.ReviewDesc;
         }
 
     }

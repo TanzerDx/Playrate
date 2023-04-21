@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="PLAYRATE_ClassLibraryTests\**" />
+    <EmbeddedResource Remove="PLAYRATE_ClassLibraryTests\**" />
+    <None Remove="PLAYRATE_ClassLibraryTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
