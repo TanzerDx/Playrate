@@ -1,4 +1,5 @@
 ﻿@page
+@using PLAYRATE_ClassLibrary.Reviews;
 @model Home_Page___Hristo_Ganchev.Pages.GameModel
 @{
 }
@@ -24,18 +25,21 @@
     <div class="sidebar-reviews">
         <h3 id="text-sidebar">REVIEWS</h3>
         
+        @foreach (Review review in Model.Reviews)
+        {
         <div id="div-review">
             <div id="div-review-pfp">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" width="60" height="70" />
+                <img src="@review.URL_ProfilePicture" width="70" height="70" />
             </div>
             <div id="div-review-text">
-                <h4>Name</h4>
-                <h5>Rating: 5/5</h5>
+                <h4>@review.Username</h4>
+                <h5>Rating: @review.Rating/5</h5>
             </div>
             <div id="div-review-text">
-                <h6>Best game ever! I am so in love with this game. The graphics, the vibe, everything! It's perfect!</h6>
+                <h6>@review.ReviewDesc</h6>
             </div>
         </div>
+        }
 
         @if (HttpContext.Session.GetString("Username") != null)
         {

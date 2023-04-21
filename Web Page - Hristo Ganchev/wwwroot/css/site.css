@@ -104,6 +104,7 @@ html {
     grid-column: 1;
     width: 40px;
     height: 70px;
+    margin-right: 10px;
 }
 
 #div-review-text {

@@ -8,19 +8,19 @@ namespace PLAYRATE_ClassLibrary.Reviews
 {
     public class Review
     {
-        public int ID { get; set; }
+        public int ID { get; init; }
 
-        public string Username { get; set; }
+        public string Username { get; init; }
 
-        public string URL_ProfilePicture { get; set; }
+        public string URL_ProfilePicture { get; init; }
 
-        public string Rating { get; set; }
+        public string Rating { get; init; }
 
-        public string ReviewDesc{ get; set; }
+        public string ReviewDesc{ get; init; }
 
-        public string Game_ID { get; set; }
+        public int Game_ID { get; init; }
 
-        public string Account_ID { get; set; }
+        public int Account_ID { get; init; }
 
         public string GetRating()
         {
