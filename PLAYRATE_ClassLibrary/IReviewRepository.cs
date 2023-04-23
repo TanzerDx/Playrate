@@ -10,8 +10,8 @@ namespace PLAYRATE_ClassLibrary
 {
     public interface IReviewRepository
     {
-        List<ReviewDTO> GetReviews(int gameID, int consoleID);
+        List<ReviewDTO> GetReviews(int? gameID, int? consoleID);
 
-        void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int Game_ID, int Console_ID);
+        void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID);
     }
 }

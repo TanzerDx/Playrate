@@ -16,11 +16,6 @@ namespace PLAYRATE_ClassLibrary.Games
             this._gamesLibrary = _gamesLibrary;
         }
 
-        //private static IGameRepository GetDAL()
-        //{
-        //    return new GamesLibrary();
-        //}
-
         public List<Game> GetAll(string console)
         {
             var games = _gamesLibrary.GetAll(console).Select(dto => dto.ToGame()).ToList();
@@ -31,6 +26,12 @@ namespace PLAYRATE_ClassLibrary.Games
         {
             var gameDTO = _gamesLibrary.GetGame(name, console);
             return gameDTO.Value.ToGame();
+        }
+
+        public int? GetGameID(string console, string name)
+        {
+            int? gameID = _gamesLibrary.GetGameID(console, name);
+            return gameID;
         }
 
         public List<Game> GetByGenre(string genre, string console)

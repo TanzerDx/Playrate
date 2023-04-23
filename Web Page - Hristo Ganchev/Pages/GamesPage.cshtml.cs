@@ -29,7 +29,7 @@ namespace Home_Page___Hristo_Ganchev
 
         public string? SubmittedGenreFilter { get; private set; }
 
-        public static string Model { get; set; }
+        public string Model { get; private set; }
 
         public List<Game> Games { get; private set; }
 

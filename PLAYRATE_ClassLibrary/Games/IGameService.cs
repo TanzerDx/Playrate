@@ -10,6 +10,7 @@ namespace PLAYRATE_ClassLibrary.Games
     {
         List<Game> GetAll(string console);
         Game GetGame(string name, string console);
+        int? GetGameID(string console, string name);
         List<Game> GetByGenre(string genre, string console);
         List<Game> GetByMainFilter(string filter, string console);
         List<Game> GetByKeyword(string keyword, string console);

@@ -11,6 +11,7 @@ namespace PLAYRATE_ClassLibrary
     {
         List<GameDTO> GetAll(string console);
         GameDTO? GetGame(string name, string console);
+        int? GetGameID(string console, string name);
         List<GameDTO> GetByGenre(string genre, string console);
         List<GameDTO> GetByMainFilter(string filter, string console);
         List<GameDTO> GetByKeyword(string keyword, string console);

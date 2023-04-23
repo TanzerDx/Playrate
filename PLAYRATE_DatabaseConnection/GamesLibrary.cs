@@ -55,6 +55,23 @@ namespace PLAYRATE_DatabaseConnection
             return gameDTO;
         }
 
+        public int? GetGameID(string console, string name)
+        {
+            int? gameID = null;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"SELECT ID FROM dbo.{console} WHERE Name = '{name}'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    gameID = reader.GetInt32(0);
+                }
+                con.Close();
+            }
+            return gameID;
+        }
+
         public List<GameDTO> GetByGenre(string genre, string console)
         {
             List<GameDTO> games = new List<GameDTO>();
@@ -142,14 +159,15 @@ namespace PLAYRATE_DatabaseConnection
             return new GameDTO()
             {
                 ID = reader.GetInt32(0),
-                Name = reader.GetString(1),
-                Developer = reader.GetString(2),
-                Release_Date = reader.GetString(3),
-                Genre = reader.GetString(4),
-                Rating = reader.GetString(5),
-                Description = reader.GetString(6),
-                URL_Game = reader.GetString(7),
-                URL_Page = reader.GetString(8)
+                Console_ID = reader.GetInt32(1),
+                Name = reader.GetString(2),
+                Developer = reader.GetString(3),
+                Release_Date = reader.GetString(4),
+                Genre = reader.GetString(5),
+                Rating = reader.GetString(6),
+                Description = reader.GetString(7),
+                URL_Game = reader.GetString(8),
+                URL_Page = reader.GetString(9)
 
             };
         }

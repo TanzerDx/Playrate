@@ -16,14 +16,14 @@ namespace PLAYRATE_ClassLibrary.Reviews
             this._reviewLibrary = _reviewLibrary;
         }
 
-        public List<Review> GetReviews(int gameID, int consoleID)
+        public List<Review> GetReviews(int? gameID, int? consoleID)
         {
             List<Review> reviews = _reviewLibrary.GetReviews(gameID, consoleID).Select(dto => dto.ToReview()).ToList();
             return reviews;
         }
 
 
-        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int Game_ID, int Console_ID)
+        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID)
         {
             _reviewLibrary.AddReview(Username, URL_ProfilePicture, Rating,ReviewDesc, Game_ID, Console_ID);
         }

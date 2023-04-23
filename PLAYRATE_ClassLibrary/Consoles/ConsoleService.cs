@@ -29,7 +29,13 @@ namespace PLAYRATE_ClassLibrary.Consoles
             return consoleDTO.Value.ToConsole();
         }
 
-        public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+		public int? GetConsoleID(string console)
+		{
+			int? consoleID = _consolesLibrary.GetConsoleID(console);
+            return consoleID;
+		}
+
+		public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
         }

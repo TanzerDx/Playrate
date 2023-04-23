@@ -20,7 +20,7 @@ namespace PLAYRATE_DatabaseConnection
             this.connectionString = connectionString;
         }
 
-        public List<ReviewDTO> GetReviews(int gameID, int consoleID)
+        public List<ReviewDTO> GetReviews(int? gameID, int? consoleID)
         {
             List<ReviewDTO> reviews = new List<ReviewDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -52,7 +52,7 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int Game_ID, int Console_ID)
+        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))

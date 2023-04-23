@@ -6,6 +6,7 @@ using PLAYRATE_ClassLibrary;
 using System.Text;
 using System.Threading.Tasks;
 using PLAYRATE_ClassLibrary.Consoles;
+using System.Reflection;
 
 namespace PLAYRATE_DatabaseConnection
 {
@@ -55,6 +56,24 @@ namespace PLAYRATE_DatabaseConnection
             return consoleDTO;
         }
 
+        public int? GetConsoleID(string console)
+        {
+            int? consoleID = null;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"SELECT ID FROM dbo.Consoles WHERE Model = '{console}'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    consoleID = reader.GetInt32(0);
+                }
+                con.Close();
+            }
+            return consoleID;
+        }
+
+
         private ConsoleDTO CreateConsoleDTO(SqlDataReader reader)
         {
             return new ConsoleDTO()
@@ -67,6 +86,14 @@ namespace PLAYRATE_DatabaseConnection
                 Controller_Type = reader.GetString(5),
                 Chat_Platform = reader.GetString(6)
 
+            };
+        }
+
+        private ConsoleDTO CreateConsoleDTO2(SqlDataReader reader)
+        {
+            return new ConsoleDTO()
+            {
+                Model = reader.GetString(0),
             };
         }
 

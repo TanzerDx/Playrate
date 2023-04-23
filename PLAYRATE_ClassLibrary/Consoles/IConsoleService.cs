@@ -11,7 +11,10 @@ namespace PLAYRATE_ClassLibrary.Consoles
     {
         List<Console> GetAll();
         Console? GetConsole(string name);
-        void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform);
+
+		int? GetConsoleID(string console);
+
+		void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform);
         void RemoveConsole(string console);
     }
 }
