@@ -19,5 +19,21 @@ namespace PLAYRATE_ClassLibrary.Games
 		public string Description { get; init; }
 		public string URL_Game { get; init; }
 		public string URL_Page { get; init; }
+
+		public Game (int id, string name, string genre, string releaseDate, string developer, string rating, string desc, string URL_Game, string URL_Page)
+		{
+			this.ID = id;
+			this.Name = name;
+			this.Genre = genre;
+			this.Release_Date = releaseDate;
+			this.Developer = developer;
+			this.Rating = rating;
+			this.Description = desc;
+			this.URL_Game = URL_Game;
+			this.URL_Page = URL_Page;
+
+		}
+		public Game ()
+		{ }
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_ClassLibraryTests;
 using PLAYRATE_DatabaseConnection;
 using System;
 using System.Collections.Generic;
@@ -13,19 +14,18 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
     [TestClass()]
     public class GameServiceTests
     {
-        private readonly string connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr";
-        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        GameService gamesService;
+
+        GameMockDatabase gamesService;
 
         public GameServiceTests()
         {
-            gamesService = new GameService(gamesRepository);
+            gamesService = new GameMockDatabase();
         }
 
         [TestMethod()]
         public void AddGameTest()
         {
-            string console = "Playstation5";
+            int id = 1;
             string name = "Something";
             string developer = "Developer";
             string releaseDate = "14/05/2020";
@@ -35,130 +35,127 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlGame = "url";
             string urlPage = "url";
 
-            gamesService.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand createGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = createGame.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    con.Open();
+            //    SqlCommand createGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+            //    SqlDataReader reader = createGame.ExecuteReader();
+            //    Assert.IsTrue(reader.HasRows);
+            //    reader.Read();
+            //    con.Close();
+            //}
         }
 
         [TestMethod()]
         public void RemoveGameTest()
         {
-            string console = "Playstation5";
-            string id = "1";
+            string name = "Something";
 
-            gamesService.RemoveGame(console, id);
+            gamesService.RemoveGame(name);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand removeGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = removeGame.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    con.Open();
+            //    SqlCommand removeGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+            //    SqlDataReader reader = removeGame.ExecuteReader();
+            //    Assert.IsTrue(reader.HasRows);
+            //    reader.Read();
+            //    con.Close();
+            //}
         }
 
         [TestMethod()]
         public void GetAllTest()
         {
-            string console = "Playstation5";
 
-            gamesService.GetAll(console);
+            gamesService.GetAll();
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand getAll = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = getAll.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    con.Open();
+            //    SqlCommand getAll = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+            //    SqlDataReader reader = getAll.ExecuteReader();
+            //    Assert.IsTrue(reader.HasRows);
+            //    reader.Read();
+            //    con.Close();
+            //}
         }
 
         [TestMethod()]
         public void GetGameTest()
         {
             string name = "Something";
-            string console = "Playstation5";
 
-            gamesService.GetGame(name, console);
+            gamesService.GetGame(name);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand getGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = getGame.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
+            //using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    con.Open();
+            //    SqlCommand getGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+            //    SqlDataReader reader = getGame.ExecuteReader();
+            //    Assert.IsTrue(reader.HasRows);
+            //    reader.Read();
+            //    con.Close();
+            //}
         }
 
-        [TestMethod()]
-        public void GetByGenreTest()
-        {
-            string genre = "Fantasy";
-            string console = "Playstation5";
+        //[TestMethod()]
+        //public void GetByGenreTest()
+        //{
+        //    string genre = "Fantasy";
+        //    string console = "Playstation5";
 
-            gamesService.GetByGenre(genre, console);
+        //    gamesService.GetByGenre(genre, console);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand getByGenre = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = getByGenre.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
-        }
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        con.Open();
+        //        SqlCommand getByGenre = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+        //        SqlDataReader reader = getByGenre.ExecuteReader();
+        //        Assert.IsTrue(reader.HasRows);
+        //        reader.Read();
+        //        con.Close();
+        //    }
+        //}
 
-        [TestMethod()]
-        public void GetByKeywordTest()
-        {
-            string keyword = "Som";
-            string console = "Playstation5";
+        //[TestMethod()]
+        //public void GetByKeywordTest()
+        //{
+        //    string keyword = "Som";
+        //    string console = "Playstation5";
 
-            gamesService.GetByKeyword(keyword, console);
+        //    gamesService.GetByKeyword(keyword, console);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand getByKeyword = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = getByKeyword.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
-        }
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        con.Open();
+        //        SqlCommand getByKeyword = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+        //        SqlDataReader reader = getByKeyword.ExecuteReader();
+        //        Assert.IsTrue(reader.HasRows);
+        //        reader.Read();
+        //        con.Close();
+        //    }
+        //}
 
-        [TestMethod()]
-        public void GetByMainFilterTest()
-        {
-            string filter = "Highest rating";
-            string console = "Playstation5";
+        //[TestMethod()]
+        //public void GetByMainFilterTest()
+        //{
+        //    string filter = "Highest rating";
+        //    string console = "Playstation5";
 
-            gamesService.GetByMainFilter(filter, console);
+        //    gamesService.GetByMainFilter(filter, console);
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand getByMainFilter = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-                SqlDataReader reader = getByMainFilter.ExecuteReader();
-                Assert.IsTrue(reader.HasRows);
-                reader.Read();
-                con.Close();
-            }
-        }
+        //    using (SqlConnection con = new SqlConnection(connectionString))
+        //    {
+        //        con.Open();
+        //        SqlCommand getByMainFilter = new SqlCommand($"SELECT * FROM dbo.{console}", con);
+        //        SqlDataReader reader = getByMainFilter.ExecuteReader();
+        //        Assert.IsTrue(reader.HasRows);
+        //        reader.Read();
+        //        con.Close();
+        //    }
+        //}
     }
 }

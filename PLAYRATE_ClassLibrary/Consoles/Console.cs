@@ -27,5 +27,15 @@ namespace PLAYRATE_ClassLibrary.Consoles
         {
 
         }
+        public Console(int id, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+        {
+            this.ID = id;
+            this.Model = model;
+            this.Manufacturer = manufacturer;
+            this.Release_Date = releaseDate;
+            this.URL_Console = urlConsole;
+            this.Controller_Type = controllerType;
+            this.Chat_Platform = chatPlatform;
+        }
     }
 }
