@@ -34,15 +34,7 @@ namespace PLAYRATE_ClassLibrary.Accounts.Tests
 
             accountService.AddAccount(submittedEmail, submittedUsername, submittedPassword);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand createAccount = new SqlCommand($"SELECT * FROM dbo.Accounts", con);
-            //    SqlDataReader reader = createAccount.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.IsNotNull(accountService.GetAll());
         }
 
         [TestMethod()]
@@ -52,15 +44,8 @@ namespace PLAYRATE_ClassLibrary.Accounts.Tests
 
             accountService.RemoveAccount(submittedEmail);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand deleteAccount = new SqlCommand($"SELECT * FROM dbo.Accounts", con);
-            //    SqlDataReader reader = deleteAccount.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.AreEqual(null, accountService.GetAccount(submittedEmail));
+
         }
 
         public string GenerateSalt()

@@ -34,6 +34,8 @@ namespace PLAYRATE_ClassLibraryTests
             return console;
         }
 
+
+
         public void AddConsole(int id, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             PLAYRATE_ClassLibrary.Consoles.Console console = new PLAYRATE_ClassLibrary.Consoles.Console(id, model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);

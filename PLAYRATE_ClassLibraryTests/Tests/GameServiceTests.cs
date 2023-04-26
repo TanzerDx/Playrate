@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BusinessLogic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_ClassLibraryTests;
 using PLAYRATE_DatabaseConnection;
@@ -37,15 +38,8 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
             gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand createGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-            //    SqlDataReader reader = createGame.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.IsNotNull(gamesService.GetAll());
+
         }
 
         [TestMethod()]
@@ -55,89 +49,88 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
             gamesService.RemoveGame(name);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand removeGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-            //    SqlDataReader reader = removeGame.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.AreEqual(null , gamesService.GetGame(name));
+
         }
 
         [TestMethod()]
         public void GetAllTest()
         {
+            //Arrange
+            int id = 1;
+            string name = "Something";
+            string developer = "Developer";
+            string releaseDate = "14/05/2020";
+            string genre = "Fantasy";
+            string rating = "4";
+            string desc = "A very long description";
+            string urlGame = "url";
+            string urlPage = "url";
 
-            gamesService.GetAll();
+            //Act
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand getAll = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-            //    SqlDataReader reader = getAll.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            //Assert
+            Assert.IsNotNull(gamesService.GetAll());
+
         }
 
         [TestMethod()]
         public void GetGameTest()
         {
+            int id = 1;
             string name = "Something";
+            string developer = "Developer";
+            string releaseDate = "14/05/2020";
+            string genre = "Fantasy";
+            string rating = "4";
+            string desc = "A very long description";
+            string urlGame = "url";
+            string urlPage = "url";
 
-            gamesService.GetGame(name);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand getGame = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-            //    SqlDataReader reader = getGame.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.AreEqual("PLAYRATE_ClassLibrary.Games.Game", gamesService.GetGame(name).ToString());
+
+
         }
 
-        //[TestMethod()]
-        //public void GetByGenreTest()
-        //{
-        //    string genre = "Fantasy";
-        //    string console = "Playstation5";
+        [TestMethod()]
+        public void At_Least_One_Game_With_This_Genre()
+        {
+            int id = 1;
+            string name = "Something";
+            string developer = "Developer";
+            string releaseDate = "14/05/2020";
+            string genre = "Fantasy";
+            string rating = "4";
+            string desc = "A very long description";
+            string urlGame = "url";
+            string urlPage = "url";
 
-        //    gamesService.GetByGenre(genre, console);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-        //    using (SqlConnection con = new SqlConnection(connectionString))
-        //    {
-        //        con.Open();
-        //        SqlCommand getByGenre = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-        //        SqlDataReader reader = getByGenre.ExecuteReader();
-        //        Assert.IsTrue(reader.HasRows);
-        //        reader.Read();
-        //        con.Close();
-        //    }
-        //}
+            Assert.AreEqual(1, gamesService.CountGamesWithThisGenre(genre));
+        }
 
-        //[TestMethod()]
-        //public void GetByKeywordTest()
-        //{
-        //    string keyword = "Som";
-        //    string console = "Playstation5";
+        [TestMethod()]
+        public void GetByKeywordTest()
+        {
+            int id = 1;
+            string name = "Something";
+            string developer = "Developer";
+            string releaseDate = "14/05/2020";
+            string genre = "Fantasy";
+            string rating = "4";
+            string desc = "A very long description";
+            string urlGame = "url";
+            string urlPage = "url";
+            string keyword = "Som";
 
-        //    gamesService.GetByKeyword(keyword, console);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
 
-        //    using (SqlConnection con = new SqlConnection(connectionString))
-        //    {
-        //        con.Open();
-        //        SqlCommand getByKeyword = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-        //        SqlDataReader reader = getByKeyword.ExecuteReader();
-        //        Assert.IsTrue(reader.HasRows);
-        //        reader.Read();
-        //        con.Close();
-        //    }
-        //}
+            Assert.IsNotNull(gamesService.GetGameByKeyword(keyword));
+        }
 
         //[TestMethod()]
         //public void GetByMainFilterTest()

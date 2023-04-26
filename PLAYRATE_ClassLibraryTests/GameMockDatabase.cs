@@ -33,6 +33,58 @@ namespace PLAYRATE_ClassLibraryTests
             return game;
         }
 
+        public PLAYRATE_ClassLibrary.Games.Game GetGameByKeyword(string keyword)
+        {
+            PLAYRATE_ClassLibrary.Games.Game game = null;
+
+            foreach (PLAYRATE_ClassLibrary.Games.Game g in games)
+            {
+                if (g.Name.Contains(keyword))
+                {
+                    game = g;
+                }
+
+                return game;
+            }
+
+            return game;
+        }
+
+        public PLAYRATE_ClassLibrary.Games.Game GetByGenre(string genre)
+        {
+            PLAYRATE_ClassLibrary.Games.Game game = null;
+
+            foreach (PLAYRATE_ClassLibrary.Games.Game g in games)
+            {
+                if (g.Genre == genre)
+                {
+                    game = g;
+                }
+
+                return game;
+            }
+
+            return game;
+        }
+
+        public int CountGamesWithThisGenre(string genre)
+        {
+            PLAYRATE_ClassLibrary.Games.Game game = null;
+            int count = 0;
+
+            foreach (PLAYRATE_ClassLibrary.Games.Game g in games)
+            {
+                if (g.Genre == genre)
+                {
+                    count++;
+                }
+
+                return count;
+            }
+
+            return count;
+        }
+
         public void AddGame(int id, string name, string genre, string releaseDate, string developer, string rating, string desc, string URL_Game, string URL_Page)
         {
             PLAYRATE_ClassLibrary.Games.Game game = new PLAYRATE_ClassLibrary.Games.Game(id, name, genre, releaseDate, developer, rating, desc, URL_Game, URL_Page);

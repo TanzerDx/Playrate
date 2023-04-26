@@ -11,6 +11,12 @@ namespace PLAYRATE_ClassLibraryTests
     {
         List<PLAYRATE_ClassLibrary.Accounts.Account> accounts = new List<PLAYRATE_ClassLibrary.Accounts.Account>();
 
+
+        public List<PLAYRATE_ClassLibrary.Accounts.Account> GetAll()
+        {
+            return accounts;
+        }
+
         public void AddAccount(string username, string email, string password)
         {
             PLAYRATE_ClassLibrary.Accounts.Account account = new PLAYRATE_ClassLibrary.Accounts.Account(username, email, password);
@@ -26,6 +32,23 @@ namespace PLAYRATE_ClassLibraryTests
                     accounts.Remove(a);
                 }
             }
+        }
+
+        public PLAYRATE_ClassLibrary.Accounts.Account GetAccount(string email)
+        {
+            PLAYRATE_ClassLibrary.Accounts.Account account = null;
+
+            foreach (PLAYRATE_ClassLibrary.Accounts.Account a in accounts)
+            {
+                if (a.Email == email)
+                {
+                    account = a;
+                }
+
+                return account;
+            }
+
+            return account;
         }
     }
 }

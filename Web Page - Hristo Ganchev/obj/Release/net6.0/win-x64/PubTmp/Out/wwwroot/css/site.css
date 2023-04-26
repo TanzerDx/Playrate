@@ -1,0 +1,222 @@
+html {
+    font-size: 14px;
+    background-color: #291563;
+}
+
+#text-homepage-first {
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#text-homepage-second {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#text-homepage-AboutUs {
+    color: white;
+    margin-bottom: 100px;
+    margin-top:50px;
+    text-align: left;
+}
+
+#text-homepage-Motto {
+    color: white;
+    margin-top: 100px;
+    text-align: right;
+}
+
+#div-content-box {
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+#div-content-box-games {
+    display: grid;
+    grid-template-columns: 2fr 280px;
+    grid-gap: 20px;
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+#div-content-box-consoles {
+    border-radius: 85px;
+    background-color: #1B1748;
+    width: 1280px;
+}
+
+#div-allgames {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    border-radius: 85px;
+    width: 190px;
+}
+
+#div-allconsoles {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+    border-radius: 85px;
+    padding: 70px;
+    width: 1290px;
+}
+
+#div-content-box-desc {
+    display: grid;
+    grid-template-columns: 3fr;
+    grid-gap: 17.8px;
+    border-radius: 85px;
+    background-color: #1B1748;
+    padding: 70px;
+    width: 1190px;
+}
+
+
+#div-game {
+    background-color: #1B1E5B;
+    margin: 25px 25px 25px 25px;
+    width: 160px;
+    height: 250px;
+}
+
+#div-image-game {
+    margin: 5px 5px 5px 10px;
+}
+
+#div-review {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+    width: 300px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 50px;
+}
+
+#div-review-pfp {
+    grid-column: 1;
+    width: 40px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+#div-review-text {
+    grid-column: 2;
+    width: 230px;
+    color: white;
+}
+
+#div-image-desc {
+    margin: 5px 5px 5px 10px;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.sidebar-filter {
+    grid-column: 2;
+    grid-row: 1;
+    width: 350px;
+    height: auto;
+    background-color: #1B1E5B;
+}
+
+.sidebar-reviews {
+    grid-column: 3;
+    grid-row:span 4;
+    width: 350px;
+    height: auto;
+    background-color: #1B1E5B;
+}
+
+#text-sidebar {
+    color: white;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+#text-white {
+    color: white;
+}
+
+#text-red {
+    color: red;
+}
+
+#rb-field {
+    width: 125px;
+    margin-left: 30px;
+}
+
+#checkbox-field {
+    width: 340px;
+    margin-left: 10px;
+}
+
+#checkbox-genre-field {
+    width: 218px;
+    margin-left: 30px;
+}
+
+#text-description {
+    grid-column: 1;
+    grid-row: 4;
+    color: white;
+    width: 700px;
+    margin-top: 30px;
+}
+
+#text-details {
+    grid-column: 1;
+    grid-row: 3;
+    color: white;
+}
+
+.div-login {
+    margin-top: 15px;
+    margin-left: 530px;
+    height: 300px;
+    width: 200px;
+}
+
+#form-login {
+    display: block;
+    margin-bottom: 10px;
+    color: white;
+    width: 200px;
+    margin-top: 30px;
+    margin-left: 450px;
+}
+
+#form-findus {
+    color: white;
+    width: 200px;
+    margin-top: 30px;
+}
+
+.contact-form label {
+    display: block;
+}
+
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #291563;
+}

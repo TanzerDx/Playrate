@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PLAYRATE_ClassLibrary.Consoles.Tests
 {
@@ -26,35 +27,33 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
         [TestMethod()]
         public void GetAllTest()
         {
-            consoleService.GetAll();
+            int id = 1;
+            string model = "Playstation5";
+            string manufacturer = "Sony";
+            string releaseDate = "14/05/2020";
+            string urlConsole = "a";
+            string controllerType = "Dual Shock 2.0";
+            string chatPlatform = "None";
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand getAll = new SqlCommand("SELECT * FROM dbo.Consoles ", con);
-            //    SqlDataReader reader = getAll.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            consoleService.AddConsole(id, model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
+
+            Assert.IsNotNull(consoleService.GetAll());
         }
 
         [TestMethod()]
         public void GetConsoleTest()
         {
+            int id = 1;
             string model = "Playstation5";
+            string manufacturer = "Sony";
+            string releaseDate = "14/05/2020";
+            string urlConsole = "a";
+            string controllerType = "Dual Shock 2.0";
+            string chatPlatform = "None";
 
-            consoleService.GetConsole(model);
+            consoleService.AddConsole(id, model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand getConsole = new SqlCommand("SELECT * FROM dbo.Consoles ", con);
-            //    SqlDataReader reader = getConsole.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.AreEqual("PLAYRATE_ClassLibrary.Consoles.Console", consoleService.GetConsole(model).ToString());
         }
 
         [TestMethod()]
@@ -70,15 +69,7 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
 
             consoleService.AddConsole(id, model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand createConsole = new SqlCommand("SELECT * FROM dbo.Consoles", con);
-            //    SqlDataReader reader = createConsole.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.IsNotNull(consoleService.GetAll());
         }
 
 
@@ -89,15 +80,7 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
 
             consoleService.RemoveConsole(console);
 
-            //using (SqlConnection con = new SqlConnection(connectionString))
-            //{
-            //    con.Open();
-            //    SqlCommand deleteConsole = new SqlCommand("SELECT * FROM dbo.Consoles ", con);
-            //    SqlDataReader reader = deleteConsole.ExecuteReader();
-            //    Assert.IsTrue(reader.HasRows);
-            //    reader.Read();
-            //    con.Close();
-            //}
+            Assert.AreEqual(null, consoleService.GetConsole(console));
         }
     }
 }
