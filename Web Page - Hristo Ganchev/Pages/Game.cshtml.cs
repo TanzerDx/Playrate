@@ -35,22 +35,26 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public string Model { get; private set; }
 
-        public int? GameID { get; private set; }
+        public static string Username { get; private set; }
 
-        public int? ConsoleID { get; private set; }
+        public static string ProfilePicUser { get; private set; }
+
+        public static int? GameID { get; private set; }
+
+        public static int? ConsoleID { get; private set; }
 
         public string SubmittedRating { get; set; }
 
         public string SubmittedReviewDesc { get; set; }
 
-        public Game Game { get; private set; }
+        public static Game Game { get; private set; }
 
         public PLAYRATE_ClassLibrary.Consoles.Console Console { get; private set; }
 
         [BindProperty]
         public Review Review { get; set; }
 
-        public List<Review> Reviews { get; set; }
+        public static List<Review> Reviews { get; set; }
 
         public void OnGet(string name, string model)
         {
@@ -60,14 +64,16 @@ namespace Home_Page___Hristo_Ganchev.Pages
             GameID = gameService.GetGameID(model, name);    
             Reviews = reviewService.GetReviews(GameID, ConsoleID);
             Game = gameService.GetGame(name , model);
+            Username = HttpContext.Session.GetString("Username");
+            ProfilePicUser = HttpContext.Session.GetString("ProfilePicUser");
         }
 
         public void OnPost()
         {
-            SubmittedRating = Review.Rating;
-            SubmittedReviewDesc = Review.ReviewDesc;
-
-            reviewService.AddReview("Maxwell", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png", SubmittedRating, SubmittedReviewDesc, GameID, ConsoleID);
+                SubmittedRating = Review.Rating;
+                SubmittedReviewDesc = Review.ReviewDesc;
+                reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, GameID, ConsoleID);
+                Response.Redirect("/ConsolesPage");
         }
 
     }

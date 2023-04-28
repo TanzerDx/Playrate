@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLAYRATE_ClassLibrary.Consoles;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -27,11 +28,22 @@ namespace PLAYRATE_ClassLibrary.Accounts
         {
             _accountsLibrary.RemoveAccount(id);
         }
-
+        
+        public Account GetAccount(string email) 
+        {
+            var accountDTO = _accountsLibrary.GetAccount(email);
+            return accountDTO.Value.ToAccount();
+        }
         public string GetUsernameFromEmail(string email)
         {
             string username = _accountsLibrary.GetUsernameFromEmail(email);
             return username;
+        }
+
+        public string GetProfilePic(string email)
+        {
+            string pfpURL = _accountsLibrary.GetProfilePic(email);
+            return pfpURL;
         }
 
         public SqlDataReader GetAccountLogIn(string email)

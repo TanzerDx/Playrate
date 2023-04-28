@@ -1,4 +1,6 @@
 ﻿using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Accounts;
+using PLAYRATE_ClassLibrary.Games;
 using System.Data.SqlClient;
 
 namespace PLAYRATE_DatabaseConnection
@@ -41,6 +43,25 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
+        public AccountDTO? GetAccount(string email)
+        {
+            AccountDTO? accountDTO = null;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Accounts where Email = @Email",
+                    con);
+                sqlCommand.Parameters.AddWithValue("@Email", email);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    accountDTO = CreateAccountDTO(reader);
+                }
+                con.Close();
+            }
+            return accountDTO;
+        }
+
         public string GetUsernameFromEmail(string email)
         {
             using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
@@ -48,6 +69,19 @@ namespace PLAYRATE_DatabaseConnection
                 con.Open();
 
                 string query = $"SELECT Username FROM dbo.Accounts WHERE Email='{email}'";
+                SqlCommand command = new SqlCommand(query, con);
+
+                return command.ExecuteScalar().ToString();
+            }
+        }
+
+        public string GetProfilePic(string email)
+        {
+            using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            {
+                con.Open();
+
+                string query = $"SELECT ProfilePicURL FROM dbo.Accounts WHERE Email='{email}'";
                 SqlCommand command = new SqlCommand(query, con);
 
                 return command.ExecuteScalar().ToString();
@@ -65,6 +99,19 @@ namespace PLAYRATE_DatabaseConnection
             SqlDataReader reader = command.ExecuteReader();
 
             return reader;
+        }
+
+        private AccountDTO CreateAccountDTO(SqlDataReader reader)
+        {
+            return new AccountDTO()
+            {
+                ID = reader.GetInt32(0),
+                Email = reader.GetString(1),
+                Username = reader.GetString(2),
+                ProfilePicURL = reader.GetString(3),
+                Password = reader.GetString(4),
+                Salt = reader.GetString(5),
+            };
         }
 
     }

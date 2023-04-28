@@ -6,26 +6,26 @@
 
 <div id="div-content-box-desc">
 
-    <h1 id="text-white">@Model.Game.Name</h1>
+    <h1 id="text-white">@GameModel.Game.Name</h1>
 	
     <div id="div-image-desc">
-        <img src="@Model.Game.URL_Page" width="720" height="430" />
+        <img src="@GameModel.Game.URL_Page" width="720" height="430" />
     </div>
 
     <div id="text-details">
-        <h4>Developer: @Model.Game.Developer</h4>
-        <h4>Release date: @Model.Game.Release_Date</h4>
-        <h4>Genre: @Model.Game.Genre</h4>
-        <h4>Rating: @Model.Game.Rating / 5</h4>
+        <h4>Developer: @GameModel.Game.Developer</h4>
+        <h4>Release date: @GameModel.Game.Release_Date</h4>
+        <h4>Genre: @GameModel.Game.Genre</h4>
+        <h4>Rating: @GameModel.Game.Rating / 5</h4>
     </div>
 
-    <h4 id="text-description">@Model.Game.Description</h4>
+    <h4 id="text-description">@GameModel.Game.Description</h4>
 
 
     <div class="sidebar-reviews">
         <h3 id="text-sidebar">REVIEWS</h3>
         
-        @foreach (Review review in Model.Reviews)
+        @foreach (Review review in GameModel.Reviews)
         {
         <div id="div-review">
             <div id="div-review-pfp">
@@ -46,12 +46,12 @@
             <form method="post" asp-page="./Game">
             <div id="div-review">
                 <div id="div-review-pfp">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" width="60" height="70" />
+                        <img src=@GameModel.ProfilePicUser width="70" height="70" />
                 </div>
                 <div id="div-review-text">
-                    <h4>Name</h4>
+                        <h4>@GameModel.Username</h4>
                     <h5>Rating:
-                        <input autocomplete="off" asp-for="Review.Rating" />
+                            <input autocomplete="off" asp-for="Review.Rating" />
                     </h5>
                 </div>
                 <div id="div-review-text">

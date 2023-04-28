@@ -6,5 +6,16 @@
 <div id="div-content-box">
 	<h2 id="text-white">PROFILE PAGE:</h2>
 
-	<h4 id="text-white">Welcome, @Model.Username</h4>
+	<div id="div-profile">
+		<div id="div-profile-left">
+			<img src="@Model.Account.ProfilePicURL" width="430" height="430" />
+		</div>
+
+		<div id="div-profile-right">
+			<h4 id="text-white">Username: @Model.Account.Username</h4>
+			<h4 id="text-white">Favorite games: Just Cause 4, God of War</h4>
+			<h4 id="text-white">Number of reviews: 2</h4>
+		</div>
+	
+	</div>
 </div>

@@ -15,7 +15,7 @@
             @foreach (Game game in Model.Games)
             {
                 <div id="div-game">
-                <a asp-page="Game" asp-route-name="@game.Name" asp-route-model="@Model.Model">
+                <a asp-page="Game" asp-route-name="@game.Name" asp-route-model="@GamesPageModel.Model">
                         <div id="div-image-game">
                             <img src="@game.URL_Game" width="140" height="170" />
                         </div>
@@ -32,7 +32,7 @@
 
 <div class="sidebar-filter">
 
-        <form method="post" asp-page="./GamesPage">
+        <form method="post" asp-page="./GamesPage" id="filter">
 
             <h3 id="text-white" asp-for="Filter.Keyword">SEARCH</h3>
             <input autocomplete="off" asp-for="Filter.Keyword" />
@@ -66,3 +66,11 @@
 
 </div>
 </div>
+
+@*<script>
+    document.getElementById("filter").addEventListener("submit", function (event) {
+
+        document.getElementById("filter").reset();
+        event.target.submit();
+    });
+</script>*@

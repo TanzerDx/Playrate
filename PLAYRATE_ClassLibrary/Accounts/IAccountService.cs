@@ -13,7 +13,11 @@ namespace PLAYRATE_ClassLibrary.Accounts
 
         void RemoveAccount(int id);
 
+        Account GetAccount(string email);
+
         string GetUsernameFromEmail(string email);
+
+        string GetProfilePic(string email);
 
         SqlDataReader GetAccountLogIn(string email);
 

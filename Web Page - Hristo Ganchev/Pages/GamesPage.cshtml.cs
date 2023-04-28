@@ -29,7 +29,7 @@ namespace Home_Page___Hristo_Ganchev
 
         public string? SubmittedGenreFilter { get; private set; }
 
-        public string Model { get; private set; }
+        public static string Model { get; private set; }
 
         public List<Game> Games { get; private set; }
 
@@ -59,17 +59,17 @@ namespace Home_Page___Hristo_Ganchev
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            if (SubmittedKeyword != "" && SubmittedMainFilter == "" && SubmittedGenreFilter == "")
+            switch ((SubmittedKeyword != "", SubmittedMainFilter != "", SubmittedGenreFilter != ""))
             {
-                Games = gameService.GetByKeyword(SubmittedKeyword, Model);
-            }
-            else if (SubmittedKeyword == "" && SubmittedMainFilter != "" && SubmittedGenreFilter == "")
-            {
-                Games = gameService.GetByMainFilter(SubmittedMainFilter, Model);
-            }
-            else if (SubmittedKeyword == "" && SubmittedMainFilter == "" && SubmittedGenreFilter != "")
-            {
-                Games = gameService.GetByGenre(SubmittedGenreFilter, Model);
+                case (true, false, false):
+                    Games = gameService.GetByKeyword(SubmittedKeyword, Model);
+                    break;
+                case (false, true, false):
+                    Games = gameService.GetByMainFilter(SubmittedMainFilter, Model);
+                    break;
+                case (false, false, true):
+                    Games = gameService.GetByGenre(SubmittedGenreFilter, Model);
+                    break;
             }
         }
     }

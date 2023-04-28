@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using PLAYRATE_ClassLibrary.Accounts;
 
 namespace PLAYRATE_ClassLibrary
 {
@@ -14,8 +14,13 @@ namespace PLAYRATE_ClassLibrary
 
         void RemoveAccount(int id);
 
+        AccountDTO? GetAccount(string email);
+
         string GetUsernameFromEmail(string email);
 
+        string GetProfilePic(string email);
+
         SqlDataReader GetAccountLogIn(string email);
+
     }
 }

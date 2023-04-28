@@ -23,6 +23,8 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public string Username { get; private set; }
 
+		public string ProfilePicUser { get; private set; }
+
         public string SubmittedEmail { get; private set; }
 		
 		public string SubmittedPassword { get; private set; }
@@ -61,7 +63,12 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				if (hashedPassword == storedHashedPassword)
 				{
 					Username = accountLibrary.GetUsernameFromEmail(SubmittedEmail);
+					ProfilePicUser = accountLibrary.GetProfilePic(SubmittedEmail);
+					
 					HttpContext.Session.SetString("Username", Username);
+					HttpContext.Session.SetString("Email", SubmittedEmail);
+					HttpContext.Session.SetString("ProfilePicUser", ProfilePicUser);
+
 					Response.Redirect("/ProfilePage");
 				}
 				else

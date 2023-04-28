@@ -15,6 +15,12 @@ namespace PLAYRATE_ClassLibrary.Accounts
 
         List<Game> playedGames = new List<Game>();
 
+        public int ID { get; set; }
+
+        public string ProfilePicURL { get; set; }
+
+        public string Salt { get; set; }
+
         [Required]
         public string Username { get; set; }
 
