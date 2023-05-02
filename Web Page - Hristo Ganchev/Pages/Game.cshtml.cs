@@ -72,7 +72,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         {
                 SubmittedRating = Review.Rating;
                 SubmittedReviewDesc = Review.ReviewDesc;
-                reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, GameID, ConsoleID);
+                reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, ConsoleID, GameID);
                 Response.Redirect("/ConsolesPage");
         }
 

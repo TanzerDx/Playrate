@@ -16,10 +16,16 @@ namespace Home_Page___Hristo_Ganchev.Pages
         IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         AccountService accountService;
 
+        IReviewRepository reviewRepository = new ReviewLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+        ReviewServices reviewService;
+
+        public int? NumberOfReviews { get; set; }
+
         public ProfilePageModel(ILogger<ProfilePageModel> logger)
         {
             _logger = logger;
             accountService = new AccountService(accountRepository);
+            reviewService = new ReviewServices(reviewRepository);
         }
 
         public Account Account { get; private set; }
@@ -29,6 +35,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
             if (HttpContext.Session.GetString("Username") != null)
             {
                 Account = accountService.GetAccount(HttpContext.Session.GetString("Email"));
+                NumberOfReviews = reviewService.GetNumberOfReviews(Account.Username);
             }
             else
             {

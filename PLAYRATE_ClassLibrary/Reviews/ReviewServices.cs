@@ -27,6 +27,12 @@ namespace PLAYRATE_ClassLibrary.Reviews
         {
             _reviewLibrary.AddReview(Username, URL_ProfilePicture, Rating,ReviewDesc, Game_ID, Console_ID);
         }
+        
+        public int? GetNumberOfReviews(string username)
+        {
+            int? numberReviews = _reviewLibrary.GetNumberOfReviews(username);
 
+            return numberReviews;
+        }
     }
 }

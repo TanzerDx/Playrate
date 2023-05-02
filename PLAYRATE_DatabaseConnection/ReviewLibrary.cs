@@ -73,5 +73,23 @@ namespace PLAYRATE_DatabaseConnection
                 con.Close();
             }
         }
+
+        public int? GetNumberOfReviews(string username)
+        {
+            int? numberReviews = 0;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"SELECT COUNT(*) FROM dbo.Reviews WHERE Username = '{username}'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    numberReviews = reader.GetInt32(0);
+                }
+                con.Close();
+            }
+            return numberReviews;
+        }
     }
 }

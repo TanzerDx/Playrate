@@ -20,10 +20,11 @@ namespace PLAYRATE_DatabaseConnection
             {
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@Email, @Username, @Password, @Salt)", connection);
+                SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@Email, @Username, @ProfilePicURL @Password, @Salt)", connection);
 
                 cmd.Parameters.AddWithValue("@Email", submittedEmail);
                 cmd.Parameters.AddWithValue("@Username", submittedUsername);
+                cmd.Parameters.AddWithValue("@ProfilePicURL", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
                 cmd.Parameters.AddWithValue("@Password", submittedPassword);
                 cmd.Parameters.AddWithValue("@Salt", salt);
 
