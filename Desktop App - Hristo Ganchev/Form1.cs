@@ -22,7 +22,6 @@ namespace Desktop_App___Hristo_Ganchev
         public HomePage(IConsoleRepository consoleRepository, IGameRepository gamesRepository)
         {
             InitializeComponent();
-            GetConsoles();
 
             lblConsole.BackColor = bgcolor;
             lblID.BackColor = bgcolor;
@@ -31,12 +30,12 @@ namespace Desktop_App___Hristo_Ganchev
             consoleService = new ConsoleService(consoleRepository);
             gamesService = new GameService(gamesRepository);
 
+            GetConsoles();
         }
 
         public HomePage(ConsoleService cS, GameService gS)
         {
             InitializeComponent();
-            GetConsoles();
 
             lblConsole.BackColor = bgcolor;
             lblID.BackColor = bgcolor;
@@ -45,29 +44,17 @@ namespace Desktop_App___Hristo_Ganchev
             consoleService = cS;
             gamesService = gS;
 
+            GetConsoles();
+
         }
 
 
         public void GetConsoles()
         {
-            con.Open();
-
-            string query = "SELECT Model FROM dbo.Consoles";
-
-            using (SqlCommand command = new SqlCommand(query, con))
+            foreach (string c in consoleService.GetConsoleByName())
             {
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-
-                    while (reader.Read())
-                    {
-                        cbbConsole.Items.Add(reader.GetString(0));
-                    }
-                }
+                cbbConsole.Items.Add(c);
             }
-
-            con.Close();
         }
 
         private void HomePage_Load(object sender, EventArgs e)

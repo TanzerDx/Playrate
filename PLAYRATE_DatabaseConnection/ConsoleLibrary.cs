@@ -37,6 +37,35 @@ namespace PLAYRATE_DatabaseConnection
             return consoles;
         }
 
+        public List<string> GetConsoleByName()
+        {
+            List<string> consoles = new List<string>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+
+                con.Open();
+
+                string query = "SELECT Model FROM dbo.Consoles";
+
+                using (SqlCommand command = new SqlCommand(query, con))
+                {
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            string consoleName = reader.GetString(0); 
+                            consoles.Add(consoleName);
+                        }
+                    }
+                    con.Close();
+                }
+                return consoles;
+            }
+     }
+
         public ConsoleDTO? GetConsole(string model)
         {
             ConsoleDTO? consoleDTO = null;
@@ -89,14 +118,6 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        private ConsoleDTO CreateConsoleDTO2(SqlDataReader reader)
-        {
-            return new ConsoleDTO()
-            {
-                Model = reader.GetString(0),
-            };
-        }
-
         public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -104,7 +125,7 @@ namespace PLAYRATE_DatabaseConnection
                 con.Open();
 
 
-                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(20), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX));", con);
+                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(20), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX), Console_ID int);", con);
 
                 SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 

@@ -19,8 +19,6 @@ namespace Desktop_App___Hristo_Ganchev
 
     public partial class AddConsole : Form
     {
-        //IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        
         ConsoleService consoleService;
         GameService gamesService;
 
@@ -39,7 +37,6 @@ namespace Desktop_App___Hristo_Ganchev
             lblAddConsole.BackColor = bgcolor;
             lblURLConsole.BackColor = bgcolor;
 
-            //consoleService = new ConsoleService(consoleRepository);
         }
 
         public AddConsole(ConsoleService cS, GameService gS)
@@ -67,48 +64,29 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddConsole_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
 
                 consoleService.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
 
-				MessageBox.Show("Console added successfully!");
+                MessageBox.Show("Console added successfully!");
 
-				HomePage homePage = new HomePage(consoleService, gamesService);
+                HomePage homePage = new HomePage(consoleService, gamesService);
 
                 homePage.Show();
                 this.Hide();
 
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            }
 
         }
 
         private void cbbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //switch (cbbType.Text)
-            //{
-            //	case "PlayStation":
 
-            //		tbModel.Enabled = true;
-            //		tbManufacturer.Enabled = true;
-            //		tbReleaseDate.Enabled = true;
-            //		tbControllerType.Enabled = true;
-
-            //		break;
-            //	case "Xbox":
-
-            //		tbModel.Enabled = true;
-            //		tbManufacturer.Enabled = true;
-            //		tbReleaseDate.Enabled = true;
-            //		tbControllerType.Enabled = true;
-            //		tbChatPlatform.Enabled = true;
-
-            //		break;
-            //}
         }
 
         private void tbModel_TextChanged(object sender, EventArgs e)

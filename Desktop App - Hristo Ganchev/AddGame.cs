@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Console = PLAYRATE_ClassLibrary.Consoles.Console;
 
 namespace Desktop_App___Hristo_Ganchev
 {
@@ -22,16 +23,13 @@ namespace Desktop_App___Hristo_Ganchev
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
         SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-
-        //IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        
+      
         ConsoleService consoleService;
         GameService gamesService;
 
         public AddGame()
         {
             InitializeComponent();
-            GetConsoles();
 
             lblConsole.BackColor = bgcolor;
             lblAddGame.BackColor = bgcolor;
@@ -44,6 +42,8 @@ namespace Desktop_App___Hristo_Ganchev
             lblURLGame.BackColor = bgcolor;
             lblURLPage.BackColor = bgcolor;
 
+            GetConsoles();
+
             foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
             {
                 cbbGenre.Items.Add(genre);
@@ -53,7 +53,6 @@ namespace Desktop_App___Hristo_Ganchev
         public AddGame(ConsoleService cS, GameService gS)
         {
             InitializeComponent();
-            GetConsoles();
 
             lblConsole.BackColor = bgcolor;
             lblAddGame.BackColor = bgcolor;
@@ -69,6 +68,8 @@ namespace Desktop_App___Hristo_Ganchev
             consoleService = cS;
             gamesService = gS;
 
+            GetConsoles();
+
             foreach (string genre in Enum.GetNames(typeof(BusinessLogic.Genres)))
             {
                 cbbGenre.Items.Add(genre);
@@ -77,24 +78,10 @@ namespace Desktop_App___Hristo_Ganchev
 
         public void GetConsoles()
 		{
-			con.Open();
-
-			string query = "SELECT Model FROM dbo.Consoles";
-
-			using (SqlCommand command = new SqlCommand(query, con))
-			{
-
-				using (SqlDataReader reader = command.ExecuteReader())
-				{
-
-					while (reader.Read())
-					{
-						cbbConsole.Items.Add(reader.GetString(0));
-					}
-				}
-			}
-
-			con.Close();
+            foreach (string c in consoleService.GetConsoleByName())
+            {
+                cbbConsole.Items.Add(c);
+            }
 		}
 
 		private void AddGame_Load(object sender, EventArgs e)
@@ -104,9 +91,9 @@ namespace Desktop_App___Hristo_Ganchev
 
         private void btnAddGame_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text);
+            try
+            {
+                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
 
                 MessageBox.Show("Game added successfully!");
 
@@ -114,11 +101,11 @@ namespace Desktop_App___Hristo_Ganchev
 
                 homePage.Show();
                 this.Hide();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Error. Make sure that you have entered the correct data!");
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("Error. Make sure that you have entered the correct data!");
+            }
         }
     }
 }

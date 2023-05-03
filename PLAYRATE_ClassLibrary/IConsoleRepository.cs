@@ -11,6 +11,8 @@ namespace PLAYRATE_ClassLibrary
     {
         List<ConsoleDTO> GetAll();
 
+        List<string> GetConsoleByName();
+
         ConsoleDTO? GetConsole(string name);
 
         int? GetConsoleID(string console);

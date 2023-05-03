@@ -23,6 +23,12 @@ namespace PLAYRATE_ClassLibrary.Consoles
             return consoles;
         }
 
+        public List<string> GetConsoleByName()
+        {
+            var consoles = _consolesLibrary.GetConsoleByName();
+            return consoles;
+        }
+
         public Console GetConsole(string name)
         {
             var consoleDTO = _consolesLibrary.GetConsole(name);

@@ -52,9 +52,9 @@ namespace PLAYRATE_ClassLibrary.Games
             return games;
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage)
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID)
         {
-            _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage);
+            _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage, consoleID);
         }
 
         public void RemoveGame(string console, string tbID)

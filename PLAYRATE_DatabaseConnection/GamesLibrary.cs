@@ -172,14 +172,14 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage)
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page)", con);
+                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page, @Console_ID)", con);
 
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Developer", developer);
@@ -189,6 +189,7 @@ namespace PLAYRATE_DatabaseConnection
                 cmd.Parameters.AddWithValue("@Description", desc);
                 cmd.Parameters.AddWithValue("@URL_Game", urlGame);
                 cmd.Parameters.AddWithValue("@URL_Page", urlPage);
+                cmd.Parameters.AddWithValue("@Console_ID", consoleID);
 
                 cmd.ExecuteNonQuery();
 
