@@ -37,7 +37,7 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
 
             consoleService.AddConsole(id, model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
 
-            Assert.IsNotNull(consoleService.GetAll());
+            Assert.IsNotNull(consoleService.GetAll().Count());
         }
 
         [TestMethod()]
