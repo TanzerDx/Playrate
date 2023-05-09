@@ -221,9 +221,9 @@ namespace PLAYRATE_DatabaseConnection
 
                 SqlCommand cmd1 = new SqlCommand($"SELECT Console_ID from dbo.{console}", con);
 
-                int consoleID = cmd1.ExecuteNonQuery();
+                int consoleID = (int)cmd1.ExecuteScalar();
 
-                SqlCommand cmd2 = new SqlCommand($"UPDATE dbo.{console} SET Rating = (SELECT AVG(Rating) FROM dbo.Reviews WHERE Console_ID = '{consoleID}')", con);
+                SqlCommand cmd2 = new SqlCommand($"UPDATE dbo.{console} SET Rating = (SELECT AVG(Rating)  FROM dbo.Reviews  WHERE dbo.{console}.ID = dbo.Reviews.Game_ID AND Console_ID = '{consoleID}' GROUP BY Game_ID)", con);
                 cmd2.ExecuteNonQuery();
 
                 con.Close();

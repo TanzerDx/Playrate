@@ -46,8 +46,8 @@ namespace Home_Page___Hristo_Ganchev
         public IActionResult OnGet(string model)
         {
             Model = model;
+            gameService.SetRating(model);
             Games = gameService.GetAll(model);
-            //gameService.SetRating(model);
 
             return Page();
         }
