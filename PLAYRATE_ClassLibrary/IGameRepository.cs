@@ -18,6 +18,8 @@ namespace PLAYRATE_ClassLibrary
         void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID);
         void RemoveGame(string console, string tbID);
 
+        void SetRating(string console);
+
     }
 
 }

@@ -14,7 +14,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
         public string URL_ProfilePicture;
 
-        public string Rating;
+        public double Rating;
 
         public string ReviewDesc;
 

@@ -45,7 +45,7 @@ namespace PLAYRATE_DatabaseConnection
                 ID = reader.GetInt32(0),
                 Username = reader.GetString(1),
                 URL_ProfilePicture = reader.GetString(2),
-                Rating = reader.GetString(3),
+                Rating = reader.GetDouble(3),
                 ReviewDesc = reader.GetString(4),
                 Game_ID = reader.GetInt32(5),
                 Account_ID = reader.GetInt32(6),
@@ -90,6 +90,31 @@ namespace PLAYRATE_DatabaseConnection
                 con.Close();
             }
             return numberReviews;
+        }
+
+        public double? GetRating(int? gameID, int? consoleID)
+        {
+            double? rating = 0;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"SELECT AVG(Rating) FROM dbo.Reviews WHERE Game_ID = '{gameID}' AND Console_ID = '{consoleID}'", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    try 
+                    {
+                    rating = reader.GetDouble(0);
+                    }
+                    catch
+                    {
+                        rating = 0;
+                    }
+                }
+                con.Close();
+            }
+            return rating;
         }
     }
 }

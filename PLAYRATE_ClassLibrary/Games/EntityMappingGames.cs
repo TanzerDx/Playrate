@@ -17,7 +17,7 @@ namespace PLAYRATE_ClassLibrary.Games
 				Developer = gameDTO.Developer,
 				Release_Date = gameDTO.Release_Date,
 				Genre = gameDTO.Genre,
-				Rating = gameDTO.Rating,
+				Rating = gameDTO.Rating.ToString(),
 				Description = gameDTO.Description,
 				URL_Game = gameDTO.URL_Game,
 				URL_Page = gameDTO.URL_Page
@@ -33,7 +33,7 @@ namespace PLAYRATE_ClassLibrary.Games
 				Developer = game.Developer,
 				Release_Date = game.Release_Date,
 				Genre = game.Genre,
-				Rating = game.Rating,
+				Rating = Convert.ToDouble(game.Rating),
 				Description = game.Description,
 				URL_Game = game.URL_Game,
 				URL_Page = game.URL_Page

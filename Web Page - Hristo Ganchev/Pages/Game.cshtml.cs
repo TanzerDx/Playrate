@@ -6,6 +6,7 @@ using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_ClassLibrary.Reviews;
 using PLAYRATE_DatabaseConnection;
+using System;
 using System.Text.Json.Serialization;
 
 namespace Home_Page___Hristo_Ganchev.Pages
@@ -14,26 +15,25 @@ namespace Home_Page___Hristo_Ganchev.Pages
     {
         private readonly ILogger<GameModel> _logger;
 
-        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         GameService gameService;
 
-        IReviewRepository reviewRepository = new ReviewLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         ReviewServices reviewService;
 
-        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         ConsoleService consoleService;
 
-        public GameModel(ILogger<GameModel> logger)
+        public GameModel(ILogger<GameModel> logger, GameService gS, ReviewServices rS, ConsoleService cS)
         {
             _logger = logger;
-            gameService = new GameService(gamesRepository);
-            reviewService = new ReviewServices(reviewRepository);
-            consoleService = new ConsoleService(consoleRepository);
+            gameService = gS;
+            reviewService = rS;
+            consoleService = cS;
         }
 
         public string Name{ get; private set; }
 
         public string Model { get; private set; }
+
+        public static double? Rating { get; private set; }
 
         public static string Username { get; private set; }
 
@@ -64,6 +64,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
             GameID = gameService.GetGameID(model, name);    
             Reviews = reviewService.GetReviews(GameID, ConsoleID);
             Game = gameService.GetGame(name , model);
+            Rating = reviewService.GetRating(GameID, ConsoleID);
             Username = HttpContext.Session.GetString("Username");
             ProfilePicUser = HttpContext.Session.GetString("ProfilePicUser");
         }

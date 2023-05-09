@@ -15,19 +15,17 @@ namespace Home_Page___Hristo_Ganchev.Pages
     {
         private readonly ILogger<ConsolesPageModel> _logger;
 
-        IConsoleRepository consoleRepository = new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-        
-        ConsoleService consoleService;
+        ConsoleService consoleLibrary;
 
         public string UserName { get; private set; }
 
         public string PageTitle { get; private set; }
 
-        public ConsolesPageModel(ILogger<ConsolesPageModel> logger)
+        public ConsolesPageModel(ILogger<ConsolesPageModel> logger, ConsoleService consoleService)
         {
             PageTitle = "CONSOLES:";
             _logger = logger;
-            consoleService = new ConsoleService(consoleRepository);
+            consoleLibrary = consoleService;
         }
 
         public IActionResult OnGet()
@@ -37,7 +35,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public List<Console> Consoles
         {
-            get { return consoleService.GetAll(); }
+            get { return consoleLibrary.GetAll(); }
         }
 
         public void OnPost()

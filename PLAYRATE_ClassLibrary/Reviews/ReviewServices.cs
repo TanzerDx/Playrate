@@ -34,5 +34,12 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
             return numberReviews;
         }
+
+        public double? GetRating(int? gameID, int? consoleID)
+        {
+            double? numberReviews = _reviewLibrary.GetRating(gameID, consoleID);
+
+            return numberReviews;
+        }
     }
 }

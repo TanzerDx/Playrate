@@ -1,4 +1,5 @@
 ﻿using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
 using System;
 using System.Collections.Generic;
@@ -159,15 +160,15 @@ namespace PLAYRATE_DatabaseConnection
             return new GameDTO()
             {
                 ID = reader.GetInt32(0),
-                Console_ID = reader.GetInt32(1),
-                Name = reader.GetString(2),
-                Developer = reader.GetString(3),
-                Release_Date = reader.GetString(4),
-                Genre = reader.GetString(5),
-                Rating = reader.GetString(6),
-                Description = reader.GetString(7),
-                URL_Game = reader.GetString(8),
-                URL_Page = reader.GetString(9)
+                Name = reader.GetString(1),
+                Developer = reader.GetString(2),
+                Release_Date = reader.GetString(3),
+                Genre = reader.GetString(4),
+                Rating = reader.GetDouble(5),
+                Description = reader.GetString(6),
+                URL_Game = reader.GetString(7),
+                URL_Page = reader.GetString(8),
+                Console_ID = reader.GetInt32(9)
 
             };
         }
@@ -211,5 +212,23 @@ namespace PLAYRATE_DatabaseConnection
                 con.Close();
             }
         }
+
+        public void SetRating(string console)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd1 = new SqlCommand($"SELECT Console_ID from dbo.{console}", con);
+
+                int consoleID = cmd1.ExecuteNonQuery();
+
+                SqlCommand cmd2 = new SqlCommand($"UPDATE dbo.{console} SET Rating = (SELECT AVG(Rating) FROM dbo.Reviews WHERE Console_ID = '{consoleID}')", con);
+                cmd2.ExecuteNonQuery();
+
+                con.Close();
+            }
+        }
+
     }
 }

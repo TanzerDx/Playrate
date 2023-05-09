@@ -12,8 +12,6 @@ namespace Home_Page___Hristo_Ganchev.Pages
 {
     public class RegisterModel : PageModel
 	{
-        IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-
         AccountService accountLibrary;
 
         public string PageTitle { get; private set; }
@@ -33,10 +31,10 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		[BindProperty]
 		public Account Account { get; set; }
 
-		public RegisterModel()
+		public RegisterModel(AccountService aS)
 		{
 			PageTitle = "REGISTER:";
-            accountLibrary = new AccountService(accountRepository);
+            accountLibrary = aS;
         }
 
 		public void OnGet()

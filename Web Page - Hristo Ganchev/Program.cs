@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using PLAYRATE_ClassLibrary;
+using PLAYRATE_ClassLibrary.Accounts;
+using PLAYRATE_ClassLibrary.Consoles;
+using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_ClassLibrary.Reviews;
 using PLAYRATE_DatabaseConnection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,25 +17,30 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-//builder.Services.AddTransient<IAccountRepository>((sp) =>
-//{
-//    return new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-//});
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<GameService>();
+builder.Services.AddScoped<ConsoleService>();
+builder.Services.AddScoped<ReviewServices>();
 
-//builder.Services.AddTransient<IGameRepository>((sp) =>
-//{
-//    return new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-//});
+builder.Services.AddTransient<IAccountRepository>((sp) =>
+{
+    return new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+});
 
-//builder.Services.AddTransient<IConsoleRepository>((sp) =>
-//{
-//    return new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-//});
+builder.Services.AddTransient<IGameRepository>((sp) =>
+{
+    return new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+});
 
-//builder.Services.AddTransient<IReviewRepository>((sp) =>
-//{
-//    return new ReviewLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-//});
+builder.Services.AddTransient<IConsoleRepository>((sp) =>
+{
+    return new ConsoleLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+});
+
+builder.Services.AddTransient<IReviewRepository>((sp) =>
+{
+    return new ReviewLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
+});
 
 var app = builder.Build();
 

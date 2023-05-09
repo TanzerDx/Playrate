@@ -61,5 +61,10 @@ namespace PLAYRATE_ClassLibrary.Games
         {
             _gamesLibrary.RemoveGame(console, tbID);
         }
+
+        public void SetRating(string console)
+        {
+            _gamesLibrary.SetRating(console);
+        }
     }
 }

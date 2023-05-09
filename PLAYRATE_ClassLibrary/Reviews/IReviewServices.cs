@@ -14,5 +14,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
         void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID);
 
         int? GetNumberOfReviews(string username);
+
+        double? GetRating(int? gameID, int? consoleID);
     }
 }

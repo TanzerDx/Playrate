@@ -15,8 +15,6 @@ namespace Home_Page___Hristo_Ganchev
     {
         private readonly ILogger<GamesPageModel> _logger;
 
-        IGameRepository gamesRepository = new GamesLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-
         GameService gameService;
 
         public string UserName { get; private set; }
@@ -29,7 +27,7 @@ namespace Home_Page___Hristo_Ganchev
 
         public string? SubmittedGenreFilter { get; private set; }
 
-        public static string Model { get; private set; }
+        public string Model { get; private set; }
 
         public List<Game> Games { get; private set; }
 
@@ -37,11 +35,11 @@ namespace Home_Page___Hristo_Ganchev
         [BindProperty]
         public BusinessLogic.Filter Filter { get; set; }
 
-        public GamesPageModel(ILogger<GamesPageModel> logger)
+        public GamesPageModel(ILogger<GamesPageModel> logger, GameService gS)
         {
             PageTitle = "GAMES:";
             _logger = logger;
-            gameService = new GameService(gamesRepository);
+            gameService = gS;
             Games = new List<Game>();
         }
 
@@ -49,6 +47,7 @@ namespace Home_Page___Hristo_Ganchev
         {
             Model = model;
             Games = gameService.GetAll(model);
+            //gameService.SetRating(model);
 
             return Page();
         }

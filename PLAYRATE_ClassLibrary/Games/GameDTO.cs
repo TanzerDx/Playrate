@@ -16,7 +16,7 @@ namespace PLAYRATE_ClassLibrary.Games
         public string Developer;
         public string Release_Date;
         public string Genre;
-        public string Rating;
+        public double Rating;
         public string Description;
         public string URL_Game;
         public string URL_Page;

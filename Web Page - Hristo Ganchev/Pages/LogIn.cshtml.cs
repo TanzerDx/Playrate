@@ -13,9 +13,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 {
     public class LogInModel : PageModel
     {
-        IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-
-        AccountService accountLibrary;
+		AccountService accountLibrary;
 
 		public string PageTitle { get; private set; }
 
@@ -34,10 +32,10 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		[BindProperty]
 		public LogIn LogIn { get; set; }
 
-		public LogInModel()
+		public LogInModel(AccountService accountService)
 		{
 			PageTitle = "LOG IN:";
-            accountLibrary = new AccountService(accountRepository);
+            accountLibrary = accountService;
         }
 
 		public void OnGet()

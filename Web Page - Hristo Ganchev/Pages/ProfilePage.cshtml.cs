@@ -13,25 +13,23 @@ namespace Home_Page___Hristo_Ganchev.Pages
     {
         private readonly ILogger<ProfilePageModel> _logger;
 
-        IAccountRepository accountRepository = new AccountLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         AccountService accountService;
-
-        IReviewRepository reviewRepository = new ReviewLibrary("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
         ReviewServices reviewService;
 
         public int? NumberOfReviews { get; set; }
 
-        public ProfilePageModel(ILogger<ProfilePageModel> logger)
+        public ProfilePageModel(ILogger<ProfilePageModel> logger, AccountService aS, ReviewServices rS)
         {
             _logger = logger;
-            accountService = new AccountService(accountRepository);
-            reviewService = new ReviewServices(reviewRepository);
+            accountService = aS;
+            reviewService = rS;
         }
 
         public Account Account { get; private set; }
 
         public void OnGet()
         {
+          
             if (HttpContext.Session.GetString("Username") != null)
             {
                 Account = accountService.GetAccount(HttpContext.Session.GetString("Email"));
@@ -39,7 +37,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
             }
             else
             {
-                Response.Redirect("/Error");
+                Response.Redirect("/LogIn");
             }
         }
     }

@@ -19,7 +19,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
                 URL_ProfilePicture = reviewDTO.URL_ProfilePicture,
 
-                Rating = reviewDTO.Rating,
+                Rating = reviewDTO.Rating.ToString(),
 
                 ReviewDesc = reviewDTO.ReviewDesc,
 
@@ -39,7 +39,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
                 URL_ProfilePicture = review.URL_ProfilePicture,
 
-                Rating = review.Rating,
+                Rating = Convert.ToDouble(review.Rating),
 
                 ReviewDesc = review.ReviewDesc,
 
