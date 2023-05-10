@@ -8,6 +8,7 @@ using PLAYRATE_ClassLibrary.Reviews;
 using PLAYRATE_DatabaseConnection;
 using System;
 using System.Text.Json.Serialization;
+using System.Xml.Linq;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
@@ -33,30 +34,28 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         public string Model { get; private set; }
 
-        public static double? Rating { get; private set; }
+        public string Username { get; private set; }
 
-        public static string Username { get; private set; }
+        public string ProfilePicUser { get; private set; }
 
-        public static string ProfilePicUser { get; private set; }
+        public int? GameID { get; private set; }
 
-        public static int? GameID { get; private set; }
-
-        public static int? ConsoleID { get; private set; }
+        public int? ConsoleID { get; private set; }
 
         public string SubmittedRating { get; set; }
 
         public string SubmittedReviewDesc { get; set; }
 
-        public static Game Game { get; private set; }
+        public Game Game { get; private set; }
 
         public PLAYRATE_ClassLibrary.Consoles.Console Console { get; private set; }
 
         [BindProperty]
         public Review Review { get; set; }
 
-        public static List<Review> Reviews { get; set; }
+        public List<Review> Reviews { get; set; }
 
-        public void OnGet(string name, string model)
+        public IActionResult OnGet(string name, string model)
         {
             Name = name;
             Model = model;
@@ -64,16 +63,32 @@ namespace Home_Page___Hristo_Ganchev.Pages
             GameID = gameService.GetGameID(model, name);    
             Reviews = reviewService.GetReviews(GameID, ConsoleID);
             Game = gameService.GetGame(name , model);
-            Rating = reviewService.GetRating(GameID, ConsoleID);
             Username = HttpContext.Session.GetString("Username");
             ProfilePicUser = HttpContext.Session.GetString("ProfilePicUser");
+
+            HttpContext.Session.SetString("Name", Name);
+            HttpContext.Session.SetString("Model", Model);
+            
+
+            return Page();
         }
 
         public void OnPost()
         {
+                Name = HttpContext.Session.GetString("Name");
+                Model = HttpContext.Session.GetString("Model");
+                Username = HttpContext.Session.GetString("Username");
+                ProfilePicUser = HttpContext.Session.GetString("ProfilePicUser");
+
+                ConsoleID = consoleService.GetConsoleID(Model);
+                GameID = gameService.GetGameID(Model, Name);
+                Reviews = reviewService.GetReviews(GameID, ConsoleID);
+                Game = gameService.GetGame(Name, Model);
+
                 SubmittedRating = Review.Rating;
                 SubmittedReviewDesc = Review.ReviewDesc;
                 reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, ConsoleID, GameID);
+                gameService.SetRating(ConsoleID, GameID, Model);
                 Response.Redirect("/ThankYou");
         }
 

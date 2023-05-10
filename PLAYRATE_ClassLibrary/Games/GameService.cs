@@ -34,21 +34,9 @@ namespace PLAYRATE_ClassLibrary.Games
             return gameID;
         }
 
-        public List<Game> GetByGenre(string genre, string console)
+        public List<Game> Filter(string? keyword, string? mainFilter, string? genre, string console)
         {
-            var games = _gamesLibrary.GetByGenre(genre, console).Select(dto => dto.ToGame()).ToList();
-            return games;
-        }
-
-        public List<Game> GetByMainFilter(string filter, string console)
-        {
-            var games = _gamesLibrary.GetByMainFilter(filter, console).Select(dto => dto.ToGame()).ToList();
-            return games;
-        }
-
-        public List<Game> GetByKeyword(string keyword,string console)
-        {
-            var games = _gamesLibrary.GetByKeyword(keyword, console).Select(dto => dto.ToGame()).ToList();
+            var games = _gamesLibrary.Filter(keyword, mainFilter, genre, console).Select(dto => dto.ToGame()).ToList();
             return games;
         }
 
@@ -62,9 +50,9 @@ namespace PLAYRATE_ClassLibrary.Games
             _gamesLibrary.RemoveGame(console, tbID);
         }
 
-        public void SetRating(string console)
+        public void SetRating(int? consoleID, int? gameID, string console)
         {
-            _gamesLibrary.SetRating(console);
+            _gamesLibrary.SetRating(consoleID, gameID, console);
         }
     }
 }

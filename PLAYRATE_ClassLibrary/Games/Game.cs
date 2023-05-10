@@ -15,12 +15,12 @@ namespace PLAYRATE_ClassLibrary.Games
         public string Genre { get; init; }
 		public string Release_Date { get; init; }
         public string Developer { get; init; }
-        public string Rating { get; init; }
+        public double Rating { get; init; }
 		public string Description { get; init; }
 		public string URL_Game { get; init; }
 		public string URL_Page { get; init; }
 
-		public Game (int id, string name, string genre, string releaseDate, string developer, string rating, string desc, string URL_Game, string URL_Page)
+		public Game (int id, string name, string genre, string releaseDate, string developer, double rating, string desc, string URL_Game, string URL_Page)
 		{
 			this.ID = id;
 			this.Name = name;

@@ -11,11 +11,9 @@ namespace PLAYRATE_ClassLibrary.Games
         List<Game> GetAll(string console);
         Game GetGame(string name, string console);
         int? GetGameID(string console, string name);
-        List<Game> GetByGenre(string genre, string console);
-        List<Game> GetByMainFilter(string filter, string console);
-        List<Game> GetByKeyword(string keyword, string console);
+        List<Game> Filter(string? keyword, string? mainFilter, string? genre, string console);
         void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID);
         void RemoveGame(string console, string tbID);
-        void SetRating(string console);
+        void SetRating(int? consoleID, int? gameID, string console);
     }
 }

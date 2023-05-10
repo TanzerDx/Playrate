@@ -1,4 +1,5 @@
-﻿using PLAYRATE_ClassLibrary;
+﻿using BusinessLogic;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
 using System;
@@ -73,45 +74,29 @@ namespace PLAYRATE_DatabaseConnection
             return gameID;
         }
 
-        public List<GameDTO> GetByGenre(string genre, string console)
-        {
-            List<GameDTO> games = new List<GameDTO>();
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}'", con);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    GameDTO gameDTO = CreateGameDTO(reader);
-                    games.Add(gameDTO);
-                }
-                con.Close();
-            }
-            return games;
-        }
-
-        public List<GameDTO> GetByMainFilter(string filter, string console)
+        public List<GameDTO> Filter(string? keyword, string? mainFilter, string? genre, string console)
         {
             List<GameDTO> games = new List<GameDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
                 SqlCommand sqlCommand = null;
+                
+                string? order = null;
 
-                SqlCommand GetSqlCommand()
+                string GetOrderBy()
                 {
-                    switch (filter)
+                    switch (mainFilter)
                     {
                         case "Highest rating":
                             {
-                                sqlCommand = new SqlCommand($"select * from dbo.{console} order by Rating DESC", con);
+                                order = "Rating DESC";
                                 break;
                             }
 
                         case "Latest release":
                             {
-                                sqlCommand = new SqlCommand($"select * from dbo.{console} order by Release_Date DESC", con);
+                                order = "Release_Date DESC";
                                 break;
                             }
 
@@ -121,29 +106,50 @@ namespace PLAYRATE_DatabaseConnection
                                 break;
                             }
                     }
+                
+                    return order;
+                }
+
+                SqlCommand GetSqlCommand()
+                {
+                    GetOrderBy();
+
+                    switch (keyword != "", mainFilter != "", genre != "")
+                    {
+                        case (true, false, false):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%'", con);
+                            break;
+                        
+                        case (false, true, false):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} order by {order}", con);
+                            break;
+
+                        case (false, false, true):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}'", con);
+                            break;
+
+                        case (true, true, false):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' ORDER BY {order}'", con);
+                            break;
+
+                        case (true, false, true):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' AND Genres = '{genre}'", con);
+                            break;
+
+                        case (false, true, true):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}' ORDER BY {order}", con);
+                            break;
+
+                        case (true, true, true):
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where NAME LIKE '%{keyword}%' AND Genres = '{genre}' ORDER BY {order}", con);
+                            break;
+
+                    }
                     return sqlCommand;
                 }
 
                 GetSqlCommand();
 
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    GameDTO gameDTO = CreateGameDTO(reader);
-                    games.Add(gameDTO);
-                }
-                con.Close();
-            }
-            return games;
-        }
-
-        public List<GameDTO> GetByKeyword(string keyword, string console)
-        {
-            List<GameDTO> games = new List<GameDTO>();
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%'", con);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
@@ -213,18 +219,14 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
-        public void SetRating(string console)
+        public void SetRating(int? consoleID, int? gameID, string console)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                SqlCommand cmd1 = new SqlCommand($"SELECT Console_ID from dbo.{console}", con);
-
-                int consoleID = (int)cmd1.ExecuteScalar();
-
-                SqlCommand cmd2 = new SqlCommand($"UPDATE dbo.{console} SET Rating = (SELECT AVG(Rating)  FROM dbo.Reviews  WHERE dbo.{console}.ID = dbo.Reviews.Game_ID AND Console_ID = '{consoleID}' GROUP BY Game_ID)", con);
-                cmd2.ExecuteNonQuery();
+                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Rating = (SELECT AVG(Rating)  FROM dbo.Reviews  WHERE Console_ID = '{consoleID}' AND Game_ID = '{gameID}') WHERE ID = '{gameID}'", con);
+                cmd.ExecuteNonQuery();
 
                 con.Close();
             }

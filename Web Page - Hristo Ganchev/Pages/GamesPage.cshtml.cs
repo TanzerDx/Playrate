@@ -46,30 +46,22 @@ namespace Home_Page___Hristo_Ganchev
         public IActionResult OnGet(string model)
         {
             Model = model;
-            gameService.SetRating(model);
             Games = gameService.GetAll(model);
+
+            HttpContext.Session.SetString("Model", Model);
 
             return Page();
         }
 
         public void OnPost()
         {
+            Model = HttpContext.Session.GetString("Model");
+
             SubmittedKeyword = $"{Filter.GetKeyword()}";
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            switch ((SubmittedKeyword != "", SubmittedMainFilter != "", SubmittedGenreFilter != ""))
-            {
-                case (true, false, false):
-                    Games = gameService.GetByKeyword(SubmittedKeyword, Model);
-                    break;
-                case (false, true, false):
-                    Games = gameService.GetByMainFilter(SubmittedMainFilter, Model);
-                    break;
-                case (false, false, true):
-                    Games = gameService.GetByGenre(SubmittedGenreFilter, Model);
-                    break;
-            }
+            Games = gameService.Filter(SubmittedKeyword, SubmittedMainFilter, SubmittedGenreFilter, Model);
         }
     }
 }
