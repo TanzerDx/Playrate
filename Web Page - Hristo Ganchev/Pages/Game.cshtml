@@ -25,6 +25,28 @@
     <div class="sidebar-reviews">
         <h3 id="text-sidebar">REVIEWS</h3>
         
+        @if (HttpContext.Session.GetString("Username") != null)
+        {
+            <form method="post" asp-page="./Game">
+                <div id="div-review">
+                    <div id="div-review-pfp">
+                        <img src=@Model.ProfilePicUser width="70" height="70" />
+                    </div>
+                    <div id="div-review-text">
+                        <h4>@Model.Username</h4>
+                        <h5>
+                            Rating:
+                            <input autocomplete="off" asp-for="Review.Rating" />
+                        </h5>
+                    </div>
+                    <div id="div-review-text">
+                        <input autocomplete="off" asp-for="Review.ReviewDesc" />
+                        <button type="submit" method="post">Submit</button>
+                    </div>
+                </div>
+            </form>
+        }
+
         @foreach (Review review in Model.Reviews)
         {
         <div id="div-review">
@@ -41,25 +63,5 @@
         </div>
         }
 
-        @if (HttpContext.Session.GetString("Username") != null)
-        {
-            <form method="post" asp-page="./Game">
-            <div id="div-review">
-                <div id="div-review-pfp">
-                        <img src=@Model.ProfilePicUser width="70" height="70" />
-                </div>
-                <div id="div-review-text">
-                        <h4>@Model.Username</h4>
-                    <h5>Rating:
-                            <input autocomplete="off" asp-for="Review.Rating" />
-                    </h5>
-                </div>
-                <div id="div-review-text">
-                        <input autocomplete="off" asp-for="Review.ReviewDesc" />
-                        <button type="submit" method="post">Submit</button>
-                    </div>
-            </div>
-            </form>
-        }
     </div>
 </div>
