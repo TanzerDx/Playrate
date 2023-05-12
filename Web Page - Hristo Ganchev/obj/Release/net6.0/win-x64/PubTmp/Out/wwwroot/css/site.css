@@ -3,6 +3,27 @@ html {
     background-color: #291563;
 }
 
+
+
+/*Buttons*/
+.btnThankYou {
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 15px 50px;
+    cursor: pointer;
+    border-radius: 25px; 
+}
+
+    .btnThankYou:hover {
+        background-color: #9fb0f4;
+    }
+
+
+
+/*Homepage*/
 #text-homepage-first {
     color: white;
     margin-top: 50px;
@@ -28,6 +49,10 @@ html {
     text-align: right;
 }
 
+
+
+
+/*Content*/
 #div-content-box {
     border-radius: 85px;
     background-color: #1B1748;
@@ -90,10 +115,13 @@ html {
     margin: 5px 5px 5px 10px;
 }
 
+
+
+/*Review*/
 #div-review {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 30px;
+    grid-gap: 10px;
     width: 300px;
     margin-left: 25px;
     margin-right: 25px;
@@ -104,12 +132,13 @@ html {
     grid-column: 1;
     width: 40px;
     height: 70px;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 #div-review-text {
     grid-column: 2;
     width: 230px;
+    height:auto;
     color: white;
 }
 
@@ -119,6 +148,10 @@ html {
     grid-row: 2;
 }
 
+
+
+
+/*Sidebar*/
 .sidebar-filter {
     grid-column: 2;
     grid-row: 1;
@@ -129,9 +162,11 @@ html {
 
 .sidebar-reviews {
     grid-column: 3;
-    grid-row:span 4;
+    grid-row: span 4;
+    overflow-y: scroll;
+    overflow-x: hidden;
     width: 350px;
-    height: auto;
+    height: 510px;
     background-color: #1B1E5B;
 }
 
@@ -141,6 +176,9 @@ html {
     margin-top: 30px;
 }
 
+
+
+/*Text-Colors*/
 #text-white {
     color: white;
 }
@@ -149,6 +187,10 @@ html {
     color: red;
 }
 
+
+
+
+/*Filter*/
 #rb-field {
     width: 125px;
     margin-left: 30px;
@@ -164,8 +206,10 @@ html {
     margin-left: 30px;
 }
 
+
+
+/*GamePage*/
 #text-description {
-    grid-column: 1;
     grid-row: 4;
     color: white;
     width: 700px;
@@ -178,6 +222,9 @@ html {
     color: white;
 }
 
+
+
+/*Register/LogIn*/
 .div-login {
     margin-top: 15px;
     margin-left: 530px;
@@ -194,6 +241,9 @@ html {
     margin-left: 450px;
 }
 
+
+
+/*ContactPage*/
 #form-findus {
     color: white;
     width: 200px;
@@ -202,6 +252,25 @@ html {
 
 .contact-form label {
     display: block;
+}
+
+
+
+/*ProfilePage*/
+#div-profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 50px;
+}
+
+#div-profile-left {
+    grid-column: 1;
+}
+
+#div-profile-right {
+    grid-column: 2;
+    margin-left: 10px;
 }
 
 

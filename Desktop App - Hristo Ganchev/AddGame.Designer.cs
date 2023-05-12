@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             lblDesc = new Label();
-            lblRating = new Label();
             lblGenres = new Label();
             lblReleaseDate = new Label();
             lblDeveloper = new Label();
@@ -37,7 +36,6 @@
             tbDeveloper = new TextBox();
             tbReleaseDate = new TextBox();
             tbDesc = new TextBox();
-            tbRating = new TextBox();
             cbbGenre = new ComboBox();
             btnAddGame = new Button();
             tbName = new TextBox();
@@ -61,23 +59,12 @@
             lblDesc.TabIndex = 10;
             lblDesc.Text = "Description:";
             // 
-            // lblRating
-            // 
-            lblRating.AutoSize = true;
-            lblRating.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRating.ForeColor = Color.White;
-            lblRating.Location = new Point(478, 141);
-            lblRating.Name = "lblRating";
-            lblRating.Size = new Size(58, 21);
-            lblRating.TabIndex = 9;
-            lblRating.Text = "Rating:";
-            // 
             // lblGenres
             // 
             lblGenres.AutoSize = true;
             lblGenres.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblGenres.ForeColor = Color.White;
-            lblGenres.Location = new Point(478, 101);
+            lblGenres.Location = new Point(479, 96);
             lblGenres.Name = "lblGenres";
             lblGenres.Size = new Size(62, 21);
             lblGenres.TabIndex = 8;
@@ -138,17 +125,10 @@
             tbDesc.Size = new Size(763, 282);
             tbDesc.TabIndex = 14;
             // 
-            // tbRating
-            // 
-            tbRating.Location = new Point(559, 140);
-            tbRating.Name = "tbRating";
-            tbRating.Size = new Size(222, 23);
-            tbRating.TabIndex = 16;
-            // 
             // cbbGenre
             // 
             cbbGenre.FormattingEnabled = true;
-            cbbGenre.Location = new Point(559, 99);
+            cbbGenre.Location = new Point(560, 94);
             cbbGenre.Name = "cbbGenre";
             cbbGenre.Size = new Size(222, 23);
             cbbGenre.TabIndex = 17;
@@ -202,7 +182,7 @@
             // 
             // tbURLGame
             // 
-            tbURLGame.Location = new Point(582, 180);
+            tbURLGame.Location = new Point(582, 137);
             tbURLGame.Name = "tbURLGame";
             tbURLGame.Size = new Size(222, 23);
             tbURLGame.TabIndex = 24;
@@ -212,7 +192,7 @@
             lblURLGame.AutoSize = true;
             lblURLGame.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblURLGame.ForeColor = Color.White;
-            lblURLGame.Location = new Point(478, 182);
+            lblURLGame.Location = new Point(478, 139);
             lblURLGame.Name = "lblURLGame";
             lblURLGame.Size = new Size(87, 21);
             lblURLGame.TabIndex = 23;
@@ -220,7 +200,7 @@
             // 
             // tbURLPage
             // 
-            tbURLPage.Location = new Point(572, 221);
+            tbURLPage.Location = new Point(572, 178);
             tbURLPage.Name = "tbURLPage";
             tbURLPage.Size = new Size(222, 23);
             tbURLPage.TabIndex = 26;
@@ -230,7 +210,7 @@
             lblURLPage.AutoSize = true;
             lblURLPage.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblURLPage.ForeColor = Color.White;
-            lblURLPage.Location = new Point(478, 222);
+            lblURLPage.Location = new Point(478, 179);
             lblURLPage.Name = "lblURLPage";
             lblURLPage.Size = new Size(79, 21);
             lblURLPage.TabIndex = 25;
@@ -252,13 +232,11 @@
             Controls.Add(lblName);
             Controls.Add(btnAddGame);
             Controls.Add(cbbGenre);
-            Controls.Add(tbRating);
             Controls.Add(tbDesc);
             Controls.Add(tbReleaseDate);
             Controls.Add(tbDeveloper);
             Controls.Add(lblAddGame);
             Controls.Add(lblDesc);
-            Controls.Add(lblRating);
             Controls.Add(lblGenres);
             Controls.Add(lblReleaseDate);
             Controls.Add(lblDeveloper);
@@ -272,7 +250,6 @@
         #endregion
 
         private Label lblDesc;
-        private Label lblRating;
         private Label lblGenres;
         private Label lblReleaseDate;
         private Label lblDeveloper;
@@ -280,7 +257,6 @@
         private TextBox tbDeveloper;
         private TextBox tbReleaseDate;
         private TextBox tbDesc;
-        private TextBox tbRating;
         private ComboBox cbbGenre;
         private Button btnAddGame;
         private TextBox tbName;

@@ -102,7 +102,7 @@ namespace PLAYRATE_DatabaseConnection
 
                         case "Most reviews":
                             {
-                                //sqlCommand = new SqlCommand($"select * from dbo.{console} order by Rating DESC", con);
+                                order = "Reviews DESC";
                                 break;
                             }
                     }
@@ -179,24 +179,25 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID)
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page, @Console_ID)", con);
+                SqlCommand cmd = new SqlCommand($"INSERT into dbo.{console} VALUES (@Name, @Developer, @ReleaseDate, @Genre, @Rating, @Description, @URL_Game, @URL_Page, @Console_ID, @Reviews)", con);
 
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Developer", developer);
                 cmd.Parameters.AddWithValue("@ReleaseDate", releaseDate);
                 cmd.Parameters.AddWithValue("@Genre", genre);
-                cmd.Parameters.AddWithValue("@Rating", rating);
+                cmd.Parameters.AddWithValue("@Rating", 0);
                 cmd.Parameters.AddWithValue("@Description", desc);
                 cmd.Parameters.AddWithValue("@URL_Game", urlGame);
                 cmd.Parameters.AddWithValue("@URL_Page", urlPage);
                 cmd.Parameters.AddWithValue("@Console_ID", consoleID);
+                cmd.Parameters.AddWithValue("@Reviews", 0);
 
                 cmd.ExecuteNonQuery();
 
@@ -232,5 +233,17 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
+        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Reviews = (SELECT COUNT(*) FROM dbo.Reviews WHERE Console_ID = '{consoleID}' AND Game_ID = '{gameID}') WHERE ID = '{gameID}'", con);
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+            }
+        }
     }
 }

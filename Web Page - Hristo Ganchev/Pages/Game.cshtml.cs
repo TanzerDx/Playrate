@@ -89,6 +89,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
                 SubmittedReviewDesc = Review.ReviewDesc;
                 reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, ConsoleID, GameID);
                 gameService.SetRating(ConsoleID, GameID, Model);
+                gameService.CalculateNumberOfReviews(ConsoleID, GameID, Model);
                 Response.Redirect("/ThankYou");
         }
 

@@ -23,7 +23,7 @@ namespace Desktop_App___Hristo_Ganchev
         Color bgcolor = Color.FromArgb(48, 52, 145);
 
         SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr");
-      
+
         ConsoleService consoleService;
         GameService gamesService;
 
@@ -37,7 +37,6 @@ namespace Desktop_App___Hristo_Ganchev
             lblDeveloper.BackColor = bgcolor;
             lblReleaseDate.BackColor = bgcolor;
             lblGenres.BackColor = bgcolor;
-            lblRating.BackColor = bgcolor;
             lblDesc.BackColor = bgcolor;
             lblURLGame.BackColor = bgcolor;
             lblURLPage.BackColor = bgcolor;
@@ -60,7 +59,6 @@ namespace Desktop_App___Hristo_Ganchev
             lblDeveloper.BackColor = bgcolor;
             lblReleaseDate.BackColor = bgcolor;
             lblGenres.BackColor = bgcolor;
-            lblRating.BackColor = bgcolor;
             lblDesc.BackColor = bgcolor;
             lblURLGame.BackColor = bgcolor;
             lblURLPage.BackColor = bgcolor;
@@ -77,14 +75,14 @@ namespace Desktop_App___Hristo_Ganchev
         }
 
         public void GetConsoles()
-		{
+        {
             foreach (string c in consoleService.GetConsoleByName())
             {
                 cbbConsole.Items.Add(c);
             }
-		}
+        }
 
-		private void AddGame_Load(object sender, EventArgs e)
+        private void AddGame_Load(object sender, EventArgs e)
         {
 
         }
@@ -93,7 +91,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbRating.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
+                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
 
                 MessageBox.Show("Game added successfully!");
 

@@ -125,7 +125,7 @@ namespace PLAYRATE_DatabaseConnection
                 con.Open();
 
 
-                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50), Developer varchar(50), Release_Date varchar(20), Genres varchar(50), Rating varchar(20), Description varchar(5000), URL_Game varchar(MAX), URL_Page varchar(MAX), Console_ID int);", con);
+                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50) NULL, Developer varchar(50) NULL, Release_Date varchar(20) NULL, Genres varchar(50) NULL, Rating float NULL, Description varchar(5000) NULL, URL_Game varchar(MAX) NULL, URL_Page varchar(MAX) NULL, Console_ID int NULL, Reviews INT NULL);", con);
 
                 SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 

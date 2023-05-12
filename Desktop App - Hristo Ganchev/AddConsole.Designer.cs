@@ -174,7 +174,7 @@
             // cbbType
             // 
             cbbType.FormattingEnabled = true;
-            cbbType.Items.AddRange(new object[] { "Playstation", "Xbox" });
+            cbbType.Items.AddRange(new object[] { "Playstation", "Xbox", "Nintendo", "Wii", "PC" });
             cbbType.Location = new Point(94, 89);
             cbbType.Name = "cbbType";
             cbbType.Size = new Size(209, 23);

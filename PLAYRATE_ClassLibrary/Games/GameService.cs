@@ -40,9 +40,9 @@ namespace PLAYRATE_ClassLibrary.Games
             return games;
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string rating, string desc, string urlGame, string urlPage, int? consoleID)
+        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
         {
-            _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, rating, desc, urlGame, urlPage, consoleID);
+            _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, desc, urlGame, urlPage, consoleID);
         }
 
         public void RemoveGame(string console, string tbID)
@@ -53,6 +53,11 @@ namespace PLAYRATE_ClassLibrary.Games
         public void SetRating(int? consoleID, int? gameID, string console)
         {
             _gamesLibrary.SetRating(consoleID, gameID, console);
+        }
+
+        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
+        {
+            _gamesLibrary.CalculateNumberOfReviews(consoleID, gameID, console);
         }
     }
 }
