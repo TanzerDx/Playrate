@@ -15,7 +15,7 @@ namespace PLAYRATE_ClassLibrary.Consoles
 
         public string Manufacturer { get; init; }
 
-        public string Release_Date { get; init; }
+        public DateTime Release_Date { get; init; }
 
         public string URL_Console { get; init; }
 
@@ -27,7 +27,7 @@ namespace PLAYRATE_ClassLibrary.Consoles
         {
 
         }
-        public Console(int id, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+        public Console(int id, string model, string manufacturer, DateTime releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             this.ID = id;
             this.Model = model;

@@ -110,7 +110,7 @@ namespace PLAYRATE_DatabaseConnection
                 ID = reader.GetInt32(0),
                 Model = reader.GetString(1),
                 Manufacturer = reader.GetString(2),
-                Release_Date = reader.GetString(3),
+                Release_Date = reader.GetDateTime(3),
                 URL_Console = reader.GetString(4),
                 Controller_Type = reader.GetString(5),
                 Chat_Platform = reader.GetString(6)
@@ -118,14 +118,14 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+        public void AddConsole(string type, string model, string manufacturer, DateTime releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
 
-                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50) NULL, Developer varchar(50) NULL, Release_Date varchar(20) NULL, Genres varchar(50) NULL, Rating float NULL, Description varchar(5000) NULL, URL_Game varchar(MAX) NULL, URL_Page varchar(MAX) NULL, Console_ID int NULL, Reviews INT NULL);", con);
+                SqlCommand cmd = new SqlCommand($"CREATE TABLE dbo.{type + model} (ID int IDENTITY(1,1) PRIMARY KEY, Name varchar(50) NULL, Developer varchar(50) NULL, Release_Date date NULL, Genres varchar(50) NULL, Rating float NULL, Description varchar(5000) NULL, URL_Game varchar(MAX) NULL, URL_Page varchar(MAX) NULL, Console_ID int NULL, Reviews INT NULL);", con);
 
                 SqlCommand cmd2 = new SqlCommand($"INSERT INTO dbo.Consoles VALUES (@Model, @Manufacturer, @Release_Date, @URL_Console, @Controller_Type, @Chat_Platform);", con);
 

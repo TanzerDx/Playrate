@@ -91,7 +91,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, tbReleaseDate.Text, cbbGenre.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
+                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, Convert.ToDateTime(tbReleaseDate.Text), cbbGenre.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
 
                 MessageBox.Show("Game added successfully!");
 

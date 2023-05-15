@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,7 +41,13 @@ namespace PLAYRATE_ClassLibrary.Games
             return games;
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
+        public List<Game> GetRecommendations(string console)
+        {
+            var games = _gamesLibrary.GetRecommendations(console).Select(dto => dto.ToGame()).ToList();
+            return games;
+        }
+
+        public void AddGame(string console, string name, string developer, DateTime releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
         {
             _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, desc, urlGame, urlPage, consoleID);
         }

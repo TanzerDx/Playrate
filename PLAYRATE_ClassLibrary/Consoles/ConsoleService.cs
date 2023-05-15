@@ -41,7 +41,7 @@ namespace PLAYRATE_ClassLibrary.Consoles
             return consoleID;
 		}
 
-		public void AddConsole(string type, string model, string manufacturer, string releaseDate, string urlConsole, string controllerType, string chatPlatform)
+		public void AddConsole(string type, string model, string manufacturer, DateTime releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
             _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
         }

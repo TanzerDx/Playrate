@@ -31,7 +31,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string developer = "Developer";
             string releaseDate = "14/05/2020";
             string genre = "Fantasy";
-            string rating = "4";
+            double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
             string urlPage = "url";
@@ -62,7 +62,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string developer = "Developer";
             string releaseDate = "14/05/2020";
             string genre = "Fantasy";
-            string rating = "4";
+            double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
             string urlPage = "url";
@@ -83,7 +83,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string developer = "Developer";
             string releaseDate = "14/05/2020";
             string genre = "Fantasy";
-            string rating = "4";
+            double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
             string urlPage = "url";
@@ -103,7 +103,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string developer = "Developer";
             string releaseDate = "14/05/2020";
             string genre = "Fantasy";
-            string rating = "4";
+            double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
             string urlPage = "url";
@@ -121,7 +121,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string developer = "Developer";
             string releaseDate = "14/05/2020";
             string genre = "Fantasy";
-            string rating = "4";
+            double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
             string urlPage = "url";

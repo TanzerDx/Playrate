@@ -129,7 +129,7 @@ namespace PLAYRATE_DatabaseConnection
                             break;
 
                         case (true, true, false):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' ORDER BY {order}'", con);
+                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' ORDER BY {order}", con);
                             break;
 
                         case (true, false, true):
@@ -161,6 +161,24 @@ namespace PLAYRATE_DatabaseConnection
             return games;
         }
 
+        public List<GameDTO> GetRecommendations(string console)
+        {
+            List<GameDTO> games = new List<GameDTO>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console}", con);
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    GameDTO gameDTO = CreateGameDTO(reader);
+                    games.Add(gameDTO);
+                }
+                con.Close();
+            }
+            return games;
+        }
+
         private GameDTO CreateGameDTO(SqlDataReader reader)
         {
             return new GameDTO()
@@ -168,7 +186,7 @@ namespace PLAYRATE_DatabaseConnection
                 ID = reader.GetInt32(0),
                 Name = reader.GetString(1),
                 Developer = reader.GetString(2),
-                Release_Date = reader.GetString(3),
+                Release_Date = reader.GetDateTime(3),
                 Genre = reader.GetString(4),
                 Rating = reader.GetDouble(5),
                 Description = reader.GetString(6),
@@ -179,7 +197,7 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddGame(string console, string name, string developer, string releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
+        public void AddGame(string console, string name, string developer, DateTime releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))

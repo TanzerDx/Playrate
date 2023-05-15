@@ -67,7 +67,7 @@ namespace Desktop_App___Hristo_Ganchev
             try
             {
 
-                consoleService.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, tbReleaseDate.Text, tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
+                consoleService.AddConsole(cbbType.Text, tbModel.Text, tbManufacturer.Text, Convert.ToDateTime(tbReleaseDate.Text), tbURLConsole.Text, tbControllerType.Text, tbChatPlatform.Text);
 
                 MessageBox.Show("Console added successfully!");
 

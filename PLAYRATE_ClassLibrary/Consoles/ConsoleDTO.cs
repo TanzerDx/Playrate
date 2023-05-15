@@ -14,7 +14,7 @@ namespace PLAYRATE_ClassLibrary.Consoles
 
         public string Manufacturer;
 
-        public string Release_Date;
+        public DateTime Release_Date;
 
         public string URL_Console;
 

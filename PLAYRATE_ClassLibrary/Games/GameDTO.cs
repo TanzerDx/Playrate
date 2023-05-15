@@ -14,7 +14,7 @@ namespace PLAYRATE_ClassLibrary.Games
         public int Console_ID;
         public string Name;
         public string Developer;
-        public string Release_Date;
+        public DateTime Release_Date;
         public string Genre;
         public double Rating;
         public string Description;
