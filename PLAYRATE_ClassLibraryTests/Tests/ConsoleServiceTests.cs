@@ -30,8 +30,8 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
             int id = 1;
             string model = "Playstation5";
             string manufacturer = "Sony";
-            string releaseDate = "14/05/2020";
-            string urlConsole = "a";
+			DateTime releaseDate = Convert.ToDateTime("14/05/2020");
+			string urlConsole = "a";
             string controllerType = "Dual Shock 2.0";
             string chatPlatform = "None";
 
@@ -46,8 +46,8 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
             int id = 1;
             string model = "Playstation5";
             string manufacturer = "Sony";
-            string releaseDate = "14/05/2020";
-            string urlConsole = "a";
+			DateTime releaseDate = Convert.ToDateTime("14/05/2020");
+			string urlConsole = "a";
             string controllerType = "Dual Shock 2.0";
             string chatPlatform = "None";
 
@@ -62,8 +62,8 @@ namespace PLAYRATE_ClassLibrary.Consoles.Tests
             int id = 1;
             string model = "Playstation5";
             string manufacturer = "Sony";
-            string releaseDate = "14/05/2020";
-            string urlConsole = "a";
+			DateTime releaseDate = Convert.ToDateTime("14/05/2020");
+			string urlConsole = "a";
             string controllerType = "Dual Shock 2.0";
             string chatPlatform = "None";
 

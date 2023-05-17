@@ -85,7 +85,7 @@ namespace PLAYRATE_ClassLibraryTests
             return count;
         }
 
-        public void AddGame(int id, string name, string genre, string releaseDate, string developer, double rating, string desc, string URL_Game, string URL_Page)
+        public void AddGame(int id, string name, string genre, DateTime releaseDate, string developer, double rating, string desc, string URL_Game, string URL_Page)
         {
             PLAYRATE_ClassLibrary.Games.Game game = new PLAYRATE_ClassLibrary.Games.Game(id, name, genre, releaseDate, developer, rating, desc, URL_Game, URL_Page);
             games.Add(game);

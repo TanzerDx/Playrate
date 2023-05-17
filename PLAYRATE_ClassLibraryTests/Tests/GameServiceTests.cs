@@ -29,7 +29,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             int id = 1;
             string name = "Something";
             string developer = "Developer";
-            string releaseDate = "14/05/2020";
+            DateTime releaseDate = Convert.ToDateTime("14/05/2020");
             string genre = "Fantasy";
             double rating = 4;
             string desc = "A very long description";
@@ -60,7 +60,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             int id = 1;
             string name = "Something";
             string developer = "Developer";
-            string releaseDate = "14/05/2020";
+            DateTime releaseDate = Convert.ToDateTime("14/05/2020");
             string genre = "Fantasy";
             double rating = 4;
             string desc = "A very long description";
@@ -81,7 +81,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             int id = 1;
             string name = "Something";
             string developer = "Developer";
-            string releaseDate = "14/05/2020";
+            DateTime releaseDate = Convert.ToDateTime("14/05/2020");
             string genre = "Fantasy";
             double rating = 4;
             string desc = "A very long description";
@@ -101,8 +101,8 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             int id = 1;
             string name = "Something";
             string developer = "Developer";
-            string releaseDate = "14/05/2020";
-            string genre = "Fantasy";
+			DateTime releaseDate = Convert.ToDateTime("14/05/2020");
+			string genre = "Fantasy";
             double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
@@ -119,8 +119,8 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             int id = 1;
             string name = "Something";
             string developer = "Developer";
-            string releaseDate = "14/05/2020";
-            string genre = "Fantasy";
+			DateTime releaseDate = Convert.ToDateTime("14/05/2020");
+			string genre = "Fantasy";
             double rating = 4;
             string desc = "A very long description";
             string urlGame = "url";
@@ -131,24 +131,5 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
             Assert.IsNotNull(gamesService.GetGameByKeyword(keyword));
         }
-
-        //[TestMethod()]
-        //public void GetByMainFilterTest()
-        //{
-        //    string filter = "Highest rating";
-        //    string console = "Playstation5";
-
-        //    gamesService.GetByMainFilter(filter, console);
-
-        //    using (SqlConnection con = new SqlConnection(connectionString))
-        //    {
-        //        con.Open();
-        //        SqlCommand getByMainFilter = new SqlCommand($"SELECT * FROM dbo.{console}", con);
-        //        SqlDataReader reader = getByMainFilter.ExecuteReader();
-        //        Assert.IsTrue(reader.HasRows);
-        //        reader.Read();
-        //        con.Close();
-        //    }
-        //}
     }
 }

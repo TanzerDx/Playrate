@@ -27,7 +27,7 @@
         
         @if (HttpContext.Session.GetString("Username") != null)
         {
-            <form method="post" asp-page="./Game">
+            <form method="post" class="review-form">
                 <div id="div-review">
                     <div id="div-review-pfp">
                         <img src=@Model.ProfilePicUser width="70" height="70" />
@@ -35,13 +35,16 @@
                     <div id="div-review-text">
                         <h4>@Model.Username</h4>
                         <h5>
-                            Rating:
-                            <input autocomplete="off" asp-for="Review.Rating" />
+                            <label type="text-white" asp-for="Review.Rating">Rating</label>
+                            <span asp-validation-for="Review.Rating"></span>
+                            <input asp-for="Review.Rating" type="text" placeholder="Your rating..." style="width: 200px" autocomplete="off" />
                         </h5>
                     </div>
                     <div id="div-review-text">
-                        <input autocomplete="off" asp-for="Review.ReviewDesc" />
-                        <button type="submit" method="post">Submit</button>
+                        <label type="text-white" asp-for="Review.ReviewDesc">Review</label>
+                        <span asp-validation-for="Review.ReviewDesc"></span>
+                        <input asp-for="Review.ReviewDesc" type="text" placeholder="Your review..." style="width: 200px; height: auto;" autocomplete="off" />
+                        <button class="btnSubmitReview" type="submit" method="post">Submit</button>
                     </div>
                 </div>
             </form>
@@ -66,3 +69,7 @@
     </div>
 
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

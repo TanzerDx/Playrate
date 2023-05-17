@@ -21,6 +21,51 @@ html {
         background-color: #9fb0f4;
     }
 
+.btnThankYou {
+    margin-top: 40px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 15px 50px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnThankYou:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnSubmitReview {
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 15px 50px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnSubmitReview:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnLogIn_Register {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 15px 50px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnLogIn_Register:hover {
+        background-color: #9fb0f4;
+    }
+
 
 /*Homepage*/
 #text-homepage-first {
@@ -104,6 +149,7 @@ html {
 
 #div-game {
     background-color: #1B1E5B;
+    border-radius: 15px;
     margin: 25px 25px 25px 25px;
     width: 160px;
     height: 270px;
@@ -144,6 +190,16 @@ html {
     margin: 5px 5px 5px 10px;
     grid-column: 1;
     grid-row: 2;
+}
+
+#review-form {
+    color: white;
+    width: 30px;
+    margin-top: 30px;
+}
+
+.review-form label {
+    display: block;
 }
 
 
