@@ -10,15 +10,15 @@
 			
 			<label asp-for="Account.Email">Email:</label>
 			<span asp-validation-for="Account.Email"></span>
-			<input autocomplete="off" type="text" id="email" asp-for="Account.Email">
+			<input autocomplete="off" class="textbox" type="text" id="email" asp-for="Account.Email" style="width: 400px;">
 
 			<label asp-for="Account.Username">Username:</label>
 			<span asp-validation-for="Account.Username"></span>
-			<input autocomplete="off" type="text" id="username" asp-for="Account.Username">
+			<input autocomplete="off" class="textbox" type="text" id="username" asp-for="Account.Username" style="width: 400px;">
 
 			<label asp-for="Account.Password">Password:</label>
 			<span asp-validation-for="Account.Password"></span>
-			<input autocomplete="off" type="password" id="password" asp-for="Account.Password">
+			<input autocomplete="off" class="textbox" type="password" id="password" asp-for="Account.Password" style="width: 400px;">
 
 			<div>
 			<input class="btnLogIn_Register" type="submit" value="Register" style="width: 189px" autocomplete="off" />

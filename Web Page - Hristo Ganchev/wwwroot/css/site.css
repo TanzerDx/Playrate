@@ -3,7 +3,20 @@ html {
     background-color: #291563;
 }
 
+.textbox {
+    padding: 3px;
+    font-size: 16px;
+    border-width: 4px;
+    border-color: #97a8ea;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 16px;
+}
 
+    .textbox:focus {
+        outline: none;
+    }
 
 /*Buttons*/
 .btnThankYou {
@@ -21,28 +34,14 @@ html {
         background-color: #9fb0f4;
     }
 
-.btnThankYou {
-    margin-top: 40px;
-    color: #ffffff;
-    background-color: #4f62b0;
-    font-size: 19px;
-    border: 1px solid #2d63c8;
-    padding: 15px 50px;
-    cursor: pointer;
-    border-radius: 25px;
-}
-
-    .btnThankYou:hover {
-        background-color: #9fb0f4;
-    }
-
 .btnSubmitReview {
-    margin-top: 10px;
+    margin-top: 20px;
     color: #ffffff;
     background-color: #4f62b0;
     font-size: 19px;
     border: 1px solid #2d63c8;
-    padding: 15px 50px;
+    padding: 5px 10px;
+    width: 200px;
     cursor: pointer;
     border-radius: 25px;
 }
@@ -53,16 +52,49 @@ html {
 
 .btnLogIn_Register {
     margin-top: 20px;
+    margin-left: 100px;
     color: #ffffff;
     background-color: #4f62b0;
     font-size: 19px;
     border: 1px solid #2d63c8;
-    padding: 15px 50px;
+    padding: 5px 10px;
     cursor: pointer;
     border-radius: 25px;
 }
 
     .btnLogIn_Register:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnFilter {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 0px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnFilter:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnContact {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 0px 20px;
+    cursor: pointer;
+    width: 500px;
+    height: 40px;
+    border-radius: 25px;
+}
+
+    .btnContact:hover {
         background-color: #9fb0f4;
     }
 
@@ -292,7 +324,13 @@ html {
     color: white;
     width: 200px;
     margin-top: 30px;
-    margin-left: 450px;
+    margin-left: 370px;
+}
+
+#login-text {
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 500px;
 }
 
 

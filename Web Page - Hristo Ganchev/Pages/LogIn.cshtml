@@ -8,17 +8,20 @@
 	
 	<form method="post" id="form-login" class="contact-form">
 		<label asp-for="LogIn.Email">Email:</label>
-		<input autocomplete="off"  type="text" id="email" asp-for="LogIn.Email">
+		<input autocomplete="off" class="textbox" type="text" id="email" asp-for="LogIn.Email" style="width: 400px;">
 
 		<label asp-for="LogIn.Password">Password:</label>
-		<input autocomplete ="off" type="password" id="password" asp-for="LogIn.Password">
+		<input autocomplete="off" class="textbox" type="password" id="password" asp-for="LogIn.Password" style="width: 400px;">
 
 		<h5 id="text-white">@Model.LogInResult</h5>
 		<div>
 			<input class="btnLogIn_Register"  type="submit" value="Log In" style="width: 189px" autocomplete="off" />
 		</div>
 		
-		<a href="/Register">Create an account</a>
+		<div id="login-text">
+			<a>Not registered yet?</a>
+			<a href="/Register">Create an account!</a>
+		</div>
 
 	</form>
 

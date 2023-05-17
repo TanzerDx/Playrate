@@ -37,13 +37,14 @@
                         <h5>
                             <label type="text-white" asp-for="Review.Rating">Rating</label>
                             <span asp-validation-for="Review.Rating"></span>
-                            <input asp-for="Review.Rating" type="text" placeholder="Your rating..." style="width: 200px" autocomplete="off" />
+                            <input asp-for="Review.Rating" class="textbox" type="text" placeholder="Your rating..." style="width: 200px" autocomplete="off" />
                         </h5>
                     </div>
                     <div id="div-review-text">
                         <label type="text-white" asp-for="Review.ReviewDesc">Review</label>
                         <span asp-validation-for="Review.ReviewDesc"></span>
-                        <input asp-for="Review.ReviewDesc" type="text" placeholder="Your review..." style="width: 200px; height: auto;" autocomplete="off" />
+                        <textarea asp-for="Review.ReviewDesc" class="textbox" rows="5" style="width: 200px" autocomplete="off"
+                                  placeholder="Your review...">@Model.SubmittedReviewDesc</textarea>
                         <button class="btnSubmitReview" type="submit" method="post">Submit</button>
                     </div>
                 </div>
