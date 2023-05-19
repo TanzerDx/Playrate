@@ -161,14 +161,23 @@ namespace PLAYRATE_DatabaseConnection
             return games;
         }
 
-        public List<GameDTO> GetRecommendations(string console)
+        public List<GameDTO> GetRecommendations(string username)
         {
             List<GameDTO> games = new List<GameDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console}", con);
-                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                SqlCommand cmd1 = new SqlCommand($"SELECT TOP 1 Console_ID FROM dbo.Reviews WHERE Username = '{username}' AND Rating > 4 GROUP BY Console_ID ORDER BY COUNT(*) DESC;", con);
+                int consoleID = (int)cmd1.ExecuteScalar();
+
+                SqlCommand cmd2 = new SqlCommand($"SELECT Model FROM dbo.Consoles WHERE ID = '{consoleID}';", con);
+                string console = cmd2.ExecuteScalar().ToString();
+
+                SqlCommand sqlCommandMain = new SqlCommand($"SELECT g.ID, g.Name, g.Developer, g.Release_Date, g.Genres, g.Rating, g.Description, g.URL_Game, g.URL_Page, g.Console_ID FROM dbo.Consoles c JOIN dbo.{console} g ON g.Console_ID = c.ID WHERE g.Rating BETWEEN 4 AND 5 AND g.Genres IN (SELECT Genres FROM dbo.{console} WHERE ID = g.ID)  AND NOT EXISTS (SELECT 1 FROM Reviews r WHERE r.Username = '{username}' AND r.Game_ID = g.ID AND r.Console_ID = c.ID);", con);
+
+                SqlDataReader reader = sqlCommandMain.ExecuteReader();
+
                 while (reader.Read())
                 {
                     GameDTO gameDTO = CreateGameDTO(reader);

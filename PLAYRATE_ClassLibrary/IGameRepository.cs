@@ -13,7 +13,7 @@ namespace PLAYRATE_ClassLibrary
         GameDTO? GetGame(string name, string console);
         int? GetGameID(string console, string name);
         List<GameDTO> Filter(string? keyword, string? mainFilter, string? genre, string console);
-        List<GameDTO> GetRecommendations(string console);
+        List<GameDTO> GetRecommendations(string username);
         void AddGame(string console, string name, string developer, DateTime releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID);
         void RemoveGame(string console, string tbID);
         void SetRating(int? consoleID, int? gameID, string console);

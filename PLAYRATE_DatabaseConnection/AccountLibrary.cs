@@ -16,11 +16,11 @@ namespace PLAYRATE_DatabaseConnection
 
         public void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@Email, @Username, @ProfilePicURL @Password, @Salt)", connection);
+                SqlCommand cmd = new SqlCommand("INSERT into dbo.Accounts VALUES (@Email, @Username, @ProfilePicURL, @Password, @Salt)", connection);
 
                 cmd.Parameters.AddWithValue("@Email", submittedEmail);
                 cmd.Parameters.AddWithValue("@Username", submittedUsername);
@@ -32,9 +32,10 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
+
         public void RemoveAccount(int id)
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
@@ -50,8 +51,7 @@ namespace PLAYRATE_DatabaseConnection
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Accounts where Email = @Email",
-                    con);
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Accounts where Email = @Email", con);
                 sqlCommand.Parameters.AddWithValue("@Email", email);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 if (reader.Read())
@@ -65,7 +65,7 @@ namespace PLAYRATE_DatabaseConnection
 
         public string GetUsernameFromEmail(string email)
         {
-            using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
@@ -78,7 +78,7 @@ namespace PLAYRATE_DatabaseConnection
 
         public string GetProfilePic(string email)
         {
-            using (SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr"))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
@@ -91,7 +91,7 @@ namespace PLAYRATE_DatabaseConnection
 
         public SqlDataReader GetAccountLogIn(string email)
         {
-            SqlConnection con = new SqlConnection("Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID=dbi499630;Password=Jvm5cNGGkr");
+            SqlConnection con = new SqlConnection(connectionString);
 
             con.Open();
 

@@ -68,11 +68,11 @@ namespace PLAYRATE_ClassLibrary.Games
 			//}
         }
 
-        public List<Game> GetRecommendations(string console)
+        public List<Game> GetRecommendations(string username)
         {
             //try
             //{ 
-                var games = _gamesLibrary.GetRecommendations(console).Select(dto => dto.ToGame()).ToList();
+                var games = _gamesLibrary.GetRecommendations(username).Select(dto => dto.ToGame()).ToList();
                 return games;
 		    //}
       //      catch

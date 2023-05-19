@@ -1,10 +1,25 @@
 ﻿@page
+@using PLAYRATE_ClassLibrary.Games;
 @model Home_Page___Hristo_Ganchev.Pages.RecommendationsModel
 @{
 }
 
 <h2 id="text-white">YOU MIGHT ALSO LIKE:</h2>
 
-<div id="div-content-box">
+<div id="div-content-box-consoles">
 
+    <div id="div-allconsoles">
+        @foreach (Game game in Model.Games)
+        {
+            <div id="div-game">
+                    <div id="div-image-game">
+                        <img src="@game.URL_Game" width="140" height="170" />
+                    </div>
+
+                    <h4 id="text-white">@game.Name</h4>
+                    <h6 id="text-white">@game.Rating</h6>
+
+            </div>
+        }
+    </div>
 </div>
