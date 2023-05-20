@@ -44,20 +44,27 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public void OnPost()
 		{
-			if (ModelState.IsValid)
+			try
 			{
-				SubmittedEmail = $"{Account.GetEmail()}";
-				SubmittedUsername = $"{Account.GetName()}";
-				SubmittedPassword = $"{Account.GetPassword()}";
+			SubmittedEmail = $"{Account.GetEmail()}";
+			SubmittedUsername = $"{Account.GetName()}";
+			SubmittedPassword = $"{Account.GetPassword()}";
 
-				Salt = accountLibrary.GenerateSalt();
+			Salt = accountLibrary.GenerateSalt();
 
-				string saltedPassword = $"{SubmittedPassword}{Salt}{pepper}";
-				HashedPassword = accountLibrary.HashPassword(saltedPassword);
+			string saltedPassword = $"{SubmittedPassword}{Salt}{pepper}";
+			HashedPassword = accountLibrary.HashPassword(saltedPassword);
 
-				accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword, Salt);
+			accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword, Salt);
+
+            Response.Redirect("/LogIn");
+            }
+			catch
+			{
+				Response.Redirect("/Error");
 			}
-		}
+
+        }
 
 	}
 }

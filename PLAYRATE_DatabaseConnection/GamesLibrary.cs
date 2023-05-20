@@ -168,25 +168,46 @@ namespace PLAYRATE_DatabaseConnection
             {
                 con.Open();
 
-                SqlCommand cmd1 = new SqlCommand($"SELECT TOP 1 Console_ID FROM dbo.Reviews WHERE Username = '{username}' AND Rating > 4 GROUP BY Console_ID ORDER BY COUNT(*) DESC;", con);
-                int consoleID = (int)cmd1.ExecuteScalar();
+                SqlCommand cmd = new SqlCommand($"SELECT DISTINCT Console_ID FROM dbo.Reviews WHERE Username = '{username}' AND Rating BETWEEN 4 AND 5;", con);
+                SqlDataReader consoleReader = cmd.ExecuteReader();
 
-                SqlCommand cmd2 = new SqlCommand($"SELECT Model FROM dbo.Consoles WHERE ID = '{consoleID}';", con);
-                string console = cmd2.ExecuteScalar().ToString();
+                List<int> consoleIDs = new List<int>();
 
-                SqlCommand sqlCommandMain = new SqlCommand($"SELECT g.ID, g.Name, g.Developer, g.Release_Date, g.Genres, g.Rating, g.Description, g.URL_Game, g.URL_Page, g.Console_ID FROM dbo.Consoles c JOIN dbo.{console} g ON g.Console_ID = c.ID WHERE g.Rating BETWEEN 4 AND 5 AND g.Genres IN (SELECT Genres FROM dbo.{console} WHERE ID = g.ID)  AND NOT EXISTS (SELECT 1 FROM Reviews r WHERE r.Username = '{username}' AND r.Game_ID = g.ID AND r.Console_ID = c.ID);", con);
-
-                SqlDataReader reader = sqlCommandMain.ExecuteReader();
-
-                while (reader.Read())
+                while (consoleReader.Read())
                 {
-                    GameDTO gameDTO = CreateGameDTO(reader);
-                    games.Add(gameDTO);
+                    int consoleID = consoleReader.GetInt32(0);
+                    consoleIDs.Add(consoleID);
                 }
+
+                consoleReader.Close();
+
+                foreach (int consoleID in consoleIDs)
+                {
+                    SqlCommand cmd2 = new SqlCommand($"SELECT Model FROM dbo.Consoles WHERE ID = '{consoleID}';", con);
+                    string console = cmd2.ExecuteScalar().ToString();
+
+                    SqlCommand sqlCommandMain = new SqlCommand($"SELECT g.* FROM dbo.Consoles c JOIN dbo.{console} g ON g.Console_ID = c.ID " +
+                        $"WHERE g.Rating BETWEEN 4 AND 5 AND g.Genres IN (SELECT Genres FROM dbo.{console} " +
+                        $"WHERE ID IN (SELECT Game_ID FROM Reviews WHERE Username = '{username}' AND Rating BETWEEN 4 AND 5)) AND NOT EXISTS " +
+                        $"(SELECT 1 FROM Reviews r2 WHERE r2.Username = '{username}' AND r2.Game_ID = g.ID AND r2.Console_ID = c.ID);", con);
+
+                    using (SqlDataReader reader = sqlCommandMain.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GameDTO gameDTO = CreateGameDTO(reader);
+                            games.Add(gameDTO);
+                        }
+                    }
+                }
+
                 con.Close();
             }
+
             return games;
         }
+
+
 
         private GameDTO CreateGameDTO(SqlDataReader reader)
         {
