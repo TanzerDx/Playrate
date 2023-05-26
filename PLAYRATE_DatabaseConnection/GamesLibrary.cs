@@ -3,6 +3,7 @@ using FluentResults;
 using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_DatabaseConnection.FilterStrategy;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -79,96 +80,62 @@ namespace PLAYRATE_DatabaseConnection
         public List<GameDTO> Filter(string? keyword, string? mainFilter, string? genre, string console)
         {
             List<GameDTO> games = new List<GameDTO>();
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = null;
-                
-                string? order = null;
 
-                string GetOrderBy()
+                IFilterStrategy filterStrategy = null;
+
+                switch ((!string.IsNullOrEmpty(keyword), !string.IsNullOrEmpty(mainFilter), !string.IsNullOrEmpty(genre)))
                 {
-                    switch (mainFilter)
+                    case (true, false, false):
+                        filterStrategy = new FilterBy_Keyword_Strategy();
+                        break;
+
+                    case (false, true, false):
+                        filterStrategy = new FilterBy_MainFilter_Strategy();
+                        break;
+
+                    case (false, false, true):
+                        filterStrategy = new FilterBy_Genre_Strategy();
+                        break;
+
+                    case (true, true, false):
+                        filterStrategy = new FilterBy_KeywordAndMainFilter_Strategy();
+                        break;
+
+                    case (true, false, true):
+                        filterStrategy = new FilterBy_KeywordAndGenre_Strategy();
+                        break;
+
+                    case (false, true, true):
+                        filterStrategy = new FilterBy_MainFilterAndGenre_Strategy();
+                        break;
+
+                    case (true, true, true):
+                        filterStrategy = new FilterBy_All_Strategy();
+                        break;
+                }
+
+                if (filterStrategy != null)
+                {
+                    SqlCommand sqlCommand = filterStrategy.ApplyFilter(con, keyword, mainFilter, genre, console);
+
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read())
                     {
-                        case "Highest rating":
-                            {
-                                order = "Rating DESC";
-                                break;
-                            }
-
-                        case "Latest release":
-                            {
-                                order = "Release_Date DESC";
-                                break;
-                            }
-
-                        case "Most reviews":
-                            {
-                                order = "Reviews DESC";
-                                break;
-                            }
+                        GameDTO gameDTO = CreateGameDTO(reader);
+                        games.Add(gameDTO);
                     }
-                
-                    return order;
                 }
 
-                SqlCommand GetSqlCommand()
-                {
-                    GetOrderBy();
-
-     //               string sql = $"select * from dbo.{console}";
-     //               if(keyword != "")
-					//{
-     //                   sql += $"where Name LIKE '%{keyword}%'";
-
-					//}
-
-					switch (keyword != "", mainFilter != "", genre != "")
-                    {
-                        case (true, false, false):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%'", con);
-                            break;
-                        
-                        case (false, true, false):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} order by {order}", con);
-                            break;
-
-                        case (false, false, true):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}'", con);
-                            break;
-
-                        case (true, true, false):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' ORDER BY {order}", con);
-                            break;
-
-                        case (true, false, true):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' AND Genres = '{genre}'", con);
-                            break;
-
-                        case (false, true, true):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where Genres = '{genre}' ORDER BY {order}", con);
-                            break;
-
-                        case (true, true, true):
-                            sqlCommand = new SqlCommand($"select * from dbo.{console} where NAME LIKE '%{keyword}%' AND Genres = '{genre}' ORDER BY {order}", con);
-                            break;
-
-                    }
-                    return sqlCommand;
-                }
-
-                GetSqlCommand();
-
-                SqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
-                {
-                    GameDTO gameDTO = CreateGameDTO(reader);
-                    games.Add(gameDTO);
-                }
                 con.Close();
             }
+
             return games;
         }
+
 
         public List<GameDTO> GetRecommendations(string username)
         {
