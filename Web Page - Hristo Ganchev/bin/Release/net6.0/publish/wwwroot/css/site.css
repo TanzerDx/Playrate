@@ -3,7 +3,20 @@ html {
     background-color: #291563;
 }
 
+.textbox {
+    padding: 3px;
+    font-size: 16px;
+    border-width: 4px;
+    border-color: #97a8ea;
+    background-color: #ffffff;
+    color: #000000;
+    border-style: solid;
+    border-radius: 16px;
+}
 
+    .textbox:focus {
+        outline: none;
+    }
 
 /*Buttons*/
 .btnThankYou {
@@ -21,6 +34,69 @@ html {
         background-color: #9fb0f4;
     }
 
+.btnSubmitReview {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 5px 10px;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnSubmitReview:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnLogIn_Register {
+    margin-top: 20px;
+    margin-left: 100px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnLogIn_Register:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnFilter {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 0px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+    .btnFilter:hover {
+        background-color: #9fb0f4;
+    }
+
+.btnContact {
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #4f62b0;
+    font-size: 19px;
+    border: 1px solid #2d63c8;
+    padding: 0px 20px;
+    cursor: pointer;
+    width: 500px;
+    height: 40px;
+    border-radius: 25px;
+}
+
+    .btnContact:hover {
+        background-color: #9fb0f4;
+    }
 
 
 /*Homepage*/
@@ -48,7 +124,6 @@ html {
     margin-top: 100px;
     text-align: right;
 }
-
 
 
 
@@ -106,9 +181,10 @@ html {
 
 #div-game {
     background-color: #1B1E5B;
+    border-radius: 15px;
     margin: 25px 25px 25px 25px;
     width: 160px;
-    height: 250px;
+    height: 270px;
 }
 
 #div-image-game {
@@ -146,6 +222,16 @@ html {
     margin: 5px 5px 5px 10px;
     grid-column: 1;
     grid-row: 2;
+}
+
+#review-form {
+    color: white;
+    width: 30px;
+    margin-top: 30px;
+}
+
+.review-form label {
+    display: block;
 }
 
 
@@ -238,7 +324,13 @@ html {
     color: white;
     width: 200px;
     margin-top: 30px;
-    margin-left: 450px;
+    margin-left: 370px;
+}
+
+#login-text {
+    margin-top: 30px;
+    margin-left: 50px;
+    width: 500px;
 }
 
 

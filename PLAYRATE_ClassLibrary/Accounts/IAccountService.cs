@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentResults;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,20 +10,20 @@ namespace PLAYRATE_ClassLibrary.Accounts
 {
     public interface IAccountService
     {
-        void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt);
+        void AddAccount(string submittedEmail, string submittedUsername, Result<string> hashedPassword, Result<string> salt);
 
         void RemoveAccount(int id);
 
-        Account GetAccount(string email);
+        Result<Account> GetAccount(string email);
 
-        string GetUsernameFromEmail(string email);
+        Result<string> GetUsernameFromEmail(string email);
 
-        string GetProfilePic(string email);
+        Result<string> GetProfilePic(string email);
 
         SqlDataReader GetAccountLogIn(string email);
 
-        string GenerateSalt();
+        Result<string> GenerateSalt();
 
-        string HashPassword(string password);
+        Result<string> HashPassword(string password);
     }
 }

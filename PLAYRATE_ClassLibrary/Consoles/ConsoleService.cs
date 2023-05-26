@@ -1,4 +1,5 @@
-﻿using PLAYRATE_ClassLibrary.Games;
+﻿using FluentResults;
+using PLAYRATE_ClassLibrary.Games;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,38 +18,80 @@ namespace PLAYRATE_ClassLibrary.Consoles
             this._consolesLibrary = _consolesLibrary;
         }
 
-        public List<Console> GetAll()
+        public Result<List<Console>> GetAll()
         {
-            var consoles = _consolesLibrary.GetAll().Select(dto => dto.ToConsole()).ToList();
-            return consoles;
+            try
+            {
+                var consoles = _consolesLibrary.GetAll().Select(dto => dto.ToConsole()).ToList();
+                return consoles;
+            }
+			catch (Exception exception)
+			{
+				return Result.Fail(new Error("Unable to get all consoles!").CausedBy(exception));
+			}
+}
+
+        public Result<List<string>> GetConsoleByName()
+        {
+            try
+            { 
+                var consoles = _consolesLibrary.GetConsoleByName();
+                return consoles;
+            }
+			catch (Exception exception)
+			{
+                return Result.Fail(new Error("Unable to get console by name!").CausedBy(exception));
+            }           
         }
 
-        public List<string> GetConsoleByName()
+        public Result<Console> GetConsole(string name)
         {
-            var consoles = _consolesLibrary.GetConsoleByName();
-            return consoles;
-        }
-
-        public Console GetConsole(string name)
-        {
+            try
+            { 
             var consoleDTO = _consolesLibrary.GetConsole(name);
             return consoleDTO.Value.ToConsole();
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to get console!").CausedBy(exception));
+            }
         }
 
-		public int? GetConsoleID(string console)
+		public Result<int?> GetConsoleID(string console)
 		{
-			int? consoleID = _consolesLibrary.GetConsoleID(console);
-            return consoleID;
-		}
+            try
+            { 
+			    int? consoleID = _consolesLibrary.GetConsoleID(console);
+                return consoleID;
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to get console ID!").CausedBy(exception));
+            }
+        }
 
 		public void AddConsole(string type, string model, string manufacturer, DateTime releaseDate, string urlConsole, string controllerType, string chatPlatform)
         {
-            _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
+            try
+            { 
+                _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
+            }
+            catch (Exception exception)
+            {
+                Result.Fail(new Error("Unable to add console!").CausedBy(exception));
+            }
         }
 
         public void RemoveConsole(string console)
         {
-            _consolesLibrary.RemoveConsole(console);
+            try
+            {
+                _consolesLibrary.RemoveConsole(console);
+            }
+            catch (Exception exception)
+            {
+                Result.Fail(new Error("Unable to remove console!").CausedBy(exception));
+            }
         }
 
     }

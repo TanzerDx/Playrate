@@ -8,12 +8,12 @@
 
 	<div id="div-profile">
 		<div id="div-profile-left">
-			<img src="@Model.Account.ProfilePicURL" width="430" height="430" />
+			<img src="@Model.Account.Value.ProfilePicURL" width="430" height="430" />
 		</div>
 
 		<div id="div-profile-right">
-			<h4 id="text-white">Username: @Model.Account.Username</h4>
-			<h4 id="text-white">Number of reviews: @Model.NumberOfReviews</h4>
+			<h4 id="text-white">Username: @Model.Account.Value.Username</h4>
+			<h4 id="text-white">Number of reviews: @Model.NumberOfReviews.Value</h4>
 		</div>
 	
 	</div>

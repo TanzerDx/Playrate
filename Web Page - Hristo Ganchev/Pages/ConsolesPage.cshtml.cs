@@ -1,3 +1,4 @@
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PLAYRATE_ClassLibrary;
@@ -33,7 +34,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
             return Page();
         }
 
-        public List<Console> Consoles
+        public Result<List<Console>> Consoles
         {
             get { return consoleLibrary.GetAll(); }
         }

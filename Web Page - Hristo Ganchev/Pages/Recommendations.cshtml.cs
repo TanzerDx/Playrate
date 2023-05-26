@@ -1,3 +1,4 @@
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PLAYRATE_ClassLibrary.Games;
@@ -10,10 +11,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
         GameService gameService;
 
-        public string UserName { get; private set; }
-
-        public List<Game> Games { get; private set; }
-
+        public Result<List<Game>> Games { get; private set; }
 
         [BindProperty]
         public BusinessLogic.Filter Filter { get; set; }
@@ -25,13 +23,20 @@ namespace Home_Page___Hristo_Ganchev.Pages
             Games = new List<Game>();
         }
 
-        public IActionResult OnGet(string model)
+        public IActionResult OnGet(string username)
         {
-            string username = HttpContext.Session.GetString("Username");
+            username = HttpContext.Session.GetString("Username");
 
-            Games = gameService.GetRecommendations(username);
+            if (gameService.GetRecommendations(username).IsSuccess)
+            {
+                Games = gameService.GetRecommendations(username);
 
-            return Page();
+                return Page();
+            }
+            else
+            {
+                return Redirect("/Error");
+            }
         }
     }
 }

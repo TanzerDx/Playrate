@@ -6,20 +6,20 @@
 
 <div id="div-content-box-desc">
 
-    <h1 id="text-white">@Model.Game.Name</h1>
+    <h1 id="text-white">@Model.Game.Value.Name</h1>
 	
     <div id="div-image-desc">
-        <img src="@Model.Game.URL_Page" width="720" height="430" />
+        <img src="@Model.Game.Value.URL_Page" width="720" height="430" />
     </div>
 
     <div id="text-details">
-        <h4>Developer: @Model.Game.Developer</h4>
-        <h4>Release date: @Model.Game.Release_Date</h4>
-        <h4>Genre: @Model.Game.Genre</h4>
-        <h4>Rating: @Model.Game.Rating / 5</h4>
+        <h4>Developer: @Model.Game.Value.Developer</h4>
+        <h4>Release date: @Model.Game.Value.Release_Date</h4>
+        <h4>Genre: @Model.Game.Value.Genre</h4>
+        <h4>Rating: @Model.Game.Value.Rating / 5</h4>
     </div>
 
-    <h4 id="text-description">@Model.Game.Description</h4>
+    <h4 id="text-description">@Model.Game.Value.Description</h4>
 
 
     <div class="sidebar-reviews">
@@ -51,7 +51,7 @@
             </form>
         }
 
-        @foreach (Review review in Model.Reviews)
+        @foreach (Review review in Model.Reviews.Value)
         {
         <div id="div-review">
             <div id="div-review-pfp">

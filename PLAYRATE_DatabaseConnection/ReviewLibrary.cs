@@ -1,4 +1,5 @@
-﻿using PLAYRATE_ClassLibrary;
+﻿using FluentResults;
+using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Games;
 using PLAYRATE_ClassLibrary.Reviews;
 using System;
@@ -20,13 +21,13 @@ namespace PLAYRATE_DatabaseConnection
             this.connectionString = connectionString;
         }
 
-        public List<ReviewDTO> GetReviews(int? gameID, int? consoleID)
+        public List<ReviewDTO> GetReviews(Result<int?> gameID, Result<int?> consoleID)
         {
             List<ReviewDTO> reviews = new List<ReviewDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Reviews where Game_ID='{gameID}' AND Console_ID='{consoleID}'", con);
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Reviews where Game_ID='{gameID.Value}' AND Console_ID='{consoleID.Value}'", con);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
@@ -52,7 +53,7 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID)
+        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, Result<int?> Game_ID, Result<int?> Console_ID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -65,8 +66,8 @@ namespace PLAYRATE_DatabaseConnection
                 cmd.Parameters.AddWithValue("@URL_ProfilePicture", URL_ProfilePicture);
                 cmd.Parameters.AddWithValue("@Rating", Rating);
                 cmd.Parameters.AddWithValue("@ReviewDesc", ReviewDesc);
-                cmd.Parameters.AddWithValue("@Game_ID", Game_ID);
-                cmd.Parameters.AddWithValue("@Console_ID", Console_ID);
+                cmd.Parameters.AddWithValue("@Game_ID", Game_ID.Value);
+                cmd.Parameters.AddWithValue("@Console_ID", Console_ID.Value);
 
                 cmd.ExecuteNonQuery();
 
@@ -80,7 +81,9 @@ namespace PLAYRATE_DatabaseConnection
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"SELECT COUNT(*) FROM dbo.Reviews WHERE Username = '{username}'", con);
+                SqlCommand sqlCommand = new SqlCommand("SELECT COUNT(*) FROM dbo.Reviews WHERE Username = @Username", con);
+                sqlCommand.Parameters.AddWithValue("@Username", username);
+
                 SqlDataReader reader = sqlCommand.ExecuteReader();
 
                 if (reader.Read())
@@ -92,7 +95,8 @@ namespace PLAYRATE_DatabaseConnection
             return numberReviews;
         }
 
-        public double? GetRating(int? gameID, int? consoleID)
+
+        public double? GetRating(Result<int?> gameID, Result<int?> consoleID)
         {
             double? rating = 0;
             using (SqlConnection con = new SqlConnection(connectionString))

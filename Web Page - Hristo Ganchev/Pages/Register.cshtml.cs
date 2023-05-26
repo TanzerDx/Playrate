@@ -1,6 +1,7 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using FluentResults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -22,9 +23,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public string SubmittedPassword { get; private set; }
 
-		public string Salt { get; private set; } = string.Empty;
+		public Result<string> Salt { get; private set; } = string.Empty;
 
-		public string HashedPassword { get; private set; } = string.Empty;
+		public Result<string> HashedPassword { get; private set; } = string.Empty;
 
 		private const string pepper = "iloveplayrate";
 
@@ -55,7 +56,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 			string saltedPassword = $"{SubmittedPassword}{Salt}{pepper}";
 			HashedPassword = accountLibrary.HashPassword(saltedPassword);
 
-			accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword, Salt);
+			accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword.Value, Salt.Value);
 
             Response.Redirect("/LogIn");
             }

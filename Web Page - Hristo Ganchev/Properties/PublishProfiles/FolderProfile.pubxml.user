@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\Uni\Semester 2\Assignments\Individual Project\Individual Project\individual-assignment-hristo-ganchev\Web Page - Hristo Ganchev\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2023-05-12T11:53:35.7168192Z;True|2023-04-26T09:33:00.1136970+02:00;</History>
+    <History>True|2023-05-20T18:06:02.5143219Z;True|2023-05-12T13:53:35.7168192+02:00;True|2023-04-26T09:33:00.1136970+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

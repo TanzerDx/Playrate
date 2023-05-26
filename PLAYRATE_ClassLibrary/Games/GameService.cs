@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using FluentResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,68 +17,69 @@ namespace PLAYRATE_ClassLibrary.Games
             this._gamesLibrary = _gamesLibrary;
         }
 
-        public List<Game> GetAll(string console)
-        {
-            //try
-            //{
+		public Result<List<Game>> GetAll(string console)
+		{
+            try
+            {
                 var games = _gamesLibrary.GetAll(console).Select(dto => dto.ToGame()).ToList();
                 return games;
-			//}
-   //         catch
-   //         {
+            }
+			catch (Exception exception)
+			{
+				return Result.Fail(new Error("Unable to retrieve all games!").CausedBy(exception));
+			}
+}
 
-   //         }
-
-		}
-
-        public Game GetGame(string name, string console)
+		public Result<Game> GetGame(string name, string console)
         {
-            //try
-            //{
+            try
+            {
                 var gameDTO = _gamesLibrary.GetGame(name, console);
                 return gameDTO.Value.ToGame();
-		    //}
-      //      catch
-      //      {
-
-      //      }
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to get the game!").CausedBy(exception));
+            }
         }
 
-        public int? GetGameID(string console, string name)
+        public Result<int?> GetGameID(string console, string name)
         {
-			//try
-			//{
-			    int? gameID = _gamesLibrary.GetGameID(console, name);
+            try
+            {
+                int? gameID = _gamesLibrary.GetGameID(name, console);
                 return gameID;
-		    //}
-      //      catch
-      //      {
-
-      //      }
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to get the game ID!").CausedBy(exception));
+            }
         }
 
-        public List<Game> Filter(string? keyword, string? mainFilter, string? genre, string console)
+        public Result<List<Game>> Filter(string? keyword, string? mainFilter, string? genre, string console)
         {
-            //try
-            //{
+            try
+            {
                 var games = _gamesLibrary.Filter(keyword, mainFilter, genre, console).Select(dto => dto.ToGame()).ToList();
                 return games;
-		 //   }
-   //         catch
-   //         {
-			//}
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to filter the games!").CausedBy(exception));
+            }
         }
 
-        public List<Game> GetRecommendations(string username)
+        public Result<List<Game>> GetRecommendations(string username)
         {
-            //try
-            //{ 
+            try
+            {
                 var games = _gamesLibrary.GetRecommendations(username).Select(dto => dto.ToGame()).ToList();
                 return games;
-		    //}
-      //      catch
-      //      {
-      //      }
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to retrieve recommendations!").CausedBy(exception));
+            }
         }
 
         public void AddGame(string console, string name, string developer, DateTime releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID)
@@ -86,8 +88,9 @@ namespace PLAYRATE_ClassLibrary.Games
             {
                 _gamesLibrary.AddGame(console, name, developer, releaseDate, genre, desc, urlGame, urlPage, consoleID);
 		    }
-            catch
+            catch (Exception exception)
             {
+                Result.Fail(new Error("Unable to add the game!").CausedBy(exception));
             }
         }
 
@@ -97,30 +100,33 @@ namespace PLAYRATE_ClassLibrary.Games
             {
                 _gamesLibrary.RemoveGame(console, tbID);
 		    }
-            catch
+            catch (Exception exception)
             {
+                Result.Fail(new Error("Unable to remove the game!").CausedBy(exception));
             }
         }
 
-        public void SetRating(int? consoleID, int? gameID, string console)
+        public void SetRating(Result<int?> consoleID, Result<int?> gameID, string console)
         {
             try
             { 
-                _gamesLibrary.SetRating(consoleID, gameID, console);
+                _gamesLibrary.SetRating(consoleID.Value, gameID.Value, console);
 		    }
-            catch
+            catch (Exception exception)
             {
+                Result.Fail(new Error("Unable set the rating!").CausedBy(exception));
             }
         }
 
-        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
+        public void CalculateNumberOfReviews(Result<int?> consoleID, Result<int?> gameID, string console)
         {
             try
             {
                 _gamesLibrary.CalculateNumberOfReviews(consoleID, gameID, console);
 		    }
-            catch
+            catch (Exception exception)
             {
+                Result.Fail(new Error("Unable to calculate number of reviews!").CausedBy(exception));
             }
         }
     }

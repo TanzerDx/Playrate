@@ -8,6 +8,7 @@ using System.Text;
 using PLAYRATE_ClassLibrary.Accounts;
 using PLAYRATE_ClassLibrary;
 using PLAYRATE_DatabaseConnection;
+using FluentResults;
 
 namespace Home_Page___Hristo_Ganchev.Pages
 {
@@ -19,9 +20,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 		public string LogInResult { get; private set; }
 
-        public string Username { get; private set; }
+        public Result<string> Username { get; private set; }
 
-		public string ProfilePicUser { get; private set; }
+		public Result<string> ProfilePicUser { get; private set; }
 
         public string SubmittedEmail { get; private set; }
 		
@@ -52,20 +53,20 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
 			if (reader.Read())
 			{
-				string storedHashedPassword = reader.GetString(0);
+				Result<string> storedHashedPassword = reader.GetString(0);
 				string salt = reader.GetString(1);
 
 				string saltedPassword = $"{SubmittedPassword}{salt}{pepper}";
-				string hashedPassword = accountLibrary.HashPassword(saltedPassword);
+				Result<string> hashedPassword = accountLibrary.HashPassword(saltedPassword);
 
-				if (hashedPassword == storedHashedPassword)
+				if (hashedPassword.Value == storedHashedPassword.Value)
 				{
 					Username = accountLibrary.GetUsernameFromEmail(SubmittedEmail);
 					ProfilePicUser = accountLibrary.GetProfilePic(SubmittedEmail);
 					
-					HttpContext.Session.SetString("Username", Username);
+					HttpContext.Session.SetString("Username", Username.Value.ToString());
 					HttpContext.Session.SetString("Email", SubmittedEmail);
-					HttpContext.Session.SetString("ProfilePicUser", ProfilePicUser);
+					HttpContext.Session.SetString("ProfilePicUser", ProfilePicUser.Value.ToString());
 
 					Response.Redirect("/ProfilePage");
 				}

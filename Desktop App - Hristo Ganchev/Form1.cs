@@ -51,7 +51,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         public void GetConsoles()
         {
-            foreach (string c in consoleService.GetConsoleByName())
+            foreach (string c in consoleService.GetConsoleByName().Value)
             {
                 cbbConsole.Items.Add(c);
             }

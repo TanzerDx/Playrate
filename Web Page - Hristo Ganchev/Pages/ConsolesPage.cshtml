@@ -9,7 +9,7 @@
 <div id="div-content-box-consoles">
 
     <div id="div-allconsoles">
-            @foreach (Console console in Model.Consoles)
+            @foreach (Console console in Model.Consoles.Value)
             {
                 <div id="div-game">
                     <a asp-page="GamesPage" asp-route-model="@console.Model">

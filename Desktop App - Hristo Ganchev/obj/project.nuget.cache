@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "9g4iS9uqzXasl/gmcKHEn25MB3P0iH0BkHD8rFo7300ptE05WPY9ljN4WlpaCsJv1VTWiCqt5KsWKa2EhRAJIQ==",
+  "dgSpecHash": "G8pDNroDU+iHvroAV/FYSUpujUrh9jssF0eZd7U6awhW/UG6FA0YaJibBMoeNUW1xg2iBeAGX4vQnhd3iOS7Jg==",
   "success": true,
   "projectFilePath": "D:\\Uni\\Semester 2\\Assignments\\Individual Project\\Individual Project\\individual-assignment-hristo-ganchev\\Desktop App - Hristo Ganchev\\Desktop App - Hristo Ganchev.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\msi\\.nuget\\packages\\fluentresults\\3.15.2\\fluentresults.3.15.2.nupkg.sha512",
+    "C:\\Users\\msi\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
@@ -12,7 +14,8 @@
     "C:\\Users\\msi\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
     "C:\\Users\\msi\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\msi\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\msi\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\msi\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,3 +1,4 @@
+using FluentResults;
 using Home_Page___Hristo_Ganchev.Pages;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -29,10 +30,9 @@ namespace Home_Page___Hristo_Ganchev
 
         public string Model { get; private set; }
 
-        public List<Game> Games { get; private set; }
+        public Result<List<Game>> Games { get; private set; }
 
-
-        [BindProperty]
+		[BindProperty]
         public BusinessLogic.Filter Filter { get; set; }
 
         public GamesPageModel(ILogger<GamesPageModel> logger, GameService gS)
@@ -40,18 +40,27 @@ namespace Home_Page___Hristo_Ganchev
             PageTitle = "GAMES:";
             _logger = logger;
             gameService = gS;
-            Games = new List<Game>();
+            Games = new Result<List<Game>>();
         }
 
         public IActionResult OnGet(string model)
         {
             Model = model;
-            Games = gameService.GetAll(model);
 
-            HttpContext.Session.SetString("Model", Model);
+            if (gameService.GetAll(model).IsSuccess)
+            {
+                Games = gameService.GetAll(model);
 
-            return Page();
-        }
+                HttpContext.Session.SetString("Model", Model);
+
+                return Page();
+			}
+            else
+            {
+                return Redirect("/Error");
+            }
+
+		}
 
         public void OnPost()
         {

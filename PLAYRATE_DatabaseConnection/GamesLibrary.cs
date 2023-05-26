@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using FluentResults;
 using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.Games;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PLAYRATE_DatabaseConnection
 {
@@ -114,7 +116,14 @@ namespace PLAYRATE_DatabaseConnection
                 {
                     GetOrderBy();
 
-                    switch (keyword != "", mainFilter != "", genre != "")
+     //               string sql = $"select * from dbo.{console}";
+     //               if(keyword != "")
+					//{
+     //                   sql += $"where Name LIKE '%{keyword}%'";
+
+					//}
+
+					switch (keyword != "", mainFilter != "", genre != "")
                     {
                         case (true, false, false):
                             sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%'", con);
@@ -281,7 +290,7 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
-        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
+        public void CalculateNumberOfReviews(Result<int?> consoleID, Result<int?> gameID, string console)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {

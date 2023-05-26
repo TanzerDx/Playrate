@@ -76,7 +76,7 @@ namespace Desktop_App___Hristo_Ganchev
 
         public void GetConsoles()
         {
-            foreach (string c in consoleService.GetConsoleByName())
+            foreach (string c in consoleService.GetConsoleByName().Value)
             {
                 cbbConsole.Items.Add(c);
             }
@@ -91,7 +91,7 @@ namespace Desktop_App___Hristo_Ganchev
         {
             try
             {
-                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, Convert.ToDateTime(tbReleaseDate.Text), cbbGenre.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text));
+                gamesService.AddGame(cbbConsole.Text, tbName.Text, tbDeveloper.Text, Convert.ToDateTime(tbReleaseDate.Text), cbbGenre.Text, tbDesc.Text, tbURLGame.Text, tbURLPage.Text, consoleService.GetConsoleID(cbbConsole.Text).Value);
 
                 MessageBox.Show("Game added successfully!");
 

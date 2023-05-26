@@ -12,20 +12,18 @@
     
     <div id="div-allgames">
 
-            @foreach (Game game in Model.Games)
-            {
-                <div id="div-game">
+        @foreach (Game game in Model.Games.Value)
+        {
+            <div id="div-game">
                 <a asp-page="Game" asp-route-name="@game.Name" asp-route-model="@Model.Model">
-                        <div id="div-image-game">
-                            <img src="@game.URL_Game" width="140" height="170" />
-                        </div>
-
-                        <h4 id="text-white">@game.Name</h4>
-                        <h6 id="text-white">@game.Rating</h6>
-
-                    </a>
-                </div>
-            }
+                    <div id="div-image-game">
+                        <img src="@game.URL_Game" width="140" height="170" />
+                    </div>
+                    <h4 id="text-white">@game.Name</h4>
+                    <h6 id="text-white">@game.Rating</h6>
+                </a>
+            </div>
+        }
 
     </div>
 

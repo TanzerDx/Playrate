@@ -1,3 +1,4 @@
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using PLAYRATE_ClassLibrary;
@@ -16,7 +17,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
         AccountService accountService;
         ReviewServices reviewService;
 
-        public int? NumberOfReviews { get; set; }
+        public Result<int?> NumberOfReviews { get; set; }
 
         public ProfilePageModel(ILogger<ProfilePageModel> logger, AccountService aS, ReviewServices rS)
         {
@@ -25,15 +26,16 @@ namespace Home_Page___Hristo_Ganchev.Pages
             reviewService = rS;
         }
 
-        public Account Account { get; private set; }
+        public Result<Account> Account { get; private set; }
 
         public void OnGet()
         {
           
             if (HttpContext.Session.GetString("Username") != null)
             {
-                Account = accountService.GetAccount(HttpContext.Session.GetString("Email"));
-                NumberOfReviews = reviewService.GetNumberOfReviews(Account.Username);
+                string username = HttpContext.Session.GetString("Username");
+                Account = accountService.GetAccount(HttpContext.Session.GetString("Email")).Value;
+                NumberOfReviews = reviewService.GetNumberOfReviews(username).Value;
             }
             else
             {

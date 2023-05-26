@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using PLAYRATE_ClassLibrary.Accounts;
+using FluentResults;
 
 namespace PLAYRATE_ClassLibrary
 {
     public interface IAccountRepository
     {
-        void AddAccount(string submittedEmail, string submittedUsername, string submittedPassword, string salt);
+        void AddAccount(string submittedEmail, string submittedUsername, Result<string> hashedPassword, Result<string> salt);
 
         void RemoveAccount(int id);
 
