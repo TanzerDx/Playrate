@@ -87,36 +87,35 @@ namespace PLAYRATE_DatabaseConnection
 
                 IFilterStrategy filterStrategy = null;
 
-                switch ((!string.IsNullOrEmpty(keyword), !string.IsNullOrEmpty(mainFilter), !string.IsNullOrEmpty(genre)))
+                if (keyword != "" && mainFilter == "" && genre == "")
                 {
-                    case (true, false, false):
-                        filterStrategy = new FilterBy_Keyword_Strategy();
-                        break;
-
-                    case (false, true, false):
-                        filterStrategy = new FilterBy_MainFilter_Strategy();
-                        break;
-
-                    case (false, false, true):
-                        filterStrategy = new FilterBy_Genre_Strategy();
-                        break;
-
-                    case (true, true, false):
-                        filterStrategy = new FilterBy_KeywordAndMainFilter_Strategy();
-                        break;
-
-                    case (true, false, true):
-                        filterStrategy = new FilterBy_KeywordAndGenre_Strategy();
-                        break;
-
-                    case (false, true, true):
-                        filterStrategy = new FilterBy_MainFilterAndGenre_Strategy();
-                        break;
-
-                    case (true, true, true):
-                        filterStrategy = new FilterBy_All_Strategy();
-                        break;
+                    filterStrategy = new FilterBy_Keyword_Strategy();
                 }
+                else if (keyword == "" && mainFilter != "" && genre == "")
+                {
+                    filterStrategy = new FilterBy_MainFilter_Strategy();
+                }
+                else if (keyword == "" && mainFilter == "" && genre != "")
+                {
+                    filterStrategy = new FilterBy_Genre_Strategy();
+                }
+                else if (keyword != "" && mainFilter != "" && genre == "")
+                {
+                    filterStrategy = new FilterBy_KeywordAndMainFilter_Strategy();
+                }
+                else if (keyword != "" && mainFilter == "" && genre != "")
+                {
+                    filterStrategy = new FilterBy_KeywordAndGenre_Strategy();
+                }
+                else if (keyword == "" && mainFilter != "" && genre != "")
+                {
+                    filterStrategy = new FilterBy_MainFilterAndGenre_Strategy();
+                }
+                else if (keyword != "" && mainFilter != "" && genre != "")
+                {
+                    filterStrategy = new FilterBy_All_Strategy();
+                }
+
 
                 if (filterStrategy != null)
                 {
@@ -263,7 +262,7 @@ namespace PLAYRATE_DatabaseConnection
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Reviews = (SELECT COUNT(*) FROM dbo.Reviews WHERE Console_ID = '{consoleID}' AND Game_ID = '{gameID}') WHERE ID = '{gameID}'", con);
+                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Reviews = (SELECT COUNT(*) FROM dbo.Reviews WHERE Console_ID = '{consoleID.Value}' AND Game_ID = '{gameID.Value}') WHERE ID = '{gameID.Value}'", con);
                 cmd.ExecuteNonQuery();
 
                 con.Close();

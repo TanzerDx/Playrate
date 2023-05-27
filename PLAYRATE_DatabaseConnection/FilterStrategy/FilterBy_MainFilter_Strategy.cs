@@ -11,38 +11,32 @@ namespace PLAYRATE_DatabaseConnection.FilterStrategy
     {
         public SqlCommand ApplyFilter(SqlConnection connection, string? keyword, string? mainFilter, string? genre, string console)
         {
-            string order = GetOrderBy(mainFilter);
-            SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} order by {order}", connection);
+            string order = GetOrderBy(mainFilter, console);
+            SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM dbo.{console} ORDER BY {order}", connection);
             return sqlCommand;
         }
 
-        private string GetOrderBy(string? mainFilter)
+        private string GetOrderBy(string? mainFilter, string console)
         {
             string? order = null;
 
             switch (mainFilter)
             {
                 case "Highest rating":
-                    {
-                        order = "Rating DESC";
-                        break;
-                    }
+                    order = "Rating DESC";
+                    break;
 
                 case "Latest release":
-                    {
-                        order = "Release_Date DESC";
-                        break;
-                    }
+                    order = "Release_Date DESC";
+                    break;
 
                 case "Most reviews":
-                    {
-                        order = "Reviews DESC";
-                        break;
-                    }
+                    order = "Reviews DESC";
+                    break;
             }
 
             return order;
-
         }
     }
+
 }
