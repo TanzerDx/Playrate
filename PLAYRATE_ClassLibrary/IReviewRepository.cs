@@ -11,12 +11,12 @@ namespace PLAYRATE_ClassLibrary
 {
     public interface IReviewRepository
     {
-        List<ReviewDTO> GetReviews(Result<int?> gameID, Result<int?> consoleID);
+        List<ReviewDTO> GetReviews(int? gameID, int? consoleID);
 
-        void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, Result<int?> Game_ID, Result<int?> Console_ID);
+        void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID);
 
         int? GetNumberOfReviews(string username);
 
-        double? GetRating(Result<int?> gameID, Result<int?> consoleID);
+        double? GetRating(int? gameID, int? consoleID);
     }
 }

@@ -10,7 +10,7 @@ namespace PLAYRATE_ClassLibrary.Accounts
 {
     public interface IAccountService
     {
-        void AddAccount(string submittedEmail, string submittedUsername, Result<string> hashedPassword, Result<string> salt);
+        void AddAccount(string submittedEmail, string submittedUsername, string hashedPassword, string salt);
 
         void RemoveAccount(int id);
 

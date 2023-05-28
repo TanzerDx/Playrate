@@ -20,7 +20,7 @@ namespace PLAYRATE_ClassLibrary.Accounts
             this._accountsLibrary = _accountsLibrary;
         }
 
-        public void AddAccount(string submittedEmail, string submittedUsername, Result<string> hashedPassword, Result<string> salt)
+        public void AddAccount(string submittedEmail, string submittedUsername, string hashedPassword, string salt)
         {
             try
             {

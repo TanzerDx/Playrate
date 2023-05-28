@@ -17,7 +17,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
             this._reviewLibrary = _reviewLibrary;
         }
 
-        public Result<List<Review>> GetReviews(Result<int?> gameID, Result<int?> consoleID)
+        public Result<List<Review>> GetReviews(int? gameID, int? consoleID)
         {
             try
             { 
@@ -31,7 +31,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 }
 
 
-        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, Result<int?> gameID, Result<int?> consoleID)
+        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? gameID, int? consoleID)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 			}
         }
 
-        public Result<double?> GetRating(Result<int?> gameID, Result<int?> consoleID)
+        public Result<double?> GetRating(int? gameID, int? consoleID)
         {
             try
             { 

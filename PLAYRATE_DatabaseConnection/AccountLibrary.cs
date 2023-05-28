@@ -15,7 +15,7 @@ namespace PLAYRATE_DatabaseConnection
             connectionString = con;
         }
 
-        public void AddAccount(string submittedEmail, string submittedUsername, Result<string> hashedPassword, Result<string> salt)
+        public void AddAccount(string submittedEmail, string submittedUsername, string hashedPassword, string salt)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -26,8 +26,8 @@ namespace PLAYRATE_DatabaseConnection
                 cmd.Parameters.AddWithValue("@Email", submittedEmail);
                 cmd.Parameters.AddWithValue("@Username", submittedUsername);
                 cmd.Parameters.AddWithValue("@ProfilePicURL", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png");
-                cmd.Parameters.AddWithValue("@Password", hashedPassword.Value);
-                cmd.Parameters.AddWithValue("@Salt", salt.Value);
+                cmd.Parameters.AddWithValue("@Password", hashedPassword);
+                cmd.Parameters.AddWithValue("@Salt", salt);
 
                 cmd.ExecuteNonQuery();
             }

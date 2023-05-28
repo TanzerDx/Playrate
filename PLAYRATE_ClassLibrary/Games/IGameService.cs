@@ -16,7 +16,7 @@ namespace PLAYRATE_ClassLibrary.Games
         Result<List<Game>> GetRecommendations(string username);
         void AddGame(string console, string name, string developer, DateTime releaseDate, string genre, string desc, string urlGame, string urlPage, int? consoleID);
         void RemoveGame(string console, string tbID);
-        void SetRating(Result<int?> consoleID, Result<int?> gameID, string console);
-        void CalculateNumberOfReviews(Result<int?> consoleID, Result<int?> gameID, string console);
+        void SetRating(int? consoleID, int? gameID, string console);
+        void CalculateNumberOfReviews(int? consoleID, int? gameID, string console);
     }
 }

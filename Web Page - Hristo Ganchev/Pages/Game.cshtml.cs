@@ -64,7 +64,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
             Model = model;
             ConsoleID = consoleService.GetConsoleID(model);
             GameID = gameService.GetGameID(name, model);    
-            Reviews = reviewService.GetReviews(GameID, ConsoleID);
+            Reviews = reviewService.GetReviews(GameID.Value, ConsoleID.Value);
             Game = gameService.GetGame(name , model);
             Username = HttpContext.Session.GetString("Username");
             ProfilePicUser = HttpContext.Session.GetString("ProfilePicUser");
@@ -94,9 +94,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
 
             SubmittedRating = Review.Rating;
             SubmittedReviewDesc = Review.ReviewDesc;
-            reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, ConsoleID, GameID);
-            gameService.SetRating(ConsoleID, GameID, Model);
-            gameService.CalculateNumberOfReviews(ConsoleID, GameID, Model);
+            reviewService.AddReview(Username, ProfilePicUser, SubmittedRating, SubmittedReviewDesc, ConsoleID.Value, GameID.Value);
+            gameService.SetRating(ConsoleID.Value, GameID.Value, Model);
+            gameService.CalculateNumberOfReviews(ConsoleID.Value, GameID.Value, Model);
             Response.Redirect("/ThankYou");
         }
 

@@ -106,11 +106,11 @@ namespace PLAYRATE_ClassLibrary.Games
             }
         }
 
-        public void SetRating(Result<int?> consoleID, Result<int?> gameID, string console)
+        public void SetRating(int? consoleID, int? gameID, string console)
         {
             try
             { 
-                _gamesLibrary.SetRating(consoleID.Value, gameID.Value, console);
+                _gamesLibrary.SetRating(consoleID, gameID, console);
 		    }
             catch (Exception exception)
             {
@@ -118,7 +118,7 @@ namespace PLAYRATE_ClassLibrary.Games
             }
         }
 
-        public void CalculateNumberOfReviews(Result<int?> consoleID, Result<int?> gameID, string console)
+        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
         {
             try
             {

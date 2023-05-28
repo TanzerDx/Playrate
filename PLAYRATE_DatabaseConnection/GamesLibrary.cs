@@ -256,13 +256,13 @@ namespace PLAYRATE_DatabaseConnection
             }
         }
 
-        public void CalculateNumberOfReviews(Result<int?> consoleID, Result<int?> gameID, string console)
+        public void CalculateNumberOfReviews(int? consoleID, int? gameID, string console)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Reviews = (SELECT COUNT(*) FROM dbo.Reviews WHERE Console_ID = '{consoleID.Value}' AND Game_ID = '{gameID.Value}') WHERE ID = '{gameID.Value}'", con);
+                SqlCommand cmd = new SqlCommand($"UPDATE dbo.{console} SET Reviews = (SELECT COUNT(*) FROM dbo.Reviews WHERE Console_ID = '{consoleID}' AND Game_ID = '{gameID}') WHERE ID = '{gameID}'", con);
                 cmd.ExecuteNonQuery();
 
                 con.Close();

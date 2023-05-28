@@ -21,13 +21,13 @@ namespace PLAYRATE_DatabaseConnection
             this.connectionString = connectionString;
         }
 
-        public List<ReviewDTO> GetReviews(Result<int?> gameID, Result<int?> consoleID)
+        public List<ReviewDTO> GetReviews(int? gameID, int? consoleID)
         {
             List<ReviewDTO> reviews = new List<ReviewDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Reviews where Game_ID='{gameID.Value}' AND Console_ID='{consoleID.Value}'", con);
+                SqlCommand sqlCommand = new SqlCommand($"select * from dbo.Reviews where Game_ID='{gameID}' AND Console_ID='{consoleID}'", con);
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read())
                 {
@@ -53,7 +53,7 @@ namespace PLAYRATE_DatabaseConnection
             };
         }
 
-        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, Result<int?> Game_ID, Result<int?> Console_ID)
+        public void AddReview(string Username, string URL_ProfilePicture, string Rating, string ReviewDesc, int? Game_ID, int? Console_ID)
         {
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -66,8 +66,8 @@ namespace PLAYRATE_DatabaseConnection
                 cmd.Parameters.AddWithValue("@URL_ProfilePicture", URL_ProfilePicture);
                 cmd.Parameters.AddWithValue("@Rating", Rating);
                 cmd.Parameters.AddWithValue("@ReviewDesc", ReviewDesc);
-                cmd.Parameters.AddWithValue("@Game_ID", Game_ID.Value);
-                cmd.Parameters.AddWithValue("@Console_ID", Console_ID.Value);
+                cmd.Parameters.AddWithValue("@Game_ID", Game_ID);
+                cmd.Parameters.AddWithValue("@Console_ID", Console_ID);
 
                 cmd.ExecuteNonQuery();
 
@@ -96,7 +96,7 @@ namespace PLAYRATE_DatabaseConnection
         }
 
 
-        public double? GetRating(Result<int?> gameID, Result<int?> consoleID)
+        public double? GetRating(int? gameID, int? consoleID)
         {
             double? rating = 0;
             using (SqlConnection con = new SqlConnection(connectionString))
