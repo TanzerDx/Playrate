@@ -74,6 +74,7 @@ namespace PLAYRATE_ClassLibrary.Consoles
         {
             try
             { 
+                //validation
                 _consolesLibrary.AddConsole(type,model, manufacturer, releaseDate, urlConsole, controllerType, chatPlatform);
             }
             catch (Exception exception)

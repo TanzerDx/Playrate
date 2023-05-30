@@ -2,12 +2,13 @@
 using FluentResults;
 using PLAYRATE_ClassLibrary;
 using PLAYRATE_ClassLibrary.Consoles;
+using PLAYRATE_ClassLibrary.FilterStrategy;
 using PLAYRATE_ClassLibrary.Games;
-using PLAYRATE_DatabaseConnection.FilterStrategy;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -87,37 +88,27 @@ namespace PLAYRATE_DatabaseConnection
 
                 IFilterStrategy filterStrategy = null;
 
-                if (keyword != "" && mainFilter == "" && genre == "")
+				List<IFilterStrategy> strategies = new List<IFilterStrategy>()
+		        {
+			        new FilterBy_Keyword_Strategy(),
+			        new FilterBy_MainFilter_Strategy(),
+			        new FilterBy_Genre_Strategy(),
+			        new FilterBy_KeywordAndMainFilter_Strategy(),
+			        new FilterBy_KeywordAndGenre_Strategy(),
+			        new FilterBy_MainFilterAndGenre_Strategy(),
+			        new FilterBy_All_Strategy()
+		        };
+
+                foreach (IFilterStrategy filter in strategies)
                 {
-                    filterStrategy = new FilterBy_Keyword_Strategy();
-                }
-                else if (keyword == "" && mainFilter != "" && genre == "")
-                {
-                    filterStrategy = new FilterBy_MainFilter_Strategy();
-                }
-                else if (keyword == "" && mainFilter == "" && genre != "")
-                {
-                    filterStrategy = new FilterBy_Genre_Strategy();
-                }
-                else if (keyword != "" && mainFilter != "" && genre == "")
-                {
-                    filterStrategy = new FilterBy_KeywordAndMainFilter_Strategy();
-                }
-                else if (keyword != "" && mainFilter == "" && genre != "")
-                {
-                    filterStrategy = new FilterBy_KeywordAndGenre_Strategy();
-                }
-                else if (keyword == "" && mainFilter != "" && genre != "")
-                {
-                    filterStrategy = new FilterBy_MainFilterAndGenre_Strategy();
-                }
-                else if (keyword != "" && mainFilter != "" && genre != "")
-                {
-                    filterStrategy = new FilterBy_All_Strategy();
+                    if (filter.ShouldApply(keyword, mainFilter, genre) == true)
+                    {
+                        filterStrategy = filter;
+                        break;
+                    }
                 }
 
-
-                if (filterStrategy != null)
+				if (filterStrategy != null)
                 {
                     SqlCommand sqlCommand = filterStrategy.ApplyFilter(con, keyword, mainFilter, genre, console);
 
@@ -136,8 +127,8 @@ namespace PLAYRATE_DatabaseConnection
         }
 
 
-        public List<GameDTO> GetRecommendations(string username)
-        {
+        public List<GameDTO> GetRecommendations(string username, double minimum, double maximum)
+		{
             List<GameDTO> games = new List<GameDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -162,8 +153,8 @@ namespace PLAYRATE_DatabaseConnection
                     string console = cmd2.ExecuteScalar().ToString();
 
                     SqlCommand sqlCommandMain = new SqlCommand($"SELECT g.* FROM dbo.Consoles c JOIN dbo.{console} g ON g.Console_ID = c.ID " +
-                        $"WHERE g.Rating BETWEEN 4 AND 5 AND g.Genres IN (SELECT Genres FROM dbo.{console} " +
-                        $"WHERE ID IN (SELECT Game_ID FROM Reviews WHERE Username = '{username}' AND Rating BETWEEN 4 AND 5)) AND NOT EXISTS " +
+                        $"WHERE g.Rating BETWEEN {minimum} AND {maximum} AND g.Genres IN (SELECT Genres FROM dbo.{console} " +
+                        $"WHERE ID IN (SELECT Game_ID FROM Reviews WHERE Username = '{username}' AND Rating BETWEEN {minimum} AND {maximum})) AND NOT EXISTS " +
                         $"(SELECT 1 FROM Reviews r2 WHERE r2.Username = '{username}' AND r2.Game_ID = g.ID AND r2.Console_ID = c.ID);", con);
 
                     using (SqlDataReader reader = sqlCommandMain.ExecuteReader())

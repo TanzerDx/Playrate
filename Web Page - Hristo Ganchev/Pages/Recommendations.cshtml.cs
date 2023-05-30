@@ -27,9 +27,9 @@ namespace Home_Page___Hristo_Ganchev.Pages
         {
             username = HttpContext.Session.GetString("Username");
 
-            if (gameService.GetRecommendations(username).IsSuccess)
+            if (gameService.GetRecommendations(username, 4, 5).IsSuccess)
             {
-                Games = gameService.GetRecommendations(username);
+                Games = gameService.GetRecommendations(username, 4, 5);
 
                 return Page();
             }
