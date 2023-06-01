@@ -3,6 +3,46 @@
 @{
 }
 
-<div id="div-content-box">
-	<h2 id="text-white">STATISTICS:</h2>
-</div>
+<body>
+	<div id="div-content-box">
+		<h2 id="text-white">STATISTICS:</h2>
+
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+        <div id="myPlot1" style="width:100%;max-width:700px;margin-left: 20%;margin-top: 5%;"></div>
+
+        <script>
+            var xArray1 = @Html.Raw(Json.Serialize(Model.StatisticsHighestRating.Value.Select(game => game.Name).ToList()));
+            var yArray1 = @Html.Raw(Json.Serialize(Model.StatisticsHighestRating.Value.Select(game => game.Rating).ToList()));
+
+            var data1 = [{
+                x: xArray1,
+                y: yArray1,
+                type: "bar"
+            }];
+
+            var layout1 = { title: "Best rated games" };
+
+            Plotly.newPlot("myPlot1", data1, layout1);
+        </script>
+
+        <div id="myPlot2" style="width:100%;max-width:700px;margin-left: 20%;margin-top: 5%;"></div>
+
+        <script>
+            var xArray2 = @Html.Raw(Json.Serialize(Model.StatisticsMostReviews.Value.Select(game => game.Name).ToList()));
+            var yArray2 = @Html.Raw(Json.Serialize(Model.StatisticsMostReviews.Value.Select(game => game.Reviews).ToList()));
+
+            var data2 = [{
+                x: xArray2,
+                y: yArray2,
+                type: "bar"
+            }];
+
+            var layout2 = { title: "Most reviews" };
+
+            Plotly.newPlot("myPlot2", data2, layout2);
+        </script>
+
+	</div>
+
+</body>

@@ -19,8 +19,10 @@ namespace PLAYRATE_ClassLibrary.Games
 		public string Description { get; init; }
 		public string URL_Game { get; init; }
 		public string URL_Page { get; init; }
+        public int ConsoleID { get; init; }
+        public int Reviews { get; init; }
 
-		public Game (int id, string name, string genre, DateTime releaseDate, string developer, double rating, string desc, string URL_Game, string URL_Page)
+        public Game (int id, string name, string genre, DateTime releaseDate, string developer, double rating, string desc, string URL_Game, string URL_Page, int consoleID, int reviews)
 		{
 			this.ID = id;
 			this.Name = name;
@@ -31,6 +33,8 @@ namespace PLAYRATE_ClassLibrary.Games
 			this.Description = desc;
 			this.URL_Game = URL_Game;
 			this.URL_Page = URL_Page;
+			this.ConsoleID = consoleID;
+			this.Reviews = reviews;
 
 		}
 		public Game ()

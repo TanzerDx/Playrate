@@ -125,7 +125,13 @@ html {
     text-align: right;
 }
 
-
+/*Statistics*/
+#myPlot {
+    width:100%;
+    max-width:700px;
+    margin-left: 20%;
+    margin-top: 5%;
+}
 
 /*Content*/
 #div-content-box {

@@ -129,5 +129,31 @@ namespace PLAYRATE_ClassLibrary.Games
                 Result.Fail(new Error("Unable to calculate number of reviews!").CausedBy(exception));
             }
         }
+
+        public Result<List<Game>> StatisticsHighestRating()
+        {
+            try
+            {
+                var games = _gamesLibrary.GetAllGames().OrderByDescending(game => game.Rating).Take(5).Select(dto => dto.ToGame()).ToList();
+                return games;
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to retrieve recommendations!").CausedBy(exception));
+            }
+        }
+
+        public Result<List<Game>> StatisticsMostReviews()
+        {
+            try
+            {
+                var games = _gamesLibrary.GetAllGames().OrderByDescending(game => game.Reviews).Take(5).Select(dto => dto.ToGame()).ToList();
+                return games;
+            }
+            catch (Exception exception)
+            {
+                return Result.Fail(new Error("Unable to retrieve recommendations!").CausedBy(exception));
+            }
+        }
     }
 }

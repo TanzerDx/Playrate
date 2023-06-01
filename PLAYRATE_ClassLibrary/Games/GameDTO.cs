@@ -11,7 +11,6 @@ namespace PLAYRATE_ClassLibrary.Games
     public struct GameDTO
     {
         public int ID;
-        public int Console_ID;
         public string Name;
         public string Developer;
         public DateTime Release_Date;
@@ -20,6 +19,8 @@ namespace PLAYRATE_ClassLibrary.Games
         public string Description;
         public string URL_Game;
         public string URL_Page;
+        public int Console_ID;
+        public int Reviews;
 
     }
 }

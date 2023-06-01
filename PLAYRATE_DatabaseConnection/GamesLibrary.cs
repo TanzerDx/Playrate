@@ -188,7 +188,8 @@ namespace PLAYRATE_DatabaseConnection
                 Description = reader.GetString(6),
                 URL_Game = reader.GetString(7),
                 URL_Page = reader.GetString(8),
-                Console_ID = reader.GetInt32(9)
+                Console_ID = reader.GetInt32(9),
+                Reviews = reader.GetInt32(10)
 
             };
         }
@@ -259,5 +260,49 @@ namespace PLAYRATE_DatabaseConnection
                 con.Close();
             }
         }
+
+        public List<GameDTO> GetAllGames()
+        {
+            List<GameDTO> games = new List<GameDTO>();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand($"SELECT ID FROM dbo.Consoles", con);
+                SqlDataReader consoleReader = cmd.ExecuteReader();
+
+                List<int> consoleIDs = new List<int>();
+
+                while (consoleReader.Read())
+                {
+                    int consoleID = consoleReader.GetInt32(0);
+                    consoleIDs.Add(consoleID);
+                }
+
+                consoleReader.Close();
+
+                foreach (int consoleID in consoleIDs)
+                {
+                    SqlCommand cmd2 = new SqlCommand($"SELECT Model FROM dbo.Consoles WHERE ID = '{consoleID}';", con);
+                    string console = cmd2.ExecuteScalar().ToString();
+
+                    SqlCommand sqlCommandMain = new SqlCommand($"SELECT * from dbo.{console}", con);
+
+                    using (SqlDataReader reader = sqlCommandMain.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GameDTO gameDTO = CreateGameDTO(reader);
+                            games.Add(gameDTO);
+                        }
+                    }
+                }
+
+                con.Close();
+            }
+
+            return games;
+        }
+
     }
 }

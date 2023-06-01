@@ -20,7 +20,8 @@ namespace PLAYRATE_ClassLibrary.Games
 				Rating = Convert.ToDouble(gameDTO.Rating),
 				Description = gameDTO.Description,
 				URL_Game = gameDTO.URL_Game,
-				URL_Page = gameDTO.URL_Page
+				URL_Page = gameDTO.URL_Page,
+				Reviews = gameDTO.Reviews
 			};
 		}
 
@@ -36,7 +37,8 @@ namespace PLAYRATE_ClassLibrary.Games
 				Rating = Convert.ToDouble(game.Rating),
 				Description = game.Description,
 				URL_Game = game.URL_Game,
-				URL_Page = game.URL_Page
+				URL_Page = game.URL_Page,
+				Reviews = game.Reviews
 			};
 		}
 	}

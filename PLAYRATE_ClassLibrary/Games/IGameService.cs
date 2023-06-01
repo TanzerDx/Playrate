@@ -18,5 +18,7 @@ namespace PLAYRATE_ClassLibrary.Games
         void RemoveGame(string console, string tbID);
         void SetRating(int? consoleID, int? gameID, string console);
         void CalculateNumberOfReviews(int? consoleID, int? gameID, string console);
+        Result<List<Game>> StatisticsHighestRating();
+        Result<List<Game>> StatisticsMostReviews();
     }
 }

@@ -19,6 +19,7 @@ namespace PLAYRATE_ClassLibrary
         void RemoveGame(string console, string tbID);
         void SetRating(int? consoleID, int? gameID, string console);
         void CalculateNumberOfReviews(int? consoleID, int? gameID, string console);
+        List<GameDTO> GetAllGames();
 
     }
 
