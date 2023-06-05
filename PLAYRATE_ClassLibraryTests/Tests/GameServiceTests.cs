@@ -36,7 +36,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlGame = "url";
             string urlPage = "url";
 
-            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage, 1, 1);
 
             Assert.IsNotNull(gamesService.GetAll());
 
@@ -68,7 +68,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlPage = "url";
 
             //Act
-            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage, 1, 1);
 
             //Assert
             Assert.IsNotNull(gamesService.GetAll());
@@ -88,7 +88,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlGame = "url";
             string urlPage = "url";
 
-            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage, 1, 1);
 
             Assert.AreEqual("PLAYRATE_ClassLibrary.Games.Game", gamesService.GetGame(name).ToString());
 
@@ -108,7 +108,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlGame = "url";
             string urlPage = "url";
 
-            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage, 1, 1);
 
             Assert.AreEqual(1, gamesService.CountGamesWithThisGenre(genre));
         }
@@ -127,9 +127,27 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
             string urlPage = "url";
             string keyword = "Som";
 
-            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage);
+            gamesService.AddGame(id, name, genre, releaseDate, developer, rating, desc, urlGame, urlPage, 1, 1);
 
             Assert.IsNotNull(gamesService.GetGameByKeyword(keyword));
         }
-    }
+
+		[TestMethod()]
+		public void Filter()
+		{
+            Game game1 = new Game(1, "Something", "Fantasy", Convert.ToDateTime("2005/05/14"), "Someone", 4, "A nice game", "url", "url", 1, 5);
+			Game game2 = new Game(2, "Another", "Fantasy", Convert.ToDateTime("2005/05/14"), "Someone", 5, "A nice game", "url", "url", 1, 7);
+			Game game3 = new Game(3, "Hello", "Horror", Convert.ToDateTime("2005/05/14"), "Someone", 3, "A nice game", "url", "url", 1, 3);
+			Game game4 = new Game(4, "Fontys", "Action", Convert.ToDateTime("2005/05/14"), "Someone", 5, "A nice game", "url", "url", 1, 2);
+			Game game5 = new Game(5, "Amsterdam", "Sci-Fi", Convert.ToDateTime("2005/05/14"), "Someone", 2, "A nice game", "url", "url", 1, 1);
+
+			List<Game> testData = new List<Game> { game1, game2, game3, game4, game5 };
+
+            testData = gamesService.Filter("Ano", "Rating", "Fantasy", testData);
+
+            Assert.AreEqual(testData[0].Name, "Another");
+
+		}
+
+	}
 }
