@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLAYRATE_ClassLibrary.Games;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,34 +19,23 @@ namespace PLAYRATE_ClassLibrary.FilterStrategy
 			return false;
 		}
 
-		public SqlCommand ApplyFilter(SqlConnection connection, string? keyword, string? mainFilter, string? genre, string console)
-        {
-            string order = GetOrderBy(mainFilter, console);
-            SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM dbo.{console} ORDER BY {order}", connection);
-            return sqlCommand;
-        }
+		public List<Game> ApplyFilter(string? keyword, string? mainFilter, string? genre, List<Game> games)
+		{
+			if (mainFilter == "Highest rating")
+			{
+			games = games.OrderByDescending(game => game.Rating).ToList();
+			}
+			else if (mainFilter == "Most reviews")
+			{
+				games = games.OrderByDescending(game => game.Reviews).ToList();
+			}
+			else if (mainFilter == "Latest release")
+			{
+				games = games.OrderByDescending(game => game.Release_Date).ToList();
+			}
+			return games;
+		}
 
-        private string GetOrderBy(string? mainFilter, string console)
-        {
-            string? order = null;
-
-            switch (mainFilter)
-            {
-                case "Highest rating":
-                    order = "Rating DESC";
-                    break;
-
-                case "Latest release":
-                    order = "Release_Date DESC";
-                    break;
-
-                case "Most reviews":
-                    order = "Reviews DESC";
-                    break;
-            }
-
-            return order;
-        }
     }
 
 }

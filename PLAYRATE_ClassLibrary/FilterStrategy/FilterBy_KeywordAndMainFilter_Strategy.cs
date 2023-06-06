@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLAYRATE_ClassLibrary.Games;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -18,40 +19,22 @@ namespace PLAYRATE_ClassLibrary.FilterStrategy
 			return false;
 		}
 
-		public SqlCommand ApplyFilter(SqlConnection connection, string? keyword, string? mainFilter, string? genre, string console)
-        {
-            string order = GetOrderBy(mainFilter);
-            SqlCommand sqlCommand = new SqlCommand($"select * from dbo.{console} where Name LIKE '%{keyword}%' ORDER BY {order}", connection);
-            return sqlCommand;
-        }
+		public List<Game> ApplyFilter(string? keyword, string? mainFilter, string? genre, List<Game> games)
+		{
+			if (mainFilter == "Highest rating")
+			{
+				games = games.Where(game => game.Name.Contains(keyword)).OrderByDescending(game => game.Rating).ToList();
+			}
+			else if (mainFilter == "Most reviews")
+			{
+				games = games.Where(game => game.Name.Contains(keyword)).OrderByDescending(game => game.Reviews).ToList();
+			}
+			else if (mainFilter == "Latest release")
+			{
+				games = games.Where(game => game.Name.Contains(keyword)).OrderByDescending(game => game.Release_Date).ToList();
+			}
 
-        private string GetOrderBy(string? mainFilter)
-        {
-            string? order = null;
-
-            switch (mainFilter)
-            {
-                case "Highest rating":
-                    {
-                        order = "Rating DESC";
-                        break;
-                    }
-
-                case "Latest release":
-                    {
-                        order = "Release_Date DESC";
-                        break;
-                    }
-
-                case "Most reviews":
-                    {
-                        order = "Reviews DESC";
-                        break;
-                    }
-            }
-
-            return order;
-
-        }
+			return games;
+		}
     }
 }

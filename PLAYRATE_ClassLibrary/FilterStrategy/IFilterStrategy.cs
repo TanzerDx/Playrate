@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLAYRATE_ClassLibrary.Games;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace PLAYRATE_ClassLibrary.FilterStrategy
     public interface IFilterStrategy
     {
         bool ShouldApply(string keyword, string mainFilter, string genre);
-		SqlCommand ApplyFilter(SqlConnection connection, string? keyword, string? mainFilter, string? genre, string console);
-    }
+        public List<Game> ApplyFilter(string? keyword, string? mainFilter, string? genre, List<Game> games);
+
+	}
 }

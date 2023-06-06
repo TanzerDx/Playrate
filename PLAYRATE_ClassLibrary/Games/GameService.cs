@@ -1,5 +1,6 @@
 ﻿using BusinessLogic;
 using FluentResults;
+using PLAYRATE_ClassLibrary.FilterStrategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,13 +57,43 @@ namespace PLAYRATE_ClassLibrary.Games
             }
         }
 
-        public Result<List<Game>> Filter(string? keyword, string? mainFilter, string? genre, string console)
+        public Result<List<Game>> Filter(string? keyword, string? mainFilter, string? genre, List<Game> toFilter)
         {
             try
             {
-                var games = _gamesLibrary.Filter(keyword, mainFilter, genre, console).Select(dto => dto.ToGame()).ToList();
-                return games;
-            }
+				List<Game> games = new List<Game>();
+
+                games = toFilter;
+
+				IFilterStrategy filterStrategy = null;
+
+				List<IFilterStrategy> strategies = new List<IFilterStrategy>()
+			    {
+				    new FilterBy_Keyword_Strategy(),
+				    new FilterBy_MainFilter_Strategy(),
+				    new FilterBy_Genre_Strategy(),
+				    new FilterBy_KeywordAndMainFilter_Strategy(),
+				    new FilterBy_KeywordAndGenre_Strategy(),
+				    new FilterBy_MainFilterAndGenre_Strategy(),
+				    new FilterBy_All_Strategy()
+			    };
+
+				foreach (IFilterStrategy filter in strategies)
+				{
+					if (filter.ShouldApply(keyword, mainFilter, genre))
+					{
+						filterStrategy = filter;
+						break;
+					}
+				}
+
+				if (filterStrategy != null)
+				{
+					games = filterStrategy.ApplyFilter(keyword, mainFilter, genre, games);
+				}
+
+				return games;
+			}
             catch (Exception exception)
             {
                 return Result.Fail(new Error("Unable to filter the games!").CausedBy(exception));

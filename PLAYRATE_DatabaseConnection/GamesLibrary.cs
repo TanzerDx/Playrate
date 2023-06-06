@@ -78,53 +78,53 @@ namespace PLAYRATE_DatabaseConnection
             return gameID;
         }
 
-        public List<GameDTO> Filter(string? keyword, string? mainFilter, string? genre, string console)
-        {
-            List<GameDTO> games = new List<GameDTO>();
+    //    public List<GameDTO> Filter(string? keyword, string? mainFilter, string? genre, string console)
+    //    {
+    //        List<GameDTO> games = new List<GameDTO>();
 
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                con.Open();
+    //        using (SqlConnection con = new SqlConnection(connectionString))
+    //        {
+    //            con.Open();
 
-                IFilterStrategy filterStrategy = null;
+    //            IFilterStrategy filterStrategy = null;
 
-				List<IFilterStrategy> strategies = new List<IFilterStrategy>()
-		        {
-			        new FilterBy_Keyword_Strategy(),
-			        new FilterBy_MainFilter_Strategy(),
-			        new FilterBy_Genre_Strategy(),
-			        new FilterBy_KeywordAndMainFilter_Strategy(),
-			        new FilterBy_KeywordAndGenre_Strategy(),
-			        new FilterBy_MainFilterAndGenre_Strategy(),
-			        new FilterBy_All_Strategy()
-		        };
+				//List<IFilterStrategy> strategies = new List<IFilterStrategy>()
+		  //      {
+			 //       new FilterBy_Keyword_Strategy(),
+			 //       new FilterBy_MainFilter_Strategy(),
+			 //       new FilterBy_Genre_Strategy(),
+			 //       new FilterBy_KeywordAndMainFilter_Strategy(),
+			 //       new FilterBy_KeywordAndGenre_Strategy(),
+			 //       new FilterBy_MainFilterAndGenre_Strategy(),
+			 //       new FilterBy_All_Strategy()
+		  //      };
 
-                foreach (IFilterStrategy filter in strategies)
-                {
-                    if (filter.ShouldApply(keyword, mainFilter, genre) == true)
-                    {
-                        filterStrategy = filter;
-                        break;
-                    }
-                }
+    //            foreach (IFilterStrategy filter in strategies)
+    //            {
+    //                if (filter.ShouldApply(keyword, mainFilter, genre) == true)
+    //                {
+    //                    filterStrategy = filter;
+    //                    break;
+    //                }
+    //            }
 
-				if (filterStrategy != null)
-                {
-                    SqlCommand sqlCommand = filterStrategy.ApplyFilter(con, keyword, mainFilter, genre, console);
+				//if (filterStrategy != null)
+    //            {
+    //                SqlCommand sqlCommand = filterStrategy.ApplyFilter(con, keyword, mainFilter, genre, console);
 
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        GameDTO gameDTO = CreateGameDTO(reader);
-                        games.Add(gameDTO);
-                    }
-                }
+    //                SqlDataReader reader = sqlCommand.ExecuteReader();
+    //                while (reader.Read())
+    //                {
+    //                    GameDTO gameDTO = CreateGameDTO(reader);
+    //                    games.Add(gameDTO);
+    //                }
+    //            }
 
-                con.Close();
-            }
+    //            con.Close();
+    //        }
 
-            return games;
-        }
+    //        return games;
+    //    }
 
 
         public List<GameDTO> GetRecommendations(string username, double minimum, double maximum)

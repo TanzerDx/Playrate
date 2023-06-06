@@ -1,5 +1,7 @@
+using FluentAssertions.Equivalency;
 using FluentResults;
 using Home_Page___Hristo_Ganchev.Pages;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -46,31 +48,33 @@ namespace Home_Page___Hristo_Ganchev
         public IActionResult OnGet(string model)
         {
             Model = model;
-
+			
             if (gameService.GetAll(model).IsSuccess)
-            {
-                Games = gameService.GetAll(model);
-
+			{
+				Games = gameService.GetAll(model);
+				
                 HttpContext.Session.SetString("Model", Model);
 
-                return Page();
+				return Page();
 			}
-            else
-            {
-                return Redirect("/Error");
-            }
+			else
+			{
+				return Redirect("/Error");
+			}
+
 
 		}
 
-        public void OnPost()
+		public void OnPost()
         {
             Model = HttpContext.Session.GetString("Model");
+			Games = gameService.GetAll(Model);
 
-            SubmittedKeyword = $"{Filter.GetKeyword()}";
+			SubmittedKeyword = $"{Filter.GetKeyword()}";
             SubmittedMainFilter = $"{Filter.GetMainFilter()}";
             SubmittedGenreFilter = $"{Filter.GetGenreFilter()}";
 
-            Games = gameService.Filter(SubmittedKeyword, SubmittedMainFilter, SubmittedGenreFilter, Model);
+            Games = gameService.Filter(SubmittedKeyword, SubmittedMainFilter, SubmittedGenreFilter, Games.Value);
         }
     }
 }
