@@ -49,7 +49,7 @@ namespace PLAYRATE_DatabaseConnection
                 Rating = reader.GetDouble(3),
                 ReviewDesc = reader.GetString(4),
                 Game_ID = reader.GetInt32(5),
-                Account_ID = reader.GetInt32(6),
+                Console_ID = reader.GetInt32(6),
             };
         }
 

@@ -2,6 +2,7 @@
 using PLAYRATE_ClassLibrary.Consoles;
 using PLAYRATE_ClassLibrary.FilterStrategy;
 using PLAYRATE_ClassLibrary.Games;
+using PLAYRATE_ClassLibrary.Reviews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,6 +53,21 @@ namespace PLAYRATE_ClassLibraryTests
 
 			return games;
 		}
+
+        public List<Game> GetRecommendations(List<Game> gamesTest, List<Review> reviewTest, string genre)
+        {
+            List<Game> games = new List<Game>(gamesTest);
+            List<Review> reviews = new List<Review>(reviewTest);
+
+            List<Game> recommendations = new List<Game>();
+
+            recommendations = games.Where(game => game.Rating >= 4 && game.Genre == genre
+                            && reviews.All(review => review.Game_ID != game.ID && review.Console_ID == game.ConsoleID)
+                            && !reviews.Any(review => Convert.ToDouble(review.Rating) < 4))
+                            .ToList();
+
+            return recommendations;
+        }
 
 
 		public PLAYRATE_ClassLibrary.Games.Game GetGame(string name)

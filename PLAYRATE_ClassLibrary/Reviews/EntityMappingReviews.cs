@@ -25,7 +25,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
                 Game_ID = reviewDTO.Game_ID,
 
-                Account_ID = reviewDTO.Account_ID,
+                Console_ID = reviewDTO.Console_ID,
             };
         }
 
@@ -45,7 +45,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
                 Game_ID = review.Game_ID,
 
-                Account_ID = review.Account_ID,
+                Console_ID = review.Console_ID,
             };
         }
     }

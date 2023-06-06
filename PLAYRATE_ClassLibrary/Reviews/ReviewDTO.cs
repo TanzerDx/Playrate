@@ -20,7 +20,7 @@ namespace PLAYRATE_ClassLibrary.Reviews
 
         public int Game_ID;
 
-        public int Account_ID;
+        public int Console_ID;
 
     }
 }
