@@ -1,6 +1,7 @@
 ﻿using BusinessLogic;
 using FluentResults;
 using PLAYRATE_ClassLibrary.FilterStrategy;
+using PLAYRATE_ClassLibrary.StatisticsStrategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,30 +162,44 @@ namespace PLAYRATE_ClassLibrary.Games
             }
         }
 
-        public Result<List<Game>> StatisticsHighestRating()
-        {
-            try
+		public Result<List<Game>> GetStatistics(string desiredStatistic)
+		{
+			try
+			{
+                List<Game> statistic = new List<Game>();
+
+                statistic = _gamesLibrary.GetAllGames().Select(dto => dto.ToGame()).ToList();
+
+				IStatisticsStrategy statisticsStrategy = null;
+
+				List<IStatisticsStrategy> strategies = new List<IStatisticsStrategy>()
+				{
+					new StatisticsHighestRating(),
+					new StatisticsMostReviews()
+				};
+
+				foreach (IStatisticsStrategy strategy in strategies)
+				{
+					if (strategy.ShouldApply(desiredStatistic))
+					{
+						statisticsStrategy = strategy;
+						break;
+					}
+				}
+
+				if (statisticsStrategy != null)
+				{
+					statistic = statisticsStrategy.Apply(statistic);
+				}
+
+				return statistic;
+			}
+			catch (Exception exception)
             {
-                var games = _gamesLibrary.GetAllGames().OrderByDescending(game => game.Rating).Take(5).Select(dto => dto.ToGame()).ToList();
-                return games;
-            }
-            catch (Exception exception)
-            {
-                return Result.Fail(new Error("Unable to retrieve recommendations!").CausedBy(exception));
+                return Result.Fail(new Error("Unable to get statistics!").CausedBy(exception));
             }
         }
 
-        public Result<List<Game>> StatisticsMostReviews()
-        {
-            try
-            {
-                var games = _gamesLibrary.GetAllGames().OrderByDescending(game => game.Reviews).Take(5).Select(dto => dto.ToGame()).ToList();
-                return games;
-            }
-            catch (Exception exception)
-            {
-                return Result.Fail(new Error("Unable to retrieve recommendations!").CausedBy(exception));
-            }
-        }
+        
     }
 }

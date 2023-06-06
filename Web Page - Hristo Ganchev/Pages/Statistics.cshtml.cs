@@ -17,21 +17,14 @@ namespace Home_Page___Hristo_Ganchev.Pages
         public StatisticsModel(GameService gS)
         {
             gameService = gS;
-        }
+		}
 
         public IActionResult OnGet()
         {
-            if (gameService.StatisticsHighestRating().IsSuccess && gameService.StatisticsMostReviews().IsSuccess)
-            {
-                StatisticsHighestRating = gameService.StatisticsHighestRating();
-                StatisticsMostReviews = gameService.StatisticsMostReviews();
+			StatisticsHighestRating = gameService.GetStatistics("highestRating");
+			StatisticsMostReviews = gameService.GetStatistics("mostReviews");
 
-                return Page();
-            }
-            else
-            {
-                return Redirect("/Error");
-            }
+			return Page();
         }
     }
 }
