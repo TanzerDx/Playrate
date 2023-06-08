@@ -23,8 +23,8 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
 		public GameServiceTests()
 		{
-			IGameRepository gameRepository = new GamesLibrary("Data Source = mssqlstud.fhict.local; Persist Security Info = True; User ID = dbi499630; Password = Jvm5cNGGkr");
-			gamesService = new GameService(gameRepository);
+			//IGameRepository gameRepository = new GamesLibrary("Data Source = mssqlstud.fhict.local; Persist Security Info = True; User ID = dbi499630; Password = Jvm5cNGGkr");
+			gamesService = new GameService(new MockGameRepository());
 		}
 
 		[TestMethod()]
@@ -45,9 +45,9 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
         {
             List<Game> recommendations;
 
-            recommendations = gamesService.GetRecommendations("Nicole", 4, 5).Value;
+            recommendations = gamesService.GetRecommendations("Jacob", 4, 5).Value;
 
-            Assert.AreEqual(recommendations.Count, 0);
+            Assert.AreEqual(recommendations[0].Name, "Just Cause 2");
 
 		}
 

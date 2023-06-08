@@ -47,25 +47,25 @@ namespace Home_Page___Hristo_Ganchev.Pages
 		{
 			try
 			{
-			SubmittedEmail = $"{Account.GetEmail()}";
-			SubmittedUsername = $"{Account.GetName()}";
-			SubmittedPassword = $"{Account.GetPassword()}";
+				SubmittedEmail = Account.GetEmail();
+				SubmittedUsername = Account.GetName();
+				SubmittedPassword = Account.GetPassword();
 
-			Salt = accountLibrary.GenerateSalt();
+				Salt = accountLibrary.GenerateSalt();
 
-			string saltedPassword = $"{SubmittedPassword}{Salt}{pepper}";
-			HashedPassword = accountLibrary.HashPassword(saltedPassword);
+				string saltedPassword = $"{SubmittedPassword}{Salt.Value}{pepper}";
+				HashedPassword = accountLibrary.HashPassword(saltedPassword).Value;
 
-			accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword.Value, Salt.Value);
+				accountLibrary.AddAccount(SubmittedEmail, SubmittedUsername, HashedPassword.Value, Salt.Value);
 
-            Response.Redirect("/LogIn");
-            }
+				Response.Redirect("/LogIn");
+			}
 			catch
 			{
 				Response.Redirect("/Error");
 			}
+		}
 
-        }
 
 	}
 }

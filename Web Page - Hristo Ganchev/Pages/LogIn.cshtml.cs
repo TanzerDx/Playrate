@@ -57,7 +57,7 @@ namespace Home_Page___Hristo_Ganchev.Pages
 				string salt = reader.GetString(1);
 
 				string saltedPassword = $"{SubmittedPassword}{salt}{pepper}";
-				Result<string> hashedPassword = accountLibrary.HashPassword(saltedPassword);
+				Result<string> hashedPassword = accountLibrary.HashPassword(saltedPassword).Value;
 
 				if (hashedPassword.Value == storedHashedPassword.Value)
 				{
