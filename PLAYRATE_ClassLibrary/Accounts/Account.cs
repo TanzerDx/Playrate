@@ -13,8 +13,6 @@ namespace PLAYRATE_ClassLibrary.Accounts
         public Account()
         { }
 
-        List<Game> playedGames = new List<Game>();
-
         public int ID { get; set; }
 
         public string ProfilePicURL { get; set; }
