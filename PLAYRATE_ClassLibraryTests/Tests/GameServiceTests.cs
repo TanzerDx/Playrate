@@ -23,11 +23,10 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
 		public GameServiceTests()
 		{
-			//IGameRepository gameRepository = new GamesLibrary("Data Source = mssqlstud.fhict.local; Persist Security Info = True; User ID = dbi499630; Password = Jvm5cNGGkr");
 			gamesService = new GameService(new MockGameRepository());
 		}
 
-		[TestMethod()]
+		[TestMethod]
 		public void Filter()
 		{
 			List<Game> testData;
@@ -40,7 +39,7 @@ namespace PLAYRATE_ClassLibrary.Games.Tests
 
 		}
 
-        [TestMethod()]
+        [TestMethod]
         public void GetRecommendations()
         {
             List<Game> recommendations;
