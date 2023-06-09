@@ -28,11 +28,14 @@ namespace PLAYRATE_ClassLibrary.Accounts
         [Required, MinLength(10, ErrorMessage = "The password should be at least 10 characters!")]
         public string Password { get; set; }
 
-        public Account(string username, string email, string password)
+        public Account(int ID, string ProfilePicURL, string Salt, string Username, string Email, string Password)
         {
-            Username = username;
-            Email = email;
-            Password = password;
+            this.ID = ID;
+            this.ProfilePicURL = ProfilePicURL;
+            this.Salt = Salt;
+            this.Username = Username;
+            this.Email = Email;
+            this.Password = Password;
         }
 
         public string GetName()

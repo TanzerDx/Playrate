@@ -105,7 +105,7 @@ namespace PLAYRATE_ClassLibrary.Games
 		{
             try
             {
-                var games = _gamesLibrary.GetRecommendations(username, minimum, maximum).Select(dto => dto.ToGame()).ToList();
+                var games = _gamesLibrary.SetRecommendations(username, minimum, maximum).Select(dto => dto.ToGame()).ToList();
                 return games;
             }
             catch (Exception exception)

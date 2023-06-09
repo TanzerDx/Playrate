@@ -82,7 +82,7 @@ namespace Desktop_App___Hristo_Ganchev
                 MessageBox.Show("Error. Make sure that you have entered the correct data!");
             }
 
-        }
+}
 
         private void cbbType_SelectedIndexChanged(object sender, EventArgs e)
         {

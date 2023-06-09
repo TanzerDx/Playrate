@@ -10,7 +10,6 @@ namespace PLAYRATE_ClassLibrary.Consoles
 {
     public class ConsoleService : IConsoleService
     {
-        private const string _connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr";
         private readonly IConsoleRepository _consolesLibrary;
 
         public ConsoleService(IConsoleRepository _consolesLibrary)

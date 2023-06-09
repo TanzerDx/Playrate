@@ -12,7 +12,6 @@ namespace PLAYRATE_ClassLibrary.Accounts
 {
     public class AccountService : IAccountService
     {
-        private const string _connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr";
         private readonly IAccountRepository _accountsLibrary;
 
         public AccountService(IAccountRepository _accountsLibrary)

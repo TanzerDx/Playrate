@@ -127,7 +127,7 @@ namespace PLAYRATE_DatabaseConnection
     //    }
 
 
-        public List<GameDTO> GetRecommendations(string username, double minimum, double maximum)
+        public List<GameDTO> SetRecommendations(string username, double minimum, double maximum)
 		{
             List<GameDTO> games = new List<GameDTO>();
             using (SqlConnection con = new SqlConnection(connectionString))

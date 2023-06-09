@@ -9,7 +9,6 @@ namespace PLAYRATE_ClassLibrary.Reviews
 {
     public class ReviewServices : IReviewServices
     {
-        private const string _connectionString = "Data Source=mssqlstud.fhict.local;Persist Security Info=True;User ID = dbi499630; Password=Jvm5cNGGkr";
         private readonly IReviewRepository _reviewLibrary;
 
         public ReviewServices(IReviewRepository _reviewLibrary)
